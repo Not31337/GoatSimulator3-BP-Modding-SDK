@@ -10,7 +10,12 @@ Creating the logic to bind to events one by one took a lot of work, so I hope yo
 
 ・[gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/tree/4.27)
 
-・[Sentry 4.27](https://github.com/getsentry/sentry-unreal/releases)
+・[Sentry engine4.27](https://github.com/getsentry/sentry-unreal/releases)
+
+For using Unreal Engine, Visual Studio 2022 is required.  
+・[Visual Studio](https://visualstudio.microsoft.com/downloads/)  
+You can install Visual Studio 2022 by downloading the installer and running the command "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"  
+Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
 
 To run the mods you create, you will need the following:
 
