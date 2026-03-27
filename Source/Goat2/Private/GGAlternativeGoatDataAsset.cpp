@@ -1,0 +1,117 @@
+#include "GGAlternativeGoatDataAsset.h"
+#include "Templates/SubclassOf.h"
+
+UGGAlternativeGoatDataAsset::UGGAlternativeGoatDataAsset() {
+    this->BodyMesh = NULL;
+    this->PhysicsAssetOverride = NULL;
+    this->RagdollPhysicsAssetOverride = NULL;
+    this->FlyingBroomVerticalOffset = 32.00f;
+    this->CapsuleHalfSize = 46.00f;
+    this->CapsuleRadius = 30.00f;
+    this->bUsePushCapsule = false;
+    this->PushCapsuleHalfSize = 0.00f;
+    this->PushCapsuleRadius = 0.00f;
+    this->bHideHornsComp = false;
+    this->DefaultHorn = NULL;
+    this->ShellEffectMeshOverride = NULL;
+    this->VisualizerCameraArmLength = 300.00f;
+    this->BrakingMontage = NULL;
+    this->FollowBoneName = TEXT("Spine_01");
+    this->PelvisBoneName = TEXT("pelvis");
+    this->FloatingBoneName = TEXT("Spine_02");
+    this->bUseDifferentRelativeLocationsWithZoom = false;
+    this->RelativeZoomLocationCurve = NULL;
+    this->CameraBoomInitialTargetLength = 300.00f;
+    this->GoatTranslucencyDistance = 100.00f;
+    this->InAirDistanceCheck = 50.00f;
+    this->EarBones.AddDefaulted(2);
+    this->bUseGFur = false;
+    this->DefaultGFurMaterial = NULL;
+    this->GFurGrowMesh = NULL;
+    this->DefaultGFurSplines = NULL;
+    this->bUseCapsuleShadows = false;
+    this->bCastCapsuleDirectShadow = false;
+    this->bCastCapsuleIndirectShadow = false;
+    this->bCastCapsuleDirectShadowMobile = false;
+    this->bCastCapsuleIndirectShadowMobile = false;
+    this->CapsuleIndirectShadowMinVisibility = 0.10f;
+    this->TurnRate = 8.00f;
+    this->SprintTurnRate = 8.00f;
+    this->MidAirTurnRate = 8.00f;
+    this->ForwardSpeed = 450.00f;
+    this->BackwardSpeed = 300.00f;
+    this->WalkingSpeed = 175.00f;
+    this->StrafeMultiplier = 0.80f;
+    this->SprintMultiplier = 1.50f;
+    this->ShallowWaterDepth = 35.00f;
+    this->SwimForwardSpeed = 400.00f;
+    this->SwimBackwardSpeed = 250.00f;
+    this->SwimStrafeMultiplier = 0.80f;
+    this->SwimSprintMultiplier = 1.50f;
+    this->FlyingRotationSpeed = 5.00f;
+    this->SpinningMaxRotationRate = 500.00f;
+    this->RunDuringSprintSpeed = 600.00f;
+    this->RunDuringSprintTurnSpeed = 200.00f;
+    this->bPrintMoveAndTurnSpeed = false;
+    this->Weight = 100.00f;
+    this->JumpVelocity = 500.00f;
+    this->BounceJumpZArray.AddDefaulted(2);
+    this->BounceJumpMinHorizontalVelocity = 400.00f;
+    this->WallJumpZ = 600.00f;
+    this->WallrunMinInitialSpeed = 550.00f;
+    this->WallrunMaxSpeed = 675.00f;
+    this->WallrunBaseFrictionFactor = 1.75f;
+    this->WallrunBumpThreshold = 50.00f;
+    this->bIsHumanoid = false;
+    this->RagdollSyncBoneName = TEXT("pelvis");
+    this->RagdollOnLandedVelocityThreshold = 1300.00f;
+    this->Buoyancy = 1.80f;
+    this->bCanNeckRagdoll = false;
+    this->bCanNeckRagdollWhenLadderClimbing = true;
+    this->NeckRagdollBone = TEXT("Neck");
+    this->NeckRagdollBodyInstances.AddDefaulted(2);
+    this->NeckRagdollPhysicsAssetOverride = NULL;
+    this->ElectrifiedAnimation = NULL;
+    this->BouncyStatusBounceForce = 9000.00f;
+    this->BouncyStatusBoneName = TEXT("Spine_01");
+    this->HeadbuttMontage = NULL;
+    this->ChargeHeadbuttMontage = NULL;
+    this->LickMontage = NULL;
+    this->BackKickMontage = NULL;
+    this->HeadbuttAbility = NULL;
+    this->ChargeHeadbuttAbility = NULL;
+    this->LickAbility = NULL;
+    this->BackKickAbility = NULL;
+    this->DefaultDistanceFromMesh = 0.00f;
+    this->HeadbuttSound = NULL;
+    this->BackkickSound = NULL;
+    this->LickSound = NULL;
+    this->ReverseLickGrabBone = TEXT("Head");
+    this->ReverseLickLocBone = TEXT("Jaw_01");
+    this->LickBoneName = TEXT("Tongue_03");
+    this->LickDistanceInfrontOfGoat = 0.00f;
+    this->LickComponentScaleMultiplier = 1.00f;
+    this->LickTargetZAdjust = -25.00f;
+    this->RagdollLickSpeedReduc = 0.05f;
+    this->bSoftAngularConstraint = true;
+    this->bSoftLinearConstraint = true;
+    this->bInterpolateTarget = true;
+    this->LinearDamping = 200.00f;
+    this->LinearStiffness = 750.00f;
+    this->AngularDamping = 500.00f;
+    this->AngularStiffness = 1500.00f;
+    this->NormalInterpolationSpeed = 50.00f;
+    this->VehicleInterpolationSpeed = 1.00f;
+    this->BikeInterpolationSpeed = 15.00f;
+    this->GeneralInteractionHalfHeight = 50.00f;
+    this->GeneralInteractionRadius = 50.00f;
+    this->GeneralInteractionDistance = 110.00f;
+    this->GeneralInteractionStartLocForwardOffset = 40.00f;
+    this->VehicleInteractionRadius = 225.00f;
+}
+
+TSubclassOf<UAnimInstance> UGGAlternativeGoatDataAsset::GetAnimBlueprint() const {
+    return NULL;
+}
+
+

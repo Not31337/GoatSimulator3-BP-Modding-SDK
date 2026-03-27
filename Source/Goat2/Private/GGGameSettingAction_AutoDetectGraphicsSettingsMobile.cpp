@@ -1,0 +1,6 @@
+#include "GGGameSettingAction_AutoDetectGraphicsSettingsMobile.h"
+
+UGGGameSettingAction_AutoDetectGraphicsSettingsMobile::UGGGameSettingAction_AutoDetectGraphicsSettingsMobile() {
+}
+
+

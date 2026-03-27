@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "CSN_FootIK",
+	"Description": "Inverse kinematic for feet. Supports bipeds (e.g. humans) and quadrupeds (for legged animals).",
+	"Category": "Other",
+	"CreatedBy": "Paul L",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "CSN_FootIK",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
