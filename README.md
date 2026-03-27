@@ -10,7 +10,7 @@ Creating the logic to bind to events one by one took a lot of work, so I hope yo
 
 ・[gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/tree/4.27)
 
-・[Sentry](https://github.com/getsentry/sentry-unreal/releases)
+・[Sentry 4.27](https://github.com/getsentry/sentry-unreal/releases)
 
 To run the mods you create, you will need the following:
 
@@ -23,11 +23,11 @@ To run the mods you create, you will need the following:
 ## Usage
 1. Install Unreal Engine 4.27.2.
 
-2. Download [gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/tree/4.27)
+2. Download [gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/archive/refs/heads/4.27.zip)
 
 3. Unzip gFurPro-4.27.zip and place it in the Plugins folder
 
-4. Download [Sentry](https://github.com/getsentry/sentry-unreal/releases)
+4. Download [Sentry](https://github.com/getsentry/sentry-unreal/releases/download/1.9.1/sentry-unreal-1.9.1-engine4.27.zip)
 
 5. Unzip sentry-unreal-version-engine4.27.zip and place it in the Plugins folder
 
