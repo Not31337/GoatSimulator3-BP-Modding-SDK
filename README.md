@@ -6,24 +6,28 @@ It also includes the source code for the RickLick Mod.
 Creating the logic to bind to events one by one took a lot of work, so I hope you’ll take a look.
 
 ## Requirement
-・UnrealEngine 4.27.2
+- UnrealEngine 4.27.2
 
-・[gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/tree/4.27)
+- [gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/tree/4.27)
 
-・[Sentry engine4.27](https://github.com/getsentry/sentry-unreal/releases)
+- [Sentry engine4.27](https://github.com/getsentry/sentry-unreal/releases)
 
-For using Unreal Engine, Visual Studio 2022 is required.  
-・[Visual Studio](https://visualstudio.microsoft.com/downloads/)  
-You can install Visual Studio 2022 by downloading the installer and running the command "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"  
-Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
+
+- [Visual Studio](https://visualstudio.microsoft.com/downloads/)
+    - For using Unreal Engine, Visual Studio 2022 is required.  
+    You can install Visual Studio 2022 by downloading the installer and running the command  
+    "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"  
+    Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
 
 To run the mods you create, you will need the following:
 
-・[UE4SS experimental-latest](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest)
+- [UE4SS experimental-latest](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest)
 
-・[UE4SS GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/42)
+- [UE4SS GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/42)
 
-・[BPModLoader GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/43)
+- [BPModLoader GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/43)
+
+For instructions on how to install them, please refer to [How to install Blueprint mod](/Docs/How-to-install-Blueprint-mod.md)
 
 ## Usage
 1. Install Unreal Engine 4.27.2.
@@ -36,19 +40,19 @@ To run the mods you create, you will need the following:
 
 5. Unzip sentry-unreal-version-engine4.27.zip and place it in the Plugins folder
 
-6. Open Goat2.uproject in Unreal Engine.  
-When the message "The following modules are missing ~ Would you like to rebuild them now?" appears, click Yes.
+6. Open Goat2.uproject in Unreal Engine.
+    - When the message "The following modules are missing ~ Would you like to rebuild them now?" appears, click Yes.
 
 7. Wait for the build to finish.
 
 8. Watch as the build completes and Unreal Editor fails to load FractureEditor.  
-Most likely, the load fails because UE4Editor-PlanarCut.dll cannot be found.
+    - Most likely, the load fails because UE4Editor-PlanarCut.dll cannot be found.
 
 9. Copy UE4Editor-PlanarCut.dll to a location where Unreal Engine can recognize it.  
-By default, UE4Editor-PlanarCut.dll is located at:  
-C:\Program Files\Epic Games\UE_4.27\Engine\Plugins\Experimental\PlanarCutPlugin\Binaries\Win64  
-Copy it to the SDK’s Binaries/Win64 folder.  
-Make sure to do this after the build finishes; if you do it before, it will be deleted for some reason.
+    - By default, UE4Editor-PlanarCut.dll is located at:  
+    C:\Program Files\Epic Games\UE_4.27\Engine\Plugins\Experimental\PlanarCutPlugin\Binaries\Win64  
+    Copy it to the SDK’s Binaries/Win64 folder.  
+    Make sure to do this after the build finishes; if you do it before, it will be deleted for some reason.
 
 10. Now, let your creativity explode!
 
@@ -62,16 +66,14 @@ I think the following websites and videos will be helpful references.
 [Palworld Modding Docs](https://web.archive.org/web/20241213065222/https://pwmodding.wiki/docs/category/creating-a-blueprint-mod)
 
 ## Please Note
-When generating the project base with UE4GameProjectGenerator, I encountered many errors, so I made some fixes that may be incorrect or somewhat forceful.
+- When generating the project base with UE4GameProjectGenerator, I encountered many errors, so I made some fixes that may be incorrect or somewhat forceful.  
+    These changes may cause unintended issues.  
+    - For example, I changed the base class of AGGPerPlatformCullDistanceVolume from ACullDistanceVolume to AVolume due to errors with ACullDistanceVolume,  
+    removed PURE_VIRTUAL from several functions in GGCompanion_Owl,  
+    and commented out and disabled things like the HornComponent in AGGGoat because the editor was crashing during startup.
+    - For details on the errors I have masked, please see [here](/Docs/How-to-use-UE4GameProjectGenerator.md).
 
-For example, I changed the base class of AGGPerPlatformCullDistanceVolume from ACullDistanceVolume to AVolume due to errors with ACullDistanceVolume,  
-removed PURE_VIRTUAL from several functions in GGCompanion_Owl,  
-and commented out and disabled things like the HornComponent in AGGGoat because the editor was crashing during startup.
-
-These changes may cause unintended issues.
-
-
-The RickLick Mod uses chunk 1, and TestBPMod uses chunk 2.  
+- The RickLick Mod uses chunk 1, and TestBPMod uses chunk 2.  
 Please use a different chunk, or remove those mods.
 
 ## Credits
