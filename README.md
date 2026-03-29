@@ -80,7 +80,7 @@ Please use a different chunk, or remove those mods.
 [GS3 Modding Community](https://discord.gg/DKPCKt8M)
 
 ## Credits
-[Coffe Stain North](https://coffeestain.com/studio/coffee-stain-north/)
+[Coffee Stain North](https://coffeestain.com/studio/coffee-stain-north/)
 
 [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS)
 
