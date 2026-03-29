@@ -76,6 +76,9 @@ I think the following websites and videos will be helpful references.
 - The RickLick Mod uses chunk 1, and TestBPMod uses chunk 2.  
 Please use a different chunk, or remove those mods.
 
+## Discord server
+[GS3 Modding Community](https://discord.gg/DKPCKt8M)
+
 ## Credits
 [Coffe Stain North](https://coffeestain.com/studio/coffee-stain-north/)
 

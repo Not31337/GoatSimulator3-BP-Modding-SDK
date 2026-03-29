@@ -14,9 +14,9 @@ If someone else has created a Blueprint mod and finds it tedious to write their 
 
 2. Extract UE4SS and place it in GoatSimulator3/Goat2/Binaries/Win64.  
     - Epic Games:  
-    ![Install_UE4SS_Epic](/Images/Install_UE4SS_Epic.png)  
+    ![Install_UE4SS_Epic](./Images/Install_UE4SS_Epic.png)  
     - Steam:  
-    ![Install_UE4SS_Steam](/Images/Install_UE4SS_Steam.png)  
+    ![Install_UE4SS_Steam](./Images/Install_UE4SS_Steam.png)  
 
 ## Install UE4SS GOAT Patch
 
@@ -24,16 +24,16 @@ If someone else has created a Blueprint mod and finds it tedious to write their 
 
 2. Move all extracted contents into the ue4ss folder.<br/>Overwrite UE4SS-settings.ini when prompted.  
     - Standard:  
-    ![Install_UE4SS_GOAT_Patch](/Images/Install_UE4SS_GOAT_Patch.png)  
+    ![Install_UE4SS_GOAT_Patch](./Images/Install_UE4SS_GOAT_Patch.png)  
     - zDev:  
-    ![Install_UE4SS_GOAT_Patch_zDev](/Images/Install_UE4SS_GOAT_Patch_zDev.png)
+    ![Install_UE4SS_GOAT_Patch_zDev](./Images/Install_UE4SS_GOAT_Patch_zDev.png)
 
 ## Install BPModloader GOAT Patch
 
 1. Download [BPModLoader GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/43?tab=files) and extract it.
 
 2. Replace main.lua in ue4ss/Mods/BPModLoaderMod/Scripts with the main.lua included in BPModLoader GOAT Patch.  
-    ![Install_BPModloader_GOAT_Patch](/Images/Install_BPModloader_GOAT_Patch.png)
+    ![Install_BPModloader_GOAT_Patch](./Images/Install_BPModloader_GOAT_Patch.png)
 
 ## Install Blueprint Mod
 
@@ -44,7 +44,7 @@ If someone else has created a Blueprint mod and finds it tedious to write their 
     - As an example, we will use the [RickLick](https://www.nexusmods.com/goatsimulator3/mods/44?tab=files)
 
 3. Place it in GoatSimulator3/Goat2/Content/Paks/LogicMods.  
-    ![Install_BP_Mod](/Images/Install_BP_Mod.png)  
+    ![Install_BP_Mod](./Images/Install_BP_Mod.png)  
     - Do not rename the .pak file, as it may no longer be recognized correctly.
 
 4. Enjoy the game with the mod.
