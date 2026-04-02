@@ -113,6 +113,9 @@ void AGGPlayerController::UpdateNearestQuest() {
 void AGGPlayerController::UpdateInstincts() {
 }
 
+void AGGPlayerController::UnlockAndEquipGear(AGGPlayerController* PlayerController, UGGGoatGearInfoDataAsset* Gear, FGameplayTag UnlockContext, EGearEquipContext EquipContext, bool bEquipIfAlreadyUnlocked, bool bGiveAbility, bool bCancelPendingGearInSameSlot, UGGGoatGearStyleDataAsset* StyleData) {
+}
+
 void AGGPlayerController::ToggleRagdoll() {
 }
 
@@ -518,6 +521,9 @@ bool AGGPlayerController::CreateTutorialWithTutorialObject(const FDataTableRowHa
 
 bool AGGPlayerController::CreateTutorial(const FDataTableRowHandle& TutorialRowHandle, AGGTutorial*& OutCreatedTutorial) {
     return false;
+}
+
+void AGGPlayerController::ClientUnlockAndEquipGear_Implementation(UGGGoatGearInfoDataAsset* Gear, FGameplayTag UnlockContext, EGearEquipContext EquipContext, bool bEquipIfAlreadyUnlocked, bool bGiveAbility, bool bCancelPendingGearInSameSlot, UGGGoatGearStyleDataAsset* StyleData) {
 }
 
 void AGGPlayerController::ClientUnlockAchievements_Implementation(const TArray<FString>& AchievementIDs) {

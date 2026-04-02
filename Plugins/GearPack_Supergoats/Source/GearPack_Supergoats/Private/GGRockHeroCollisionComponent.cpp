@@ -1,6 +1,7 @@
 #include "GGRockHeroCollisionComponent.h"
 
 UGGRockHeroCollisionComponent::UGGRockHeroCollisionComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ShapeBodySetup = NULL;
     this->bEnableExplosions = false;
     this->ExplosionEffect = NULL;
     this->ImpulseSound = NULL;

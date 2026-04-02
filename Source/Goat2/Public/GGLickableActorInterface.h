@@ -29,6 +29,9 @@ public:
     FVector GetLickInfo(FVector LickLocation, FName& BoneName, FRotator& MeshLickRotation, FVector& RelativeLickLocation);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    TArray<AGGGoat*> GetLickedByGoats() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     UMeshComponent* GetLickableActorMeshComponent();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

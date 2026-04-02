@@ -19,10 +19,12 @@
 #include "OnEnterExitKidneyStoneDelegate.h"
 #include "OnFirstInstinctPackUnlockedDelegate.h"
 #include "OnGameCurrentActiveGameChangedDelegate.h"
+#include "OnGoatChangedMovementModeDelegate.h"
 #include "OnGoatDroppedLickedActorDelegate.h"
 #include "OnGoatEnteredThroneRoomDelegate.h"
 #include "OnGoatExitedThroneRoomDelegate.h"
 #include "OnGoatJumpedDelegate.h"
+#include "OnGoatLandedDelegate.h"
 #include "OnGoatRequestConstraintBreakDelegate.h"
 #include "OnGoatTowerSynchronisedDelegate.h"
 #include "OnHandlerGoatBaaDelegate.h"
@@ -233,6 +235,12 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnGoatJumped OnGoatJumped;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatLanded OnGoatLanded;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatChangedMovementMode OnGoatChangedMovementMode;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnGoatDroppedLickedActor OnGoatDroppedLickedActor;

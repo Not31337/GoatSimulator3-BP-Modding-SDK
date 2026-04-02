@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Engine/EngineTypes.h"
 #include "GGGoatGear_Static_Base.h"
 #include "GGGoatGear_Static_BigBrother.generated.h"
 
@@ -55,6 +56,12 @@ private:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     AGGCharacter* ClosestCharacter;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float SetupDelay;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FTimerHandle SetupTimerHandle;
     
 public:
     UGGGoatGear_Static_BigBrother(const FObjectInitializer& ObjectInitializer);

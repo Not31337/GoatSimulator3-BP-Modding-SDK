@@ -25,6 +25,7 @@ UGGGoatGear_Static_Tant::UGGGoatGear_Static_Tant(const FObjectInitializer& Objec
     this->GlassesMeshComponent = NULL;
     this->GunMeshComponent = NULL;
     this->LerpFactor = 0.00f;
+    this->SetupDelay = 0.01f;
 }
 
 void UGGGoatGear_Static_Tant::TantSetup() {

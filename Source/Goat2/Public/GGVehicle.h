@@ -54,11 +54,15 @@
 #include "OnVehicleHitDelegate.h"
 #include "OnVehiclePooledOrMovedDelegate.h"
 #include "OnVehicleRanOverNPCDelegate.h"
+#include "OnVehicleSignificanceChangedDelegate.h"
 #include "PActorImpactSettings.h"
 #include "RecentPrimComponent.h"
 #include "StartleDetailsSettings.h"
 #include "Templates/SubclassOf.h"
 #include "VehicleCrashSound.h"
+
+#include "GGVehicleEngineSoundController.h"
+
 #include "GGVehicle.generated.h"
 
 class AActor;
@@ -88,7 +92,6 @@ class UGGStatusEffectManager;
 class UGGVehicleAbility;
 class UGGVehicleAppearanceManager;
 class UGGVehicleAttributeSet;
-class UGGVehicleEngineSoundController;
 class UGGWaterFloatingComponent;
 class UGameplayEffect;
 class UMaterialInstanceDynamic;
@@ -111,8 +114,6 @@ class GOAT2_API AGGVehicle : public APawn, public IGGInteractInterface, public I
     GENERATED_BODY()
 public:
 protected:
-    UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USkeletalMeshComponent* VehicleMesh;
     
@@ -628,6 +629,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnRepDriverChanged OnRepDriverChanged;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnVehicleSignificanceChanged OnVehicleSignificanceChanged;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bIsReversing;
@@ -1273,5 +1277,7 @@ public:
     
 
     // Fix for true pure virtual functions not being implemented
+
+    UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 };
 

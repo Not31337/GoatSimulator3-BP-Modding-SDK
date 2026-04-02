@@ -15,7 +15,8 @@ public class GearPack_Magic : ModuleRules {
             "GameplayTags",
             "Goat2",
             "Niagara",
-            "GameplayTasks",
+            
+            "GameplayTasks"
         });
     }
 }

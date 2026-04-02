@@ -28,7 +28,7 @@ public:
     bool bOffsetRotAffectChildMeshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool bScaleAffectChildMeshes;
+    bool bScaleAffectChildMeshes_New;
     
     GOAT2_API FDefaultGearOverrides();
 };

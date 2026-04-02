@@ -15,6 +15,7 @@
 #include "GameplayTagContainer.h"
 #include "InputCoreTypes.h"
 #include "ECastResult.h"
+#include "EGearEquipContext.h"
 #include "EKeyMappingInputMode.h"
 #include "EMenuRequest.h"
 #include "ENotificationCommand.h"
@@ -26,6 +27,7 @@
 #include "MenuNavigationContextContainer.h"
 #include "MenuStructureData.h"
 #include "Notification.h"
+#include "OnBaaDownDelegate.h"
 #include "OnControlledGoatReplicatedDelegate.h"
 #include "OnEnterUFODelegate.h"
 #include "OnEnteredMedusaMobileDelegate.h"
@@ -36,6 +38,7 @@
 #include "OnHeadbuttDownDelegate.h"
 #include "OnInteractWithEggDelegate.h"
 #include "OnKarmaSentFromClientDelegate.h"
+#include "OnLickDownDelegate.h"
 #include "OnMenuAboutToBeOpenedDelegate.h"
 #include "OnMenuClosedDelegate.h"
 #include "OnMenuEnterDelegate.h"
@@ -46,6 +49,7 @@
 #include "OnObjectControlStartedDelegate.h"
 #include "OnPlayerFinishedSequenceDelegate.h"
 #include "OnPlayerInputKeyDelegate.h"
+#include "OnScrollInputDelegate.h"
 #include "OnStartedBrowsingDelegate.h"
 #include "OnStoppedBrowsingDelegate.h"
 #include "OnTouchEndedDelegate.h"
@@ -75,6 +79,8 @@ class UGGChaosCounterListener;
 class UGGControllerRumbleComponent;
 class UGGCustomCheatManager;
 class UGGCustomCheatManager_Base;
+class UGGGoatGearInfoDataAsset;
+class UGGGoatGearStyleDataAsset;
 class UGGGrindableSplineComponent;
 class UGGHUDUserWidgetBase;
 class UGGIntroComponent;
@@ -132,8 +138,6 @@ private:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bForceSprint;
-
-    void ClientRemoveNotification_Implementation(FGameplayTag Tag, const FString& ID, FGameplayTag ContentTag, TEnumAsByte<ENotificationCommand::Type> Command, FMenuNavigationContext MenuContext);
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -423,6 +427,15 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnHeadbuttDown OnHeadbuttDown;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnScrollInput OnScrollInput;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnBaaDown OnBaaDown;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnLickDown OnLickDown;
+    
     AGGPlayerController(const FObjectInitializer& ObjectInitializer);
 
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
@@ -465,6 +478,9 @@ private:
     void UpdateInstincts();
     
 public:
+    UFUNCTION(BlueprintCallable)
+    static void UnlockAndEquipGear(AGGPlayerController* PlayerController, UGGGoatGearInfoDataAsset* Gear, FGameplayTag UnlockContext, EGearEquipContext EquipContext, bool bEquipIfAlreadyUnlocked, bool bGiveAbility, bool bCancelPendingGearInSameSlot, UGGGoatGearStyleDataAsset* StyleData);
+    
     UFUNCTION(BlueprintCallable)
     void ToggleRagdoll();
     
@@ -830,6 +846,9 @@ public:
     
 private:
     UFUNCTION(BlueprintCallable, Client, Reliable)
+    void ClientUnlockAndEquipGear(UGGGoatGearInfoDataAsset* Gear, FGameplayTag UnlockContext, EGearEquipContext EquipContext, bool bEquipIfAlreadyUnlocked, bool bGiveAbility, bool bCancelPendingGearInSameSlot, UGGGoatGearStyleDataAsset* StyleData);
+    
+    UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientUnlockAchievements(const TArray<FString>& AchievementIDs);
     
 public:
@@ -917,5 +936,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void AbilityDown();
     
+
+    void ClientRemoveNotification_Implementation(FGameplayTag Tag, const FString& ID, FGameplayTag ContentTag, TEnumAsByte<ENotificationCommand::Type> Command, FMenuNavigationContext MenuContext);
 };
 

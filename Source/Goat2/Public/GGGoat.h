@@ -118,8 +118,6 @@ class GOAT2_API AGGGoat : public AGGCharacter, public IAbilitySystemInterface, p
     GENERATED_BODY()
 public:
 protected:
-    UAbilitySystemComponent* GetAbilitySystemComponent() const override;
-
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGGGoatSpringArmComponent* CameraBoom;
     
@@ -135,11 +133,11 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGGGoatGearPreviewManager* GoatGearPreviewManager;
     
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    //UStaticMeshComponent* HornComponent;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UStaticMeshComponent* HornComponent;
     
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    //USkeletalMeshComponent* SkeletalHornComponent;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    USkeletalMeshComponent* SkeletalHornComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UAudioComponent* BaaAudioComp;
@@ -159,10 +157,6 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UCapsuleComponent* PushOverlapComponent;
     
-    void MulticastTeleportGoat_Implementation(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, TEnumAsByte<EMovementMode> MoveMode, AGGVehicle* TeleportInto);
-
-    void MulticastSetMeshChannelResponse_Implementation(TEnumAsByte<ECollisionChannel> Channel, TEnumAsByte<ECollisionResponse> Response);
-
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FGameplayTag> CurrentWorldAreas;
@@ -444,6 +438,9 @@ public:
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bCanLick;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    TArray<FGameplayTag> LickSoundSuppressors;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -732,6 +729,9 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void RemoveMiniGamePlayerComponent();
     
+    UFUNCTION(BlueprintCallable)
+    void RemoveLickSoundSuppressor(FGameplayTag Tag);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void RemoveBaaOverride(FGameplayTag Source);
     
@@ -875,10 +875,14 @@ private:
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastTeleportGoat(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, EMovementMode MoveMode, AGGVehicle* TeleportInto);
+
+    void MulticastTeleportGoat_Implementation(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, TEnumAsByte<EMovementMode> MoveMode, AGGVehicle* TeleportInto);
     
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetMeshChannelResponse(ECollisionChannel Channel, ECollisionResponse Response);
+
+    void MulticastSetMeshChannelResponse_Implementation(TEnumAsByte<ECollisionChannel> Channel, TEnumAsByte<ECollisionResponse> Response);
     
 protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
@@ -896,6 +900,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLocallyControlledOrOwned() const;
+    
+    UFUNCTION(BlueprintCallable)
+    bool IsLickSoundSuppressed() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsLickingSomethingDangerous();
@@ -1161,6 +1168,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void AltGoatUpdated(UGGAlternativeGoatDataAsset* NewGoat);
     
+    UFUNCTION(BlueprintCallable)
+    void AddLickSoundSuppressor(FGameplayTag Tag);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AddBaaOverride(FGameplayTag Source, USoundBase* BaaSound, int32 Priority);
     
@@ -1169,5 +1179,6 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintCosmetic)
     void ForwardGameplayCueToParent() override PURE_VIRTUAL(ForwardGameplayCueToParent,);
     
+    UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 };
 

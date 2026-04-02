@@ -18,10 +18,10 @@ class GOAT2_API ILSReplicatedMeshRPCs : public IInterface {
     GENERATED_BODY()
 public:
     UFUNCTION(Reliable, Server)
-    virtual void ServerUpdateRagdollOnTarget(const TScriptInterface<ILSReplicatedMeshRPCs>& Target, FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize NewActorLocation); // PURE_VIRTUAL(ServerUpdateRagdollOnTarget, );
+    virtual void ServerUpdateRagdollOnTarget(const TScriptInterface<ILSReplicatedMeshRPCs>& Target, FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize NewActorLocation);// PURE_VIRTUAL(ServerUpdateRagdollOnTarget, );
     
     UFUNCTION(Server, Unreliable)
-    virtual void ServerUpdateRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize NewActorLocation); // PURE_VIRTUAL(ServerUpdateRagdoll, );
+    virtual void ServerUpdateRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize NewActorLocation);// PURE_VIRTUAL(ServerUpdateRagdoll, );
     
     UFUNCTION(Reliable, Server)
     virtual void ServerUpdateFloatingRagdollOnTarget(const TScriptInterface<ILSReplicatedMeshRPCs>& Target, FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation);// PURE_VIRTUAL(ServerUpdateFloatingRagdollOnTarget, );

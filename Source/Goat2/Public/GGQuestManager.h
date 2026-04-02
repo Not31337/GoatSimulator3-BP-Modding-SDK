@@ -237,6 +237,9 @@ public:
     AGGQuestSet* GetQuestSetFromSetMemberID(const FString& ID);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    AGGQuestBase* GetQuestFromQuestIdTag(const FGameplayTag& QuestIDTag);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     AGGQuestBase* GetQuestFromID(const FString& ID);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

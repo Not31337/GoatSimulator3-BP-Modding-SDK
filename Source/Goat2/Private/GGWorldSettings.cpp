@@ -16,6 +16,7 @@ AGGWorldSettings::AGGWorldSettings(const FObjectInitializer& ObjectInitializer) 
     this->bIntroIgnorePIE = false;
     this->bIntroIgnoreSaveFile = false;
     this->bSkipGameUpdateNotificationsIfIntroHasNotPlayed = false;
+    this->bRequestDefaultAreaTrackOnStartup = false;
     this->bDisableSoundTrack = false;
     this->bSaveGameStartLocation = true;
 }

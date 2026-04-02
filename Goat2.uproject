@@ -315,6 +315,14 @@
 				"iOS",
 				"Android"
 			]
+		},
+		{
+			"Name": "GearPack_Future",
+			"Enabled": true,
+			"WhitelistPlatforms": [
+				"Win64",
+				"PS4"
+			]
 		}
 	],
 	"TargetPlatforms": [

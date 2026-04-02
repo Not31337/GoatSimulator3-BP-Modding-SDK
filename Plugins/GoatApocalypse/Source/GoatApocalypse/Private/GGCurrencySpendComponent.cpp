@@ -1,6 +1,7 @@
 #include "GGCurrencySpendComponent.h"
 
 UGGCurrencySpendComponent::UGGCurrencySpendComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ShapeBodySetup = NULL;
     this->FormatItemString = TEXT("ItemName");
     this->FormatCostString = TEXT("Cost");
     this->HoldDuration = 1.50f;

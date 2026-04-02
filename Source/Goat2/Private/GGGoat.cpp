@@ -29,9 +29,9 @@ AGGGoat::AGGGoat(const FObjectInitializer& ObjectInitializer) : Super(ObjectInit
     this->AbilitySystem = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
     this->GoatGearManager = CreateDefaultSubobject<UGGGoatGearManager>(TEXT("Goat Gear Manager"));
     this->GoatGearPreviewManager = CreateDefaultSubobject<UGGGoatGearPreviewManager>(TEXT("Goat Gear Preview Manager"));
-    //this->HornComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Horn Component"));
+    this->HornComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Horn Component"));
     const FProperty* p_Mesh_Parent = GetClass()->FindPropertyByName("Mesh");
-    //this->SkeletalHornComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Skeletal Horn Component"));
+    this->SkeletalHornComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Skeletal Horn Component"));
     this->BaaAudioComp = CreateDefaultSubobject<UAudioComponent>(TEXT("Baa Audio Comp"));
     this->GoatAttributeSet = CreateDefaultSubobject<UGGGoatAttributeSet>(TEXT("Goat Attribute Set"));
     this->NeckRagdollComponent = CreateDefaultSubobject<UGGNeckRagdollComponent>(TEXT("Neck Ragdoll Component"));
@@ -118,7 +118,7 @@ AGGGoat::AGGGoat(const FObjectInitializer& ObjectInitializer) : Super(ObjectInit
     this->FollowCamera->SetupAttachment(CameraBoom);
     this->GrindSoundComp->SetupAttachment(RootComponent);
     //this->HornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
-    //this->SkeletalHornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
+   // this->SkeletalHornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
 }
 
 void AGGGoat::UpdateFurQuality() {
@@ -251,6 +251,9 @@ void AGGGoat::ResetAbilityOverride(EGoatAbilitySlot Slot) {
 }
 
 void AGGGoat::RemoveMiniGamePlayerComponent() {
+}
+
+void AGGGoat::RemoveLickSoundSuppressor(FGameplayTag Tag) {
 }
 
 void AGGGoat::RemoveBaaOverride(FGameplayTag Source) {
@@ -389,6 +392,10 @@ bool AGGGoat::IsNeckRagdoll() const {
 }
 
 bool AGGGoat::IsLocallyControlledOrOwned() const {
+    return false;
+}
+
+bool AGGGoat::IsLickSoundSuppressed() const {
     return false;
 }
 
@@ -695,6 +702,9 @@ void AGGGoat::BroadcastBackKickEvents_Multicast_Implementation(const TArray<UPri
 }
 
 
+void AGGGoat::AddLickSoundSuppressor(FGameplayTag Tag) {
+}
+
 void AGGGoat::AddBaaOverride(FGameplayTag Source, USoundBase* BaaSound, int32 Priority) {
 }
 
@@ -718,12 +728,14 @@ void AGGGoat::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
     DOREPLIFETIME(AGGGoat, LickPhysHandleComp);
     DOREPLIFETIME(AGGGoat, ReversedLickPhysHandleComp);
     DOREPLIFETIME(AGGGoat, bCanLick);
+    DOREPLIFETIME(AGGGoat, LickSoundSuppressors);
     DOREPLIFETIME(AGGGoat, bCanAnimate);
     DOREPLIFETIME(AGGGoat, CollisionState);
     DOREPLIFETIME(AGGGoat, CurrentVehicleIsh);
     DOREPLIFETIME(AGGGoat, bHasBegunPlayLocally);
     DOREPLIFETIME(AGGGoat, MiniGameComponent);
 }
+
 
 UAbilitySystemComponent* AGGGoat::GetAbilitySystemComponent() const {
     return nullptr;

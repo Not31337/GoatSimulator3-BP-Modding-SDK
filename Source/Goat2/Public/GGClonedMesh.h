@@ -1,19 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "GGClonedSkelMesh.generated.h"
+#include "GGClonedMesh.generated.h"
 
-class USkeletalMesh;
-class USkeletalMeshComponent;
+class UMaterialInterface;
+class UMeshComponent;
+class UObject;
 
 USTRUCT(BlueprintType)
-struct GOAT2_API FGGClonedSkelMesh {
+struct GOAT2_API FGGClonedMesh {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    USkeletalMeshComponent* Component;
+    UMeshComponent* Component;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    USkeletalMesh* SkeletalMesh;
+    UObject* Mesh;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UClass* AnimClass;
@@ -21,6 +22,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bUseMasterPose;
     
-    FGGClonedSkelMesh();
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* Material;
+    
+    FGGClonedMesh();
 };
 

@@ -14,10 +14,10 @@ AGGNPC_Humanoid::AGGNPC_Humanoid(const FObjectInitializer& ObjectInitializer) : 
     this->PassedOutChancePerHit.AddDefaulted(3);
     this->bCanLookAt = true;
     this->AppearanceManager = CreateDefaultSubobject<UGGNPCAppearanceManager>(TEXT("Appearance Manager"));
-    //this->Hair = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Hair"));
+    this->Hair = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Hair"));
     const FProperty* p_Mesh_Parent = GetClass()->FindPropertyByName("Mesh");
-    //this->UpperBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Upper Body"));
-    //this->LowerBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Lower Body"));
+    this->UpperBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Upper Body"));
+    this->LowerBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Lower Body"));
     this->bGenerateAppearanceOnSpawn = false;
     this->bSetAppearanceToSetOnSpawn = false;
     this->OverrideAnimationBlueprint = NULL;

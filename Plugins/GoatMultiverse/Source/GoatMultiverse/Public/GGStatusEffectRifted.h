@@ -9,7 +9,9 @@
 class AActor;
 class ACharacter;
 class AGGGoat;
+class AGGPlayerCameraManager;
 class UGGRadialForceComponent;
+class UGGStatusEffectCameraComponent;
 class ULSCharacterMovementComponent;
 class UParticleSystem;
 class USoundBase;
@@ -28,8 +30,31 @@ public:
     float HeadbuttRadius;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bRemoveOnGoatMovementModeChange;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bEnforceGoatFlying;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bDisableGravityForVehicles;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bSpreadEffectOnHeadbutt;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UGGStatusEffectCameraComponent> StatusEffectCameraComponentClass;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bUnlockCameraPitch;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UGGRadialForceComponent> RadialForceComponentClass;
     
+private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSet<AGGPlayerCameraManager*> PlayerCamerasWithCameraComponent;
+    
+public:
     AGGStatusEffectRifted(const FObjectInitializer& ObjectInitializer);
 
 protected:
@@ -40,19 +65,10 @@ protected:
     void OnMovementModeChanged(TEnumAsByte<EMovementMode> CurrentMovement, uint8 CustomMovement, TEnumAsByte<EMovementMode> PrevMovement, uint8 PrevCustomMovement);
     
     UFUNCTION(BlueprintCallable)
-    void OnGoatKickedActor(AGGGoat* Goat, AActor* KickedActor);
-    
-    UFUNCTION(BlueprintCallable)
     void OnGoatHeadbutting(AGGGoat* Goat, bool bHitSomething, const TArray<AActor*>& HeadbuttedActors, bool bIsChargeHeadbutt);
     
     UFUNCTION(BlueprintCallable)
     void OnCharacterRagdolled(ULSCharacterMovementComponent* MovementComp, ACharacter* RagdollingCharacter, const FRagdollStateChangeSettings& StateChangeSettings);
-    
-    UFUNCTION(BlueprintCallable)
-    void GoatHeadbuttedActor(AGGGoat* Goat, AActor* HeadbuttedActor);
-    
-    UFUNCTION(BlueprintCallable)
-    void GoatHeadbutted(AGGGoat* Goat);
     
 };
 

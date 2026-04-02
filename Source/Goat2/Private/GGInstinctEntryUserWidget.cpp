@@ -2,7 +2,7 @@
 
 UGGInstinctEntryUserWidget::UGGInstinctEntryUserWidget() {
     this->AssociatedInstinct = NULL;
-    this->InstinctCategoryIcons.AddDefaulted(27);
+    this->InstinctCategoryIcons.AddDefaulted(28);
 }
 
 bool UGGInstinctEntryUserWidget::IsWidgetStale_Implementation() {

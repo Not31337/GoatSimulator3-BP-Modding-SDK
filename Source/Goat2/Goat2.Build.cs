@@ -37,7 +37,8 @@ public class Goat2 : ModuleRules {
             "Slate",
             "SlateCore",
             "UMG",
-            "GameplayTasks",
+
+            "GameplayTasks"
         });
     }
 }

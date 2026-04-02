@@ -22,9 +22,10 @@ public class GoatApocalypse : ModuleRules {
             "PhysicsCore",
             "SlateCore",
             "UMG",
+
             "GameplayAbilities",
             "GameplayTasks",
-            "InputCore",
+            "InputCore"
         });
     }
 }

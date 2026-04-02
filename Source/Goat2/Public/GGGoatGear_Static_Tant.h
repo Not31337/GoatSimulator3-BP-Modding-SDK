@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Engine/EngineTypes.h"
 #include "GGGoatGear_Static_Base.h"
 #include "GGGoatGear_Static_Tant.generated.h"
 
@@ -96,6 +97,12 @@ private:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_LerpFactor, meta=(AllowPrivateAccess=true))
     float LerpFactor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float SetupDelay;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FTimerHandle SetupTimerHandle;
     
 public:
     UGGGoatGear_Static_Tant(const FObjectInitializer& ObjectInitializer);

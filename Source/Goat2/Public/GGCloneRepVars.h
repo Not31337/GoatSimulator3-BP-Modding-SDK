@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
-#include "GGClonedSkelMesh.h"
+#include "GGClonedMesh.h"
 #include "GGCloneRepVars.generated.h"
 
 class UGGAlternativeGoatDataAsset;
@@ -35,10 +35,13 @@ public:
     float CapsuleHeight;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FGGClonedSkelMesh> SkeletalMeshes;
+    TArray<FGGClonedMesh> Meshes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGAlternativeGoatDataAsset* AltGoat;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UMaterialInterface* FurMaterial;
     
     FGGCloneRepVars();
 };

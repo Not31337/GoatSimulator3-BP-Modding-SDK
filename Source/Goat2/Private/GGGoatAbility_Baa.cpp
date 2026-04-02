@@ -10,7 +10,7 @@ UGGGoatAbility_Baa::UGGGoatAbility_Baa() {
     this->SlowDownValue = 0.20f;
     this->SlowDownDuration = 4.00f;
     this->bDrawVehicleSlowdown = false;
-    this->BaaAbilityData.AddDefaulted(5);
+    this->BaaAbilityData.AddDefaulted(6);
 }
 
 

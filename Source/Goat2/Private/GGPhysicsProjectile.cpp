@@ -1,6 +1,6 @@
 #include "GGPhysicsProjectile.h"
 #include "Components/ArrowComponent.h"
-#include "GameFramework/ProjectileMovementComponent.h"
+#include "GGPhysicsProjectileMovementComponent.h"
 #include "GGStaticMeshComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
@@ -12,7 +12,7 @@ AGGPhysicsProjectile::AGGPhysicsProjectile(const FObjectInitializer& ObjectIniti
     this->RootComponent = CreateDefaultSubobject<UGGStaticMeshComponent>(TEXT("Mesh"));
     this->Mesh = (UGGStaticMeshComponent*)RootComponent;
     this->ForwardDirectionArrow = CreateDefaultSubobject<UArrowComponent>(TEXT("ForwardDirectionArrow"));
-    this->ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovement"));
+    this->ProjectileMovement = CreateDefaultSubobject<UGGPhysicsProjectileMovementComponent>(TEXT("ProjectileMovement"));
     this->bAddArrowTranslationToSpawnLocation = false;
     this->StickToTargetOffset = 0.00f;
     this->LaunchSound = NULL;
@@ -22,6 +22,8 @@ AGGPhysicsProjectile::AGGPhysicsProjectile(const FObjectInitializer& ObjectIniti
     this->bPlayPhysicsActorImpactSound = true;
     this->bSpawnHitParticleAttached = true;
     this->bHitParticleIgnoreHitRotation = false;
+    this->bAlignToSurfaceWhenAttached = false;
+    this->bDisableCollisionAfterAttaching = true;
     this->HitResponseNormalTarget = EGGProjectileHitResponse::BecomePhysicsActor;
     this->bResolveNormalHitResponseInChildClass = false;
     this->bStayActiveAfterHit = false;

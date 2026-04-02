@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "Engine/EngineTypes.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "PerPlatformProperties.h"
 #include "EGGTraceOrigin.h"
 #include "EGGTraceType.h"
 #include "Templates/SubclassOf.h"
@@ -25,8 +26,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AimPitchOffset;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float TraceDistance;
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformFloat TraceDistance;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TEnumAsByte<ECollisionChannel> TraceChannel;

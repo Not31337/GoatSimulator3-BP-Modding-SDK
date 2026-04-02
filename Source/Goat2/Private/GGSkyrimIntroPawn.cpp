@@ -3,8 +3,6 @@
 #include "Engine/EngineTypes.h"
 #include "Components/SceneComponent.h"
 #include "Components/SkeletalMeshComponent.h"
-//To ensure compatibility with gFurPro
-//#include "GFurComponent.h"
 #include "FurComponent.h"
 
 AGGSkyrimIntroPawn::AGGSkyrimIntroPawn(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {

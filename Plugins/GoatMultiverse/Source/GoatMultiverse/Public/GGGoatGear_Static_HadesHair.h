@@ -42,6 +42,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTimerHandle BeginPlayTimerHandle;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float SetupDelay;
+    
 public:
     UGGGoatGear_Static_HadesHair(const FObjectInitializer& ObjectInitializer);
 

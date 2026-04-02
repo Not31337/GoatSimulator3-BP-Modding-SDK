@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
 #include "Engine/DataTable.h"
+#include "PerPlatformProperties.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
 #include "InputCoreTypes.h"
@@ -44,6 +45,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGGCloningSettings CloningSettings;
+    
+    UPROPERTY(Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformFloat MaxActorScale;
+    
+    UPROPERTY(Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformFloat MinActorScale;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSet<FKey> ForbiddenKeys;

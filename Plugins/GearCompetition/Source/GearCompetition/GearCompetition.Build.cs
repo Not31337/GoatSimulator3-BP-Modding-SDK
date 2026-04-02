@@ -13,8 +13,9 @@ public class GearCompetition : ModuleRules {
             "Engine",
             "GameplayTags",
             "Goat2",
+
             "GameplayAbilities",
-            "GameplayTasks",
+            "GameplayTasks"
         });
     }
 }

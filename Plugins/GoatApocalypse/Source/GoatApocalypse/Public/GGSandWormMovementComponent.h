@@ -10,6 +10,7 @@
 class AActor;
 class AGGSandWorm;
 class UGGEffectsSpawnResult;
+class UGGSandwormVolumesDataAsset;
 class UPrimitiveComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -56,10 +57,7 @@ public:
     float DelayBetweenForwardLaunches;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<TSoftObjectPtr<AActor>> RestrictedVolumes;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<TSoftObjectPtr<AActor>> AllowedVolumes;
+    UGGSandwormVolumesDataAsset* MovementVolumesDataAsset;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float DelayAfterGettingBackIntoAllowedArea;

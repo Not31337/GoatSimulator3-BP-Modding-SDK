@@ -8,6 +8,9 @@ bool AGGPlayerCameraManager::UpdatePlayerPostProcessComponent(FGameplayTag Effec
     return false;
 }
 
+void AGGPlayerCameraManager::UpdateFlyingViewPitchBoundsLockState(bool bUnlocked) {
+}
+
 void AGGPlayerCameraManager::RemovePlayerPostProcessComponent(FGameplayTag EffectIdentifier) {
 }
 

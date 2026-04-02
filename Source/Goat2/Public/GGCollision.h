@@ -15,6 +15,9 @@ class GOAT2_API UGGCollision : public UBlueprintFunctionLibrary {
 public:
     UGGCollision();
 
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool FindFreeNeighbourLocationForBoundingBox_K2(const UObject* WorldContextObject, FVector Origin, FVector BoxExtent, FVector& OutLocation);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
     static FVector FindFreeLocationForCapsule_K2(const UObject* WorldContext, float HalfHeight, float Radius, TEnumAsByte<ECollisionChannel> CollisionChannel, FVector TargetLocation, FRotator TargetRotation, AActor* OptTestActor);
     

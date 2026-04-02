@@ -6,6 +6,7 @@
 #include "EPostProcessCameraContext.h"
 #include "GGGameSetting.h"
 #include "OnCameraContextChangedDelegate.h"
+#include "PlayerPostProcessMultiRequest.h"
 #include "PlayerPostProcessValue.h"
 #include "GGPlayerCameraManager.generated.h"
 
@@ -23,6 +24,9 @@ public:
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<FGameplayTag, FPlayerPostProcessMultiRequest> PlayerPostProcessMultiRequests;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FGameplayTag, FPlayerPostProcessValue> PlayerPostProcessComponents;
     
 public:
@@ -30,6 +34,9 @@ public:
 
     UFUNCTION(BlueprintCallable)
     bool UpdatePlayerPostProcessComponent(FGameplayTag EffectIdentifier, FPostProcessSettings NewSettings);
+    
+    UFUNCTION(BlueprintCallable)
+    void UpdateFlyingViewPitchBoundsLockState(bool bUnlocked);
     
     UFUNCTION(BlueprintCallable)
     void RemovePlayerPostProcessComponent(FGameplayTag EffectIdentifier);

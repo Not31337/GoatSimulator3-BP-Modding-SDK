@@ -650,14 +650,6 @@ public:
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void CancelLatentActions(UObject* WorldContextObject);
     
-protected:
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    static FRotator CalculateSurfaceRotation_K2(FVector SurfaceNormal, const FTransform& ReferenceFrame, bool bReturnInLocalSpace);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    static float CalculateSurfaceAngle_K2(FVector SurfaceNormal, const FTransform& ReferenceFrame, bool bReturnInLocalSpace);
-    
-public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static void BreakRadarWidgetData(FRadarWidgetData InData, FRadarCoordinateData& Data, UWidget*& Widget);
     

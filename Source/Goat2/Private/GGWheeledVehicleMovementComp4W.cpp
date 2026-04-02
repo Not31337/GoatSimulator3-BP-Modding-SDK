@@ -9,10 +9,6 @@ UGGWheeledVehicleMovementComp4W::UGGWheeledVehicleMovementComp4W(const FObjectIn
     this->AirRollControlScalar = 1.00f;
     this->AirPitchControlScalar = 1.00f;
     this->bAirControlEnabled = true;
-    this->SlipperyLatStiffValue = 2.00f;
-    this->SlipperyLatStiffMaxLoad = 2.00f;
-    this->SlipperyLongStiffValue = 1000.00f;
-    this->SlipperyTireConfig = NULL;
     this->SlipperyCheckInterval = 0.50f;
 }
 

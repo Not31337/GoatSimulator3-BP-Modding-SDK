@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "GameFramework/Actor.h"
 #include "Engine/EngineTypes.h"
+#include "PerPlatformProperties.h"
 #include "GGNamedActorInterface.h"
 #include "GGSmoothPhysicsInterpolate.h"
 #include "GGMeshPair.h"
@@ -85,12 +86,11 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAnimSequence* BounceAnimation;
     
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformInt HotdogLimit;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FGGSmoothPhysicsInterpolate SmoothNetInterpolate;
-    
-private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 MobileHotdogLimit;
     
 public:
     AGGBouncableHotDog(const FObjectInitializer& ObjectInitializer);

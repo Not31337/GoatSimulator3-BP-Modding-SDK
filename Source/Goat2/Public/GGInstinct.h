@@ -81,6 +81,12 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Gen8ProgressOverride;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bOverrideProgressInLocalization;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 OverrideProgressInLocalization;
+    
 public:
     AGGInstinct(const FObjectInitializer& ObjectInitializer);
 

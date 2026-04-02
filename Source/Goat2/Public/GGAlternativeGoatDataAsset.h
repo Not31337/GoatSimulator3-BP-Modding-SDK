@@ -6,8 +6,6 @@
 #include "UObject/NoExportTypes.h"
 #include "Engine/DataAsset.h"
 #include "Curves/CurveFloat.h"
-//To ensure compatibility with gFurPro
-//#include "FurLod.h"
 #include "FurComponent.h"
 #include "GameplayTagContainer.h"
 #include "DefaultGearOverrides.h"
@@ -380,7 +378,7 @@ public:
     FDefaultGearOverrides DefaultBackOverrides;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FDefaultGearOverrides DefaultFeetOverrides;
+    FDefaultGearOverrides DefaultFeetOverrides_New;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector FeetMeshLocModifierIncrease;

@@ -31,6 +31,8 @@ void UGGGearAbility::OnOwnerStopRagdolling(bool bRagdollOnGround, ULSCharacterMo
 void UGGGearAbility::OnOwnerRagdolling(ULSCharacterMovementComponent* MovementComp, ACharacter* OwnerCharacter, const FRagdollStateChangeSettings& StateChangeSettings) {
 }
 
+
+
 AGGGoat* UGGGearAbility::GetGoatOwner() const {
     return NULL;
 }

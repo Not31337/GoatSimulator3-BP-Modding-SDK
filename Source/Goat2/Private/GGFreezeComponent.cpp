@@ -4,6 +4,7 @@
 UGGFreezeComponent::UGGFreezeComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->FreezeDuration = 0.00f;
     this->bRagdollOnFreeze = false;
+    this->bSkipStopBehaviour = false;
     this->MaterialOverride = NULL;
     this->FreezeParticles = NULL;
     this->FreezeSound = NULL;

@@ -13,11 +13,11 @@ class AGGPhysicsActor_Base;
 class AGGPhysicsProjectile;
 class UArrowComponent;
 class UAudioComponent;
+class UGGPhysicsProjectileMovementComponent;
 class UGGStaticMeshComponent;
 class UParticleSystem;
 class UParticleSystemComponent;
 class UPrimitiveComponent;
-class UProjectileMovementComponent;
 class USoundCue;
 
 UCLASS(Blueprintable)
@@ -35,7 +35,7 @@ protected:
     UArrowComponent* ForwardDirectionArrow;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    UProjectileMovementComponent* ProjectileMovement;
+    UGGPhysicsProjectileMovementComponent* ProjectileMovement;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAddArrowTranslationToSpawnLocation;
@@ -63,6 +63,12 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHitParticleIgnoreHitRotation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bAlignToSurfaceWhenAttached;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bDisableCollisionAfterAttaching;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EGGProjectileHitResponse HitResponseNormalTarget;

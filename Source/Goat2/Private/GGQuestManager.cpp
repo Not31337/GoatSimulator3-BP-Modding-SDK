@@ -4,11 +4,11 @@
 
 UGGQuestManager::UGGQuestManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bShowNewGoatTowerEventNotification = false;
-    this->GlobalQuestTemplates.AddDefaulted(14);
+    this->GlobalQuestTemplates.AddDefaulted(20);
     this->bShowChaosRewardInQuestList = true;
-    this->GlobalInstinctCategoryOrder.AddDefaulted(3);
-    this->GlobalInstinctCategoryPack.AddDefaulted(3);
-    this->GlobalInstinctHeaderCategoryData.AddDefaulted(3);
+    this->GlobalInstinctCategoryOrder.AddDefaulted(4);
+    this->GlobalInstinctCategoryPack.AddDefaulted(4);
+    this->GlobalInstinctHeaderCategoryData.AddDefaulted(4);
     this->AchievementInstinctID = TEXT("AchievementInstinctID");
 }
 
@@ -85,6 +85,10 @@ void UGGQuestManager::GetQuestsFromFilter(TArray<FAdvancedRule> Rulesets, TArray
 }
 
 AGGQuestSet* UGGQuestManager::GetQuestSetFromSetMemberID(const FString& ID) {
+    return NULL;
+}
+
+AGGQuestBase* UGGQuestManager::GetQuestFromQuestIdTag(const FGameplayTag& QuestIDTag) {
     return NULL;
 }
 

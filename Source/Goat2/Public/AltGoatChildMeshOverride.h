@@ -55,6 +55,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UAnimInstance> AnimBlueprint;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    bool bShowAltGoatTag;
+    
     GOAT2_API FAltGoatChildMeshOverride();
 };
 

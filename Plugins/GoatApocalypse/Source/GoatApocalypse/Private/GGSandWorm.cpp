@@ -12,7 +12,7 @@ AGGSandWorm::AGGSandWorm(const FObjectInitializer& ObjectInitializer) : Super(Ob
     this->CameraArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Camera Arm"));
     this->Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
     this->PushComponent = CreateDefaultSubobject<UGGCharacterPushComponent>(TEXT("Push Component"));
-    //this->OngoingMoveParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Ongoing Move Particles"));
+    this->OngoingMoveParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Ongoing Move Particles"));
     const FProperty* p_Mesh_Parent = GetClass()->FindPropertyByName("Mesh");
     this->MovementSoundComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("Movement Sound"));
     this->MovementSoundComponentCenter = CreateDefaultSubobject<UAudioComponent>(TEXT("Movement Sound Center"));

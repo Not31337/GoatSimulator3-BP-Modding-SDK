@@ -1,9 +1,9 @@
 #include "GGGameVersion.h"
 
 UGGGameVersion::UGGGameVersion() {
-    this->BuildCL = TEXT("462744");
-    this->BuildDate = TEXT("2025-12-10 13:22:25");
-    this->BuildName = TEXT("1.2.0.4");
+    this->BuildCL = TEXT("476053");
+    this->BuildDate = TEXT("2026-02-25 16:23:21");
+    this->BuildName = TEXT("1.2.1.0");
     this->SentryEnvironment = TEXT("Release");
 }
 

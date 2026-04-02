@@ -15,5 +15,7 @@ enum class EPlatformFlags : uint16 {
     PS4 = 128,
     XboxOne = 256,
     Steam = 512,
+    Sage = 1024,
+    Luna = 2048,
 };
 

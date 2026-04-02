@@ -75,10 +75,7 @@ public:
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<AGGPlayerState*, bool> CanGetScoreMap;
-
-    FLinearColor GetColorForState_Implementation(TEnumAsByte<EPlayerGamePlayerState::Type> InState);
     
-    void OnPhaseChanged_Implementation(TEnumAsByte<EPlayerGamePhase::Type> NewPhase, TEnumAsByte<EPlayerGameOutcome::Type> GameOutcome);
 public:
     AGGPlayerGame_Base(const FObjectInitializer& ObjectInitializer);
 
@@ -135,6 +132,8 @@ public:
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void OnPhaseChanged(EPlayerGamePhase::Type NewPhase, EPlayerGameOutcome::Type GameOutcome);
+
+    void OnPhaseChanged_Implementation(TEnumAsByte<EPlayerGamePhase::Type> NewPhase, TEnumAsByte<EPlayerGameOutcome::Type> GameOutcome);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -217,6 +216,8 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     FLinearColor GetColorForState(EPlayerGamePlayerState::Type InState);
+
+    FLinearColor GetColorForState_Implementation(TEnumAsByte<EPlayerGamePlayerState::Type> InState);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FPlayerGamePlayerInfo> GetActivePlayers(bool bAliveOnly, bool bLocalOnly) const;
@@ -244,6 +245,6 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     bool AddOrEditPlayerGamePlayerInfo(AGGPlayerController* PC);
-    
+        
 };
 

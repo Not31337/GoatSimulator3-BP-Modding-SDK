@@ -1,7 +1,7 @@
 #include "GGUpdateNotifierSubsystem.h"
 
 UGGUpdateNotifierSubsystem::UGGUpdateNotifierSubsystem() {
-    this->AllCachedUpdates.AddDefaulted(21);
+    this->AllCachedUpdates.AddDefaulted(24);
 }
 
 bool UGGUpdateNotifierSubsystem::ShowUpsellPopupDLC(EGoatDLC InDLC) {

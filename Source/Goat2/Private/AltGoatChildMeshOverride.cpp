@@ -8,5 +8,6 @@ FAltGoatChildMeshOverride::FAltGoatChildMeshOverride() {
     this->bOtherSocket = false;
     this->SkinnedMesh = ESkinnedMeshOverride::SMO_NoOverride;
     this->AnimBlueprint = NULL;
+    this->bShowAltGoatTag = false;
 }
 

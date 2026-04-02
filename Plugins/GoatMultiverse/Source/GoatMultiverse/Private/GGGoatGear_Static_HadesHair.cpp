@@ -9,6 +9,7 @@ UGGGoatGear_Static_HadesHair::UGGGoatGear_Static_HadesHair(const FObjectInitiali
     this->bHaveAngryHair = false;
     this->HairParticleComponent = NULL;
     this->SoundComponent = NULL;
+    this->SetupDelay = 0.01f;
 }
 
 void UGGGoatGear_Static_HadesHair::OnRep_HaveAngryHair() {

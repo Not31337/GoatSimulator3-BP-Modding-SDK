@@ -18,6 +18,9 @@ class GOAT2_API IGGCatchableInterface : public IInterface {
     GENERATED_BODY()
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void ScaleActorWithOptions(const FGGReleaseOptions& Options);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ReleaseCatchedActorWithOptions(const FVector& ReleaseLocation, const FGGReleaseOptions& Options);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -34,6 +37,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsBeingScaled() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void HandleMulticastScaleActor(const FGGReleaseOptions& Options);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void HandleMulticastReleaseCatchedActor(const FVector& ReleaseLocation, const FGGReleaseOptions& Options);

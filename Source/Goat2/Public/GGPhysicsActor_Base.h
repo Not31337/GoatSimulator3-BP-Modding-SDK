@@ -34,6 +34,7 @@
 #include "OnActorReleased_SignatureDelegate.h"
 #include "OnMaterialSetDelegate.h"
 #include "OnObjectHeadbuttedDelegate.h"
+#include "OnPActorSignificanceChangedDelegate.h"
 #include "OnPickedUpDelegateDelegate.h"
 #include "OnTakeDamageWithEventDelegate.h"
 #include "PhysicsActorImpactSettings.h"
@@ -257,6 +258,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bCanChangeTickRate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnPActorSignificanceChanged OnPActorSignificanceChanged;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

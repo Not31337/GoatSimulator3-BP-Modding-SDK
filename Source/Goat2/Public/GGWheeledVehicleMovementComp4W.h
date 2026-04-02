@@ -3,11 +3,11 @@
 #include "UObject/NoExportTypes.h"
 #include "Curves/CurveFloat.h"
 #include "WheeledVehicleMovementComponent4W.h"
+#include "GGWheelConfig.h"
 #include "VehicleHandling.h"
 #include "GGWheeledVehicleMovementComp4W.generated.h"
 
 class AGGVehicle;
-class UTireConfig;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GOAT2_API UGGWheeledVehicleMovementComp4W : public UWheeledVehicleMovementComponent4W {
@@ -35,19 +35,13 @@ public:
     bool bAirControlEnabled;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float SlipperyLatStiffValue;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float SlipperyLatStiffMaxLoad;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float SlipperyLongStiffValue;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UTireConfig* SlipperyTireConfig;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float SlipperyCheckInterval;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGWheelConfig SlipperyWheelConfig;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGWheelConfig FrozenWheelConfig;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_HandlingSettings, meta=(AllowPrivateAccess=true))
     FVehicleHandling CurrentHandlingSettings;

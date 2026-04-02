@@ -691,14 +691,6 @@ float UGGBlueprintFunctionLibrary::ClampedNormalizeToRange(float Value, float Ra
 void UGGBlueprintFunctionLibrary::CancelLatentActions(UObject* WorldContextObject) {
 }
 
-FRotator UGGBlueprintFunctionLibrary::CalculateSurfaceRotation_K2(FVector SurfaceNormal, const FTransform& ReferenceFrame, bool bReturnInLocalSpace) {
-    return FRotator{};
-}
-
-float UGGBlueprintFunctionLibrary::CalculateSurfaceAngle_K2(FVector SurfaceNormal, const FTransform& ReferenceFrame, bool bReturnInLocalSpace) {
-    return 0.0f;
-}
-
 void UGGBlueprintFunctionLibrary::BreakRadarWidgetData(FRadarWidgetData InData, FRadarCoordinateData& Data, UWidget*& Widget) {
 }
 

@@ -1,7 +1,7 @@
 #include "GGInstinctListEntryUserWidget.h"
 
 UGGInstinctListEntryUserWidget::UGGInstinctListEntryUserWidget() {
-    this->InstinctCategoryIcons.AddDefaulted(27);
+    this->InstinctCategoryIcons.AddDefaulted(28);
 }
 
 UTexture2D* UGGInstinctListEntryUserWidget::GetInstinctIconFromTag(FGameplayTag InInstinctTag) {

@@ -5,7 +5,7 @@ UGGGoatSimulatorSettings::UGGGoatSimulatorSettings() {
     this->bIsPreReleaseCertBuild_Apocalypse = false;
     this->DebugLanguageName = TEXT("io");
     this->bShowGoatDLCs = false;
-    this->Updates.AddDefaulted(11);
+    this->Updates.AddDefaulted(12);
     this->GoatGearFolder = TEXT("DataAssets/GoatGear");
     this->ThumbnailSaveLocation = TEXT("UI/Textures/GoatGear");
     this->InstinctsFolder = TEXT("DataAssets/Instincts");

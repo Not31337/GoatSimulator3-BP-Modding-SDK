@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "PerPlatformProperties.h"
 #include "GGCloningSettings.generated.h"
 
 class AGGNPC;
@@ -14,6 +15,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftObjectPtr<UGGAlternativeGoatDataAsset>, TSoftClassPtr<AGGNPC>> AltGoatToNpcClassMapping;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformInt MaxClones;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformInt MaxVehicleClones;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    FPerPlatformInt MaxAGClones;
     
     FGGCloningSettings();
 };

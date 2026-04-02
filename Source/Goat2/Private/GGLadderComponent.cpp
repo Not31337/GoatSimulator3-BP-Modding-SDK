@@ -1,6 +1,7 @@
 #include "GGLadderComponent.h"
 
 UGGLadderComponent::UGGLadderComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ShapeBodySetup = NULL;
     this->LadderBillboard = NULL;
     this->bCenterPlayerWhenClimbing = true;
 }

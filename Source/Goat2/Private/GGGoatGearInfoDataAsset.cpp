@@ -21,7 +21,7 @@ UGGGoatGearInfoDataAsset::UGGGoatGearInfoDataAsset() {
     this->bReEquipOnStartup = true;
     this->NoneDataAsset = NULL;
     this->SplitScreenStyleData.AddDefaulted(4);
-    this->GearDLCInfo.AddDefaulted(13);
+    this->GearDLCInfo.AddDefaulted(14);
 }
 
 void UGGGoatGearInfoDataAsset::SetStyleAsCurrentGear(UGGGoatGearStyleDataAsset* StyleData, int32 ControllerId) {

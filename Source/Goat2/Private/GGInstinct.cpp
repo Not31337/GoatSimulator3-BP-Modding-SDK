@@ -21,6 +21,8 @@ AGGInstinct::AGGInstinct(const FObjectInitializer& ObjectInitializer) : Super(Ob
     this->MobileProgressOverride = 0;
     this->bOverrideProgressOnGen8 = false;
     this->Gen8ProgressOverride = 0;
+    this->bOverrideProgressInLocalization = false;
+    this->OverrideProgressInLocalization = 0;
 }
 
 void AGGInstinct::SetPinningPlayerController(AGGPlayerController* PC) {

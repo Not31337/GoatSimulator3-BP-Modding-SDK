@@ -42,6 +42,7 @@ AGGVehicle::AGGVehicle(const FObjectInitializer& ObjectInitializer) : Super(Obje
     this->HornAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("Horn Audio"));
     this->ScrapeAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("Scrape Audio"));
     //this->EngineSoundController = CreateDefaultSubobject<UBP_VehicleEngineSoundController_C>(TEXT("EngineSoundController"));
+    this->EngineSoundController = CreateDefaultSubobject<UGGVehicleEngineSoundController>(TEXT("EngineSoundController"));
     this->VehicleType = EVehicleType::VT_Car;
     this->bIgnorePlacementWithoutSpawnerWarning = false;
     this->CurrentState = EVehicleState::VS_Idle;

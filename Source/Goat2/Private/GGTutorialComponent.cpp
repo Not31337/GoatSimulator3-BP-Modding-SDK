@@ -2,7 +2,7 @@
 #include "Templates/SubclassOf.h"
 
 UGGTutorialComponent::UGGTutorialComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->GlobalTutorialDataTablePaths.AddDefaulted(4);
+    this->GlobalTutorialDataTablePaths.AddDefaulted(5);
     this->bShouldCreateDefaultTutorials = false;
 }
 

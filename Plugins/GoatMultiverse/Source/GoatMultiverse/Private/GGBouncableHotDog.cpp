@@ -29,7 +29,6 @@ AGGBouncableHotDog::AGGBouncableHotDog(const FObjectInitializer& ObjectInitializ
     this->BounceRotationSpeed = 12.00f;
     this->RotationAcceleration = 1.00f;
     this->BounceAnimation = NULL;
-    this->MobileHotdogLimit = 10;
     this->AnimatedMesh->SetupAttachment(RootComponent);
 }
 

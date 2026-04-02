@@ -1,6 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
+#include "GameplayAbilitySpec.h"
+#include "GameplayAbilitySpec.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
 #include "EAbilityInput.h"
@@ -65,6 +67,14 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnOwnerRagdolling(ULSCharacterMovementComponent* MovementComp, ACharacter* OwnerCharacter, const FRagdollStateChangeSettings& StateChangeSettings);
     
+public:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void K2_InputReleased(FGameplayAbilitySpecHandle Handle, FGameplayAbilityActivationInfo ActivationInfo);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void K2_InputPressed(FGameplayAbilitySpecHandle Handle, FGameplayAbilityActivationInfo ActivationInfo);
+    
+protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AGGGoat* GetGoatOwner() const;
     

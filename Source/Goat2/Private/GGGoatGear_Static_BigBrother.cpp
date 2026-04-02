@@ -15,6 +15,7 @@ UGGGoatGear_Static_BigBrother::UGGGoatGear_Static_BigBrother(const FObjectInitia
     this->EyeOfSauronMeshComponent = NULL;
     this->EyeOfSauronParticleSystemComponent = NULL;
     this->ClosestCharacter = NULL;
+    this->SetupDelay = 0.01f;
 }
 
 void UGGGoatGear_Static_BigBrother::ServerPlayARandomVoiceLine_Implementation() {
