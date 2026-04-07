@@ -12,12 +12,11 @@ Creating the logic to bind to events one by one took a lot of work, so I hope yo
 
 - [Sentry engine4.27](https://github.com/getsentry/sentry-unreal/releases)
 
-
 - [Visual Studio](https://visualstudio.microsoft.com/downloads/)
     - For using Unreal Engine, Visual Studio 2022 is required.  
     You can install Visual Studio 2022 by downloading the installer and running the command  
-    "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"  
-    Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
+    "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"
+    - Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
 
 To run the mods you create, you will need the following:
 
@@ -30,15 +29,17 @@ To run the mods you create, you will need the following:
 For instructions on how to install them, please refer to [How to install Blueprint mod](/Docs/How-to-install-Blueprint-mod.md)
 
 ## Usage
-1. Install Unreal Engine 4.27.2.
+0. [Download this SDK](https://github.com/Not31337/GoatSimulator3-BP-Modding-SDK/archive/refs/heads/master.zip)
+
+1. Install Unreal Engine 4.27.2
 
 2. Download [gFurPro](https://github.com/GiM-GamesInMotion/gFurPro/archive/refs/heads/4.27.zip)
 
-3. Unzip gFurPro-4.27.zip and place it in the Plugins folder
+3. Unzip gFurPro-4.27.zip and place it in the Plugins folder of this SDK
 
 4. Download [Sentry](https://github.com/getsentry/sentry-unreal/releases/download/1.9.1/sentry-unreal-1.9.1-engine4.27.zip)
 
-5. Unzip sentry-unreal-version-engine4.27.zip and place it in the Plugins folder
+5. Unzip sentry-unreal-version-engine4.27.zip and place it in the Plugins folder of this SDK
 
 6. Open Goat2.uproject in Unreal Engine.
     - When the message "The following modules are missing ~ Would you like to rebuild them now?" appears, click Yes.
@@ -51,7 +52,7 @@ For instructions on how to install them, please refer to [How to install Bluepri
 9. Copy UE4Editor-PlanarCut.dll to a location where Unreal Engine can recognize it.  
     - By default, UE4Editor-PlanarCut.dll is located at:  
     C:\Program Files\Epic Games\UE_4.27\Engine\Plugins\Experimental\PlanarCutPlugin\Binaries\Win64  
-    Copy it to the SDK’s Binaries/Win64 folder.  
+    Copy it to the SDK’s Binaries\Win64 folder.  
     Make sure to do this after the build finishes; if you do it before, it will be deleted for some reason.
 
 10. Now, let your creativity explode!
@@ -61,7 +62,7 @@ I think the following websites and videos will be helpful references.
 
 [Unreal Mod Loader Tutorials: Creating A Blueprint Mod](https://www.youtube.com/watch?v=fB3yT85XhVA)
 
-[UE4/5 Modding Guides](https://github.com/Dmgvol/UE_Modding/blob/main/BPModding/WorkingWithML.md)
+[UE4/5 Modding Guides](https://github.com/Dmgvol/UE_Modding/blob/main/AdvancedModding/BpModsIntro.md)
 
 [Palworld Modding Docs](https://web.archive.org/web/20241213065222/https://pwmodding.wiki/docs/category/creating-a-blueprint-mod)
 
@@ -73,7 +74,7 @@ I think the following websites and videos will be helpful references.
     and commented out and disabled things like the HornComponent in AGGGoat because the editor was crashing during startup.
     - For details on the errors I have masked, please see [here](/Docs/How-to-use-UE4GameProjectGenerator.md).
 
-- The RickLick Mod uses chunk 1, and TestBPMod uses chunk 2.  
+- RickLick Mod uses Chunk 1, TestBPMod uses Chunk 2, and SnadWormCaller_Gear uses Chunk 3.  
 Please use a different chunk, or remove those mods.
 
 ## Discord server
