@@ -17,9 +17,8 @@ public class GoatMultiverse : ModuleRules {
             "Goat2",
             "Goat2Mobile",
             "UMG",
-
-            "GameplayTasks",
-            "InputCore"
+            "InputCore",
+            "GameplayTasks"
         });
     }
 }

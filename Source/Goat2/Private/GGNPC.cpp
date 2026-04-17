@@ -265,7 +265,7 @@ void AGGNPC::OnRep_CurrentAnimState() {
 void AGGNPC::OnGrabbedCharacterUnRagdoll(bool bRagdollOnGround, ULSCharacterMovementComponent* MovementComp, ACharacter* UnRagdolledCharacter, const FRagdollStateChangeSettings& StateChangeSettings) {
 }
 
-void AGGNPC::MulticastSpawnParticle_Implementation(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent, TEnumAsByte<EAttachLocation::Type> AttachLocation) {
+void AGGNPC::MulticastSpawnParticle_Implementation(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent,EAttachLocation::Type AttachLocation) {
 }
 
 void AGGNPC::MulticastPlaySound_Implementation(USoundBase* SoundEffect, bool AttachedToNPC) {

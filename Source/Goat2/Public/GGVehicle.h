@@ -60,9 +60,6 @@
 #include "StartleDetailsSettings.h"
 #include "Templates/SubclassOf.h"
 #include "VehicleCrashSound.h"
-
-#include "GGVehicleEngineSoundController.h"
-
 #include "GGVehicle.generated.h"
 
 class AActor;
@@ -92,6 +89,7 @@ class UGGStatusEffectManager;
 class UGGVehicleAbility;
 class UGGVehicleAppearanceManager;
 class UGGVehicleAttributeSet;
+class UGGVehicleEngineSoundController;
 class UGGWaterFloatingComponent;
 class UGameplayEffect;
 class UMaterialInstanceDynamic;

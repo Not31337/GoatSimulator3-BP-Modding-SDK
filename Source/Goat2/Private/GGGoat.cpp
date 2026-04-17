@@ -118,7 +118,7 @@ AGGGoat::AGGGoat(const FObjectInitializer& ObjectInitializer) : Super(ObjectInit
     this->FollowCamera->SetupAttachment(CameraBoom);
     this->GrindSoundComp->SetupAttachment(RootComponent);
     //this->HornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
-   // this->SkeletalHornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
+    //this->SkeletalHornComponent->SetupAttachment(p_Mesh_Parent->ContainerPtrToValuePtr<UGGRagdollableSkeletalMeshComponent>(this));
 }
 
 void AGGGoat::UpdateFurQuality() {
@@ -371,10 +371,10 @@ void AGGGoat::OnChaosAcquired(int32 Amount) {
 void AGGGoat::OnAnimNotifyTrigger(AGGCharacter* Character, const UGGAnimNotify* AnimNotify, FGameplayTag NotifyTag) {
 }
 
-void AGGGoat::MulticastTeleportGoat_Implementation(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, TEnumAsByte<EMovementMode> MoveMode, AGGVehicle* TeleportInto) {
+void AGGGoat::MulticastTeleportGoat_Implementation(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, EMovementMode MoveMode, AGGVehicle* TeleportInto) {
 }
 
-void AGGGoat::MulticastSetMeshChannelResponse_Implementation(TEnumAsByte<ECollisionChannel> Channel, TEnumAsByte<ECollisionResponse> Response) {
+void AGGGoat::MulticastSetMeshChannelResponse_Implementation(ECollisionChannel Channel, ECollisionResponse Response) {
 }
 
 void AGGGoat::MulticastReleaseFromCaption_Implementation() {
@@ -735,6 +735,7 @@ void AGGGoat::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
     DOREPLIFETIME(AGGGoat, bHasBegunPlayLocally);
     DOREPLIFETIME(AGGGoat, MiniGameComponent);
 }
+
 
 
 UAbilitySystemComponent* AGGGoat::GetAbilitySystemComponent() const {

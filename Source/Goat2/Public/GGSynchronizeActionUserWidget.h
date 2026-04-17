@@ -135,7 +135,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void UpdateLabels(FNotification Notification);
     
-    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    UFUNCTION(BlueprintCallable)
     void UpdateGoatHeadLayout(int32 NumPlayers, int32 JoinedPlayers);
     
     UFUNCTION(BlueprintCallable)
@@ -148,6 +148,9 @@ protected:
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateLabels(FNotification Notification);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnUpdateGoatHeadLayout(int32 NumPlayers, int32 JoinedPlayers);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnUpdateBodyText(const FText& NewBodyText, bool bBodyTextWasEmpty);

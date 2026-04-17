@@ -8,13 +8,13 @@
 #include "InputCoreTypes.h"
 #include "EGGUpdate.h"
 #include "EGoatDLC.h"
-#include "GGCloningSettings.h"
 #include "GGUpdate.h"
 #include "GGGoatSimulatorSettings.generated.h"
 
 class AGGInteractableDialogueWrapper;
 class UDataAsset;
 class UDataTable;
+class UGGCloningSettingsDataAsset;
 class UGGGoatSimulatorSettings;
 class UGGPopupUserWidget;
 class USoundCue;
@@ -44,7 +44,7 @@ public:
     TSoftClassPtr<UGGPopupUserWidget> ResetSavePopupClass;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FGGCloningSettings CloningSettings;
+    TSoftObjectPtr<UGGCloningSettingsDataAsset> CloningSettings;
     
     UPROPERTY(Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FPerPlatformFloat MaxActorScale;

@@ -230,10 +230,10 @@ public:
     void ServerUpdateRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize NewActorLocation) override;// PURE_VIRTUAL(ServerUpdateRagdoll, );
     
     UFUNCTION(Reliable, Server)
-    void ServerUpdateFloatingRagdollOnTarget(const TScriptInterface<ILSReplicatedMeshRPCs>& NewTarget, FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation) override;// PURE_VIRTUAL(ServerUpdateFloatingRagdollOnTarget, );
+    void ServerUpdateFloatingRagdollOnTarget(const TScriptInterface<ILSReplicatedMeshRPCs>& NewTarget, FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation) override;// PURE_VIRTUAL(ServerUpdateFloatingRagdollOnTarget,);
     
     UFUNCTION(Server, Unreliable)
-    void ServerUpdateFloatingRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation) override;// PURE_VIRTUAL(ServerUpdateFloatingRagdoll, );
+    void ServerUpdateFloatingRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation) override;// PURE_VIRTUAL(ServerUpdateFloatingRagdoll,);
     
     UFUNCTION(Reliable, Server)
     void ServerTeleportRagdollFinished() override;// PURE_VIRTUAL(ServerTeleportRagdollFinished, );

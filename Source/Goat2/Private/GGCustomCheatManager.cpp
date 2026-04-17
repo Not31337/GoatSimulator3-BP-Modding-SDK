@@ -194,10 +194,16 @@ bool UGGCustomCheatManager::ServerSetMood_Validate(float Radius, const FString& 
     return true;
 }
 
+void UGGCustomCheatManager::ServerPoolNpcs_Implementation(APawn* CalledFromPawn) {
+}
+
 void UGGCustomCheatManager::ServerPoolCivilians_Implementation(APawn* CalledFromPawn) {
 }
 bool UGGCustomCheatManager::ServerPoolCivilians_Validate(APawn* CalledFromPawn) {
     return true;
+}
+
+void UGGCustomCheatManager::ServerPoolAnimals_Implementation(APawn* CalledFromPawn) {
 }
 
 void UGGCustomCheatManager::ServerLevelTeleport_Implementation(APawn* CalledFromPawn, int32 Index) {
@@ -329,7 +335,13 @@ void UGGCustomCheatManager::PrintChaos() {
 void UGGCustomCheatManager::PrintAllCCDComps() {
 }
 
+void UGGCustomCheatManager::PoolNpcs() {
+}
+
 void UGGCustomCheatManager::PoolCivilians() {
+}
+
+void UGGCustomCheatManager::PoolAnimals() {
 }
 
 void UGGCustomCheatManager::OnLoadingScreenRemoved() {

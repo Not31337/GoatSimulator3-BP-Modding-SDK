@@ -20,7 +20,7 @@ public:
     UClass* AnimInstanceClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UMaterialInterface* BodyMaterial;
+    TArray<UMaterialInterface*> BodyMaterials;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector BaseTranslationOffset;

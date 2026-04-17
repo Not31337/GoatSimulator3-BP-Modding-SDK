@@ -626,8 +626,6 @@ public:
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastSpawnParticle(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent, EAttachLocation::Type AttachLocation);
-
-    void MulticastSpawnParticle_Implementation(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent, TEnumAsByte<EAttachLocation::Type> AttachLocation);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastPlaySound(USoundBase* SoundEffect, bool AttachedToNPC);

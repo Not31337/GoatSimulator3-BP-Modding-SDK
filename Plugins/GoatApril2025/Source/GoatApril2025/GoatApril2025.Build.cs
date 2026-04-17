@@ -11,7 +11,6 @@ public class GoatApril2025 : ModuleRules {
             "CoreUObject",
             "Engine",
             "Goat2",
-
             "GameplayAbilities",
             "GameplayTasks"
         });

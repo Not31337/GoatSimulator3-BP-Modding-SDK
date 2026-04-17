@@ -30,7 +30,7 @@ public:
     virtual void ServerUpdateFloatingRagdoll(FVector_NetQuantize NewRagdollVelocity, FVector_NetQuantize100 NewRagdollAngularVelocity, FVector_NetQuantize NewActorLocation);// PURE_VIRTUAL(ServerUpdateFloatingRagdoll, );
     
     UFUNCTION(Reliable, Server)
-    virtual void ServerTeleportRagdollFinished();// PURE_VIRTUAL(ServerTeleportRagdollFinished, );
+    virtual void ServerTeleportRagdollFinished();// PURE_VIRTUAL(ServerTeleportRagdollFinished,);
     
     UFUNCTION(Reliable, Server)
     virtual void ServerTeleportRagdoll(FVector TeleportLocation);// PURE_VIRTUAL(ServerTeleportRagdoll, );

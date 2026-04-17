@@ -41,7 +41,6 @@ AGGVehicle::AGGVehicle(const FObjectInitializer& ObjectInitializer) : Super(Obje
     this->BrakeAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("Brake Audio"));
     this->HornAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("Horn Audio"));
     this->ScrapeAudio = CreateDefaultSubobject<UAudioComponent>(TEXT("Scrape Audio"));
-    //this->EngineSoundController = CreateDefaultSubobject<UBP_VehicleEngineSoundController_C>(TEXT("EngineSoundController"));
     this->EngineSoundController = CreateDefaultSubobject<UGGVehicleEngineSoundController>(TEXT("EngineSoundController"));
     this->VehicleType = EVehicleType::VT_Car;
     this->bIgnorePlacementWithoutSpawnerWarning = false;
@@ -750,6 +749,7 @@ void AGGVehicle::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
     DOREPLIFETIME(AGGVehicle, VehicleSpawner);
     DOREPLIFETIME(AGGVehicle, CurrentOverridePhysMat);
 }
+
 
 
 UAbilitySystemComponent* AGGVehicle::GetAbilitySystemComponent() const {

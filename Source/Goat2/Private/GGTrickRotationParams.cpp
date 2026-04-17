@@ -7,6 +7,6 @@ FGGTrickRotationParams::FGGTrickRotationParams() {
     this->SpinningMaxRotationRate = 0.00f;
     this->MaxSimulationTimeStep = 0.00f;
     this->NotifyRadius = 0.00f;
-    this->bDebugPrintRotation = false;
+    this->InputToleranceForTrickReset = 0.00f;
 }
 

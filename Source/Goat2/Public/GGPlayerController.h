@@ -936,7 +936,5 @@ public:
     UFUNCTION(BlueprintCallable)
     void AbilityDown();
     
-
-    void ClientRemoveNotification_Implementation(FGameplayTag Tag, const FString& ID, FGameplayTag ContentTag, TEnumAsByte<ENotificationCommand::Type> Command, FMenuNavigationContext MenuContext);
 };
 

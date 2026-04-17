@@ -13,7 +13,6 @@ public class GearPack_Future : ModuleRules {
             "GameplayTags",
             "Goat2",
             "Niagara",
-
             "GameplayAbilities",
             "GameplayTasks"
         });

@@ -15,7 +15,6 @@ public class GearPack_Supergoats : ModuleRules {
             "Niagara",
             "PhysicsCore",
             "UMG",
-
             "GameplayAbilities",
             "GameplayTasks"
         });

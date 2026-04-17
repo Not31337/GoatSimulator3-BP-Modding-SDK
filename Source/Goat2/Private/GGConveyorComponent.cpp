@@ -2,7 +2,6 @@
 #include "Net/UnrealNetwork.h"
 
 UGGConveyorComponent::UGGConveyorComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->ShapeBodySetup = NULL;
     this->bConveyorEnabled = true;
     this->ConveyorSpeed = 300.00f;
 }

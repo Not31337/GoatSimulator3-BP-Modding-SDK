@@ -248,8 +248,14 @@ public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetMood(float Radius, const FString& Mood);
     
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerPoolNpcs(APawn* CalledFromPawn);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerPoolCivilians(APawn* CalledFromPawn);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerPoolAnimals(APawn* CalledFromPawn);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerLevelTeleport(APawn* CalledFromPawn, int32 Index);
@@ -357,7 +363,13 @@ public:
     void PrintAllCCDComps();
     
     UFUNCTION(BlueprintCallable, Exec)
+    void PoolNpcs();
+    
+    UFUNCTION(BlueprintCallable, Exec)
     void PoolCivilians();
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void PoolAnimals();
     
 protected:
     UFUNCTION(BlueprintCallable)

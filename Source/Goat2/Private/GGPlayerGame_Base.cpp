@@ -47,7 +47,7 @@ void AGGPlayerGame_Base::OnRep_PlayerInfos() {
 
 
 
-void AGGPlayerGame_Base::OnPhaseChanged_Implementation(TEnumAsByte<EPlayerGamePhase::Type> NewPhase, TEnumAsByte<EPlayerGameOutcome::Type> GameOutcome) {
+void AGGPlayerGame_Base::OnPhaseChanged_Implementation(EPlayerGamePhase::Type NewPhase, EPlayerGameOutcome::Type GameOutcome) {
 }
 
 void AGGPlayerGame_Base::OnParticipatingPlayerLeft(AActor* Actor) {
@@ -148,7 +148,7 @@ TArray<AGGPlayerController*> AGGPlayerGame_Base::GetControllersFromPlayerInfos(T
     return TArray<AGGPlayerController*>();
 }
 
-FLinearColor AGGPlayerGame_Base::GetColorForState_Implementation(TEnumAsByte<EPlayerGamePlayerState::Type> InState) {
+FLinearColor AGGPlayerGame_Base::GetColorForState_Implementation(EPlayerGamePlayerState::Type InState) {
     return FLinearColor{};
 }
 

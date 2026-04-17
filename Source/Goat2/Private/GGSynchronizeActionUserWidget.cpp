@@ -29,12 +29,15 @@ UGGSynchronizeActionUserWidget::UGGSynchronizeActionUserWidget() {
 void UGGSynchronizeActionUserWidget::UpdateLabels(FNotification Notification) {
 }
 
+void UGGSynchronizeActionUserWidget::UpdateGoatHeadLayout(int32 NumPlayers, int32 JoinedPlayers) {
+}
 
 void UGGSynchronizeActionUserWidget::UpdateGatherStatus(int32 NumPlayers, int32 JoinedPlayers) {
 }
 
 void UGGSynchronizeActionUserWidget::PlayAnimationForJoiningGoat(int32 JoiningPlayerIndex) {
 }
+
 
 
 

@@ -875,14 +875,10 @@ private:
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastTeleportGoat(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, EMovementMode MoveMode, AGGVehicle* TeleportInto);
-
-    void MulticastTeleportGoat_Implementation(FVector_NetQuantize Location, FRotator Rotation, const AActor* RelativeActor, ETeleportVehicleHandle VehicleHandle, bool bSetMoveMode, TEnumAsByte<EMovementMode> MoveMode, AGGVehicle* TeleportInto);
     
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetMeshChannelResponse(ECollisionChannel Channel, ECollisionResponse Response);
-
-    void MulticastSetMeshChannelResponse_Implementation(TEnumAsByte<ECollisionChannel> Channel, TEnumAsByte<ECollisionResponse> Response);
     
 protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)

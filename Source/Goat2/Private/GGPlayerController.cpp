@@ -541,7 +541,7 @@ void AGGPlayerController::ClientResetObjectControl_Implementation(FViewTargetTra
 void AGGPlayerController::ClientReportServerTime_Implementation(float RequestWorldTime, float TheServerTime) {
 }
 
-void AGGPlayerController::ClientRemoveNotification_Implementation(FGameplayTag Tag, const FString& ID, FGameplayTag ContentTag, TEnumAsByte<ENotificationCommand::Type> Command, FMenuNavigationContext MenuContext) {
+void AGGPlayerController::ClientRemoveNotification_Implementation(FGameplayTag Tag, const FString& ID, FGameplayTag ContentTag, ENotificationCommand::Type Command, FMenuNavigationContext MenuContext) {
 }
 
 void AGGPlayerController::ClientOnQuestDiscoveredNotificationCreated_Implementation(float SplashDuration) {

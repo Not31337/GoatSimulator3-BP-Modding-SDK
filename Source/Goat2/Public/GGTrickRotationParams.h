@@ -36,7 +36,7 @@ public:
     float NotifyRadius;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool bDebugPrintRotation;
+    float InputToleranceForTrickReset;
     
     FGGTrickRotationParams();
 };

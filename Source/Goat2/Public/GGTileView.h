@@ -39,5 +39,6 @@ public:
     ESlateVisibility ScrollBarVisibility;
     
     UGGTileView(const class FObjectInitializer& ObjectInitializer);
+
 };
 
