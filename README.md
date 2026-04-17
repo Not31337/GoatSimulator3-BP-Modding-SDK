@@ -77,6 +77,9 @@ I think the following websites and videos will be helpful references.
 - RickLick Mod uses Chunk 1, TestBPMod uses Chunk 2, and SnadWormCaller_Gear uses Chunk 3.  
 Please use a different chunk, or remove those mods.
 
+- You may encounter an error due to the maximum path length limit.
+    - Please shorten the name of the SDK’s "master" folder as much as possible, or place it closer to the root of the C drive.
+
 ## Discord server
 [GS3 Modding Community](https://discord.gg/DKPCKt8M)
 
