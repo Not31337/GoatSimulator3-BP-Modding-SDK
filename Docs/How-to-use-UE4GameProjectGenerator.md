@@ -158,18 +158,10 @@ At this point, the errors stopped appearing. That was easier than expected. Let�
     ![Error_3](./Images/Error_3.png)
 
 - CLASS::FUNCTION(): overloaded member function not found in CLASS File:XXX.gen.cpp
-    - Go to the class header and remove TEnumAsByte from the function parameters.
+    - It’s the same as the cyubeVR error in the [UE4SS Documentation](https://docs.ue4ss.com/guides/generating-uht-compatible-headers.html)
+    - Remove TEnumAsByte from the function parameters in both the header declaration and the _Implementation function in the cpp file.
     ![Error_4](./Images/Error_4.png)
     - Be careful not to remove TEnumAsByte from functions that aren’t causing errors.
-
-- CLASS::FUNCTION_Implementation(): overloaded member function not found in CLASS File:XXX.cpp  
-    declaration is incompatible with "CLASS::FUNCTION_Implementation()" (declared at line LINE of "HEADER")  
-    - Be careful not to confuse this with the one above. This occurs in a .cpp file, not gen.cpp, and the functions have _Implementation at the end
-
-    - Copy the functions that are causing errors from the .cpp file and declare them in the header. 
-    ![Error_5_0](./Images/Error_5_0.png)
-    ![Error_5_1](./Images/Error_5_1.png)
-    - When copying to the header, be careful not to forget to remove the {}.
 
 - 'UTileView': no appropriate default constructor available  
     'UDemoNetDriver': no appropriate default constructor available
