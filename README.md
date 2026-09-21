@@ -12,11 +12,7 @@ Creating the logic to bind to events one by one took a lot of work, so I hope yo
 
 - [Sentry engine4.27](https://github.com/getsentry/sentry-unreal/releases)
 
-- [Visual Studio](https://visualstudio.microsoft.com/downloads/)
-    - For using Unreal Engine, Visual Studio 2022 is required.  
-    You can install Visual Studio 2022 by downloading the installer and running the command  
-    "visualstudiosetup.exe --channelUri https://aka.ms/vs/17/release/channel"
-    - Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 To run the mods you create, you will need the following:
 
@@ -41,21 +37,28 @@ For instructions on how to install them, please refer to [How to install Bluepri
 
 5. Unzip sentry-unreal-version-engine4.27.zip and place it in the Plugins folder of this SDK
 
-6. Open Goat2.uproject in Unreal Engine.
+6. Download [Visual Studio Setup](https://visualstudio.microsoft.com/ja/thank-you-downloading-visual-studio/?sku=Community&channel=Stable)
+
+7. Install Visual Studio 2022
+    - You can install Visual Studio 2022 by downloading the installer and running the command  
+    ```VisualStudioSetup.exe --channelUri https://aka.ms/vs/17/release/channel```
+    - Also, at that time, please add the Workloads and Components according to [Epic Games instructions](https://dev.epicgames.com/documentation/en-us/unreal-engine/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine?application_version=5.6)
+
+8. Open Goat2.uproject in Unreal Engine.
     - When the message "The following modules are missing ~ Would you like to rebuild them now?" appears, click Yes.
 
-7. Wait for the build to finish.
+9. Wait for the build to finish.
 
-8. Watch as the build completes and Unreal Editor fails to load FractureEditor.  
+10. Watch as the build completes and Unreal Editor fails to load FractureEditor.  
     - Most likely, the load fails because UE4Editor-PlanarCut.dll cannot be found.
 
-9. Copy UE4Editor-PlanarCut.dll to a location where Unreal Engine can recognize it.  
+11. Copy UE4Editor-PlanarCut.dll to a location where Unreal Engine can recognize it.  
     - By default, UE4Editor-PlanarCut.dll is located at:  
     C:\Program Files\Epic Games\UE_4.27\Engine\Plugins\Experimental\PlanarCutPlugin\Binaries\Win64  
     Copy it to the SDK’s Binaries\Win64 folder.  
     Make sure to do this after the build finishes; if you do it before, it will be deleted for some reason.
 
-10. Now, let your creativity explode!
+12. Now, let your creativity explode!
 
 ## How to create Blueprint Mod
 I think the following websites and videos will be helpful references.
@@ -81,7 +84,7 @@ Please use a different chunk, or remove those mods.
     - Please shorten the name of the SDK’s "master" folder as much as possible, or place it closer to the root of the C drive.
 
 ## Discord server
-[GS3 Modding Community](https://discord.gg/DKPCKt8M)
+[GS3 Modding Community](https://discord.gg/zf83CbabgT)
 
 ## Credits
 [Coffee Stain North](https://coffeestain.com/studio/coffee-stain-north/)
