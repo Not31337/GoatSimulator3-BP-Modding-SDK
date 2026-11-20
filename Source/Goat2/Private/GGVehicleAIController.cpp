@@ -1,8 +1,9 @@
 #include "GGVehicleAIController.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "GGPathFollowingComponent.h"
 
-AGGVehicleAIController::AGGVehicleAIController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+AGGVehicleAIController::AGGVehicleAIController(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UGGPathFollowingComponent>(TEXT("PathFollowingComponent"))) {
     this->BrainComponent = CreateDefaultSubobject<UBehaviorTreeComponent>(TEXT("BehaviorComp"));
     this->Blackboard = CreateDefaultSubobject<UBlackboardComponent>(TEXT("BlackboardComp"));
     this->BehaviorTreeComp = (UBehaviorTreeComponent*)BrainComponent;

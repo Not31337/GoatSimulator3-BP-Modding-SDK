@@ -11,12 +11,6 @@ UGGGearAbility_EggThrow::UGGGearAbility_EggThrow() {
 void UGGGearAbility_EggThrow::OnOwnerPreScaled(bool bIsBeingCatched) {
 }
 
-void UGGGearAbility_EggThrow::OnOwnerEnteredVehicle(AGGCharacter* Character, AGGVehicle* Vehicle) {
-}
-
-void UGGGearAbility_EggThrow::OnOwnerCatched(AActor* CatchedActor, AActor* Catcher) {
-}
-
 void UGGGearAbility_EggThrow::MulticastEatActor_Implementation(AActor* EatenActor, AGGGoat* Goat, FGGCatchOptions Options) {
 }
 

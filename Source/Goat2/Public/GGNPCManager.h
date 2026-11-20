@@ -2,13 +2,17 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "UObject/NoExportTypes.h"
+#include "GameplayTagContainer.h"
 #include "ActiveNPCAreaContainer.h"
 #include "AreaData.h"
 #include "AreaSpawners.h"
+#include "DynamicReactTree.h"
 #include "EMoods.h"
 #include "ENPCType.h"
 #include "EPoolReason.h"
+#include "EReactResetCase.h"
 #include "NPCClassOverride.h"
+#include "ReactResetOverride.h"
 #include "Templates/SubclassOf.h"
 #include "WeightedElement_Professional.h"
 #include "GGNPCManager.generated.h"
@@ -19,6 +23,7 @@ class AGGNPC_Animal;
 class AGGNPC_Humanoid;
 class AGGPaperboyDropOffPoint;
 class AGGPlayerController;
+class UBehaviorTree;
 class UGGNPCManager;
 class UGGNPCManagerConfigAsset;
 class UGGVehicleManager;
@@ -82,6 +87,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGNPCManagerConfigAsset* SwitchConfigAsset;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGGNPCManagerConfigAsset* Switch2ConfigAsset;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGGNPCManagerConfigAsset* SteamDeckConfigAsset;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -182,6 +193,20 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AGGPaperboyDropOffPoint*> PaperboyDropOffPoints;
     
+private:
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FDynamicReactTree> DynamicReactTrees;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FReactResetOverride> ReactResetOverrides;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<TSoftObjectPtr<UBehaviorTree>> GlobalPreLoadBehaviorTrees;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UBehaviorTree*> PreLoadBehaviorTrees;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGVehicleManager* VehicleManager;
@@ -255,8 +280,19 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<AGGNPC*> GetActiveAnimalNPCs() const;
     
+private:
+    UFUNCTION(BlueprintCallable)
+    void CheckDynamicReactTreesLoaded();
+    
+public:
     UFUNCTION(BlueprintCallable)
     void ChangeNPCRelevantDistMobile(bool bIncrease);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool CanReactResetFromCase(FGameplayTag Type, EReactResetCase Case);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool CanCurrentReactResetFromCase(AGGNPC_Humanoid* NPC, EReactResetCase Case);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void AddProfessionalToSpawnPool(TSubclassOf<AGGNPC_Humanoid> ProfessionalClass, int32 Weight, EMoods StartMood);

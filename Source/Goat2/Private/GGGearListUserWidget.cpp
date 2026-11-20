@@ -18,7 +18,7 @@ bool UGGGearListUserWidget::FilterGear_Implementation(UGGGoatGearInfoDataAsset* 
     return false;
 }
 
-bool UGGGearListUserWidget::FilterAltGoatRestriction_Implementation(UGGGoatGearInfoDataAsset* DataAsset) {
+bool UGGGearListUserWidget::FilterAltGoatRestriction(UGGGoatGearInfoDataAsset* DataAsset) {
     return false;
 }
 

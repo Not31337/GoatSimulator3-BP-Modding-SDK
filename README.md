@@ -84,7 +84,7 @@ Please use a different chunk, or remove those mods.
     - Please shorten the name of the SDK’s "master" folder as much as possible, or place it closer to the root of the C drive.
 
 ## Discord server
-[GS3 Modding Community](https://discord.gg/zf83CbabgT)
+[GS3 Modding Community](https://discord.gg/US4NAmshC)
 
 ## Credits
 [Coffee Stain North](https://coffeestain.com/studio/coffee-stain-north/)

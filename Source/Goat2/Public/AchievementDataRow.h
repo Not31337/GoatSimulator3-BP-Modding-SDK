@@ -6,7 +6,6 @@
 #include "AchievementDataRow.generated.h"
 
 class AGGAchievement;
-class UTexture2D;
 
 USTRUCT(BlueprintType)
 struct FAchievementDataRow : public FTableRowBase {
@@ -26,9 +25,6 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString LockedIcon;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UTexture2D* AchievementIcon;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AGGAchievement> AchievementClass;

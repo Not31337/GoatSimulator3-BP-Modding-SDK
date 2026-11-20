@@ -16,7 +16,6 @@ UGGMobileControlsLayoutDefault::UGGMobileControlsLayoutDefault() {
     this->LickTutorialOverlay = NULL;
     this->HeadbuttTutorialOverlay = NULL;
     this->GrindButtonEffect = NULL;
-    this->DamItCannon = NULL;
     this->ControlledGoat = NULL;
     this->PCIntroComponent = NULL;
     this->BaseUserWidget = NULL;

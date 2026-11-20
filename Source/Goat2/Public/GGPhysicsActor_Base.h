@@ -9,6 +9,7 @@
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/EngineTypes.h"
 #include "Engine/NetSerialization.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
@@ -44,6 +45,7 @@
 class AController;
 class AGGCharacter;
 class AGGGoat;
+class AGGPlayerController;
 class AGGStatusEffectBase;
 class APawn;
 class APhysicsVolume;
@@ -79,10 +81,11 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<AActor>> PhysSimStartIgnoredActors;
     
-public:
+private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bDefaultToSimulatingPhysics;
     
+public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bStartSimulationOnHit;
     
@@ -179,8 +182,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AActor* AttachedToActor;
     
+private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool IsAttachedToSomething;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float DroppedLifeSpan;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ShouldDetach, meta=(AllowPrivateAccess=true))
@@ -362,11 +370,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetLatestInstigator(APawn* InInstigator, FGameplayTag Interaction, float ClearAfter, bool bUnragdollReset);
     
+    UFUNCTION(BlueprintCallable)
+    void SetIsAttachedToSomething(bool bNewIsAttachedToSomething);
+    
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool SetGoatSimName(const FText& NewName);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetDesiredColorMaterialIndex(int32 DesiredIndex);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetDefaultToSimulatingPhysics(bool bNewDefaultToSimulatingPhysics);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetCollisionProfile(const FName& CollisionProfileName);
@@ -374,8 +388,14 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetCollisionEnabled(bool NewEnabled);
     
+    UFUNCTION(BlueprintCallable)
+    void SetClientAuthority(AGGPlayerController* Player, float Duration, float BlendOutTime);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetAISightVisible(bool bShouldBeVisible);
+    
+    UFUNCTION(Server, Unreliable)
+    void ServerSendMovementUpdate(FRigidBodyState RigidBodyState);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ResetOriginalMatOverride();
@@ -385,6 +405,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ResetDesiredColorMaterialIndex();
+    
+    UFUNCTION(BlueprintCallable)
+    void ResetClientAuthority(bool bResetOwner);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool RemoveStatusEffect(EStatusEffectTypes TypeToRemove);
@@ -487,6 +510,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool HasStatusEffectByClass(TSubclassOf<AGGStatusEffectBase> StatusEffectClass);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasLocalClientAuthority() const;
+    
     UFUNCTION(BlueprintCallable)
     void HandleConveyorMovement(FVector MoveDelta, ETeleportType TeleportType);
     
@@ -527,6 +553,9 @@ public:
     bool GetIsOptimized() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetIsAttachedToSomething() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FGameplayTagContainer GetIdentifierTags();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
@@ -540,6 +569,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetDesiredColorMaterialIndex();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetDefaultToSimulatingPhysics() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetCenterOfMass() const;
@@ -561,6 +593,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool CanBeHeadbutted(AGGGoat* HeadbuttingGoat);
+    
+    UFUNCTION(BlueprintCallable)
+    void BlendOutClientAuthority(float BlendOutTime);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     AGGStatusEffectBase* ApplyStatusEffect(EStatusEffectTypes TypeToApply, EApplicationMethod ApplicationMethod, AActor* SpreadFrom, TSubclassOf<AGGStatusEffectBase> StatusEffectClass, AGGStatusEffectBase* SpreadFromStatus);

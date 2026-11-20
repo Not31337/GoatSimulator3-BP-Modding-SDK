@@ -6,4 +6,8 @@ UGGDLCDataAsset::UGGDLCDataAsset() {
     this->InstinctPackToUnlock = NULL;
 }
 
+TSoftObjectPtr<UTexture2D> UGGDLCDataAsset::GetChaosCurrencyImage() const {
+    return NULL;
+}
+
 

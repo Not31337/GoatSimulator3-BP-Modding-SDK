@@ -17,9 +17,6 @@ public:
     FBlackboardKeySelector KeyToCheck;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool bOnlyUseKeyToCheckParent;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer ComapreWith;
     
     UBTDecorator_GGMatchesGameplayTag();

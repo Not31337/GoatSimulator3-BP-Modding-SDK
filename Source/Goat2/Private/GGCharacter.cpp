@@ -24,6 +24,8 @@ AGGCharacter::AGGCharacter(const FObjectInitializer& ObjectInitializer) : Super(
     this->Mobile_RateOptimizationCheckRate = 0.00f;
     this->bCurrentMeshGravity = false;
     this->MinDestructibleBreakVel = 250.00f;
+    this->InWaterLinearDampening = 1.00f;
+    this->InWaterAngularDampening = 1.00f;
     this->bIsMoreResilient = false;
     this->ResilientHealthMax = 300.00f;
     this->CurrentResilientHealth = 0.00f;
@@ -101,6 +103,9 @@ void AGGCharacter::SetMultipleMaterial(TArray<FMatElement> MatElements) {
 void AGGCharacter::SetMeshScale(FVector NewScale) {
 }
 
+void AGGCharacter::SetMeshDampeningValues(float LinearDampening, float AngularDampening) {
+}
+
 void AGGCharacter::SetMeshCollision(FGameplayTag CollisionProfile) {
 }
 
@@ -173,10 +178,19 @@ void AGGCharacter::SetCanInteract(bool NewCanInteract) {
 void AGGCharacter::SetAvoidanceActive(bool bNewActive) {
 }
 
+void AGGCharacter::ServerStopMontage_Implementation(UAnimMontage* AnimMontage) {
+}
+
+void AGGCharacter::ServerPlayMontage_Implementation(UAnimMontage* AnimMontage, float InPlayRate) {
+}
+
 void AGGCharacter::ServerLaunchGGCharacter_Implementation(FVector LaunchVelocity, bool XYOverride, bool ZOverride) {
 }
 bool AGGCharacter::ServerLaunchGGCharacter_Validate(FVector LaunchVelocity, bool XYOverride, bool ZOverride) {
     return true;
+}
+
+void AGGCharacter::ServerJumpToMontageSection_Implementation(UAnimMontage* Montage, FName Section) {
 }
 
 void AGGCharacter::ServerExitVehicle_Implementation(EExitReason ExitReason) {
@@ -198,6 +212,9 @@ void AGGCharacter::ResetToCurrentState() {
 }
 
 void AGGCharacter::ResetPhysicalAnimationProfiles(bool StopSimulation) {
+}
+
+void AGGCharacter::ResetMeshDampeningValues(bool bForceOriginalValues) {
 }
 
 void AGGCharacter::ResetMeshCollision(bool bResetToDefault) {
@@ -305,6 +322,9 @@ void AGGCharacter::MulticastPlayMontage_Implementation(UAnimMontage* AnimMontage
 void AGGCharacter::MulticastOnEffectSourceChanged_Implementation(FGameplayTag EffectTag, bool IsAdded) {
 }
 
+void AGGCharacter::MulticastJumpToMontageSection_Implementation(UAnimMontage* Montage, FName Section) {
+}
+
 void AGGCharacter::MulticastExitVehicle_Implementation(AGGVehicle* Vehicle, FVector Location, bool bWasDriver, bool bEjectingWithForce, bool bScaleWithVehicle) {
 }
 
@@ -318,6 +338,9 @@ void AGGCharacter::MatBurnCharacter(float Duration) {
 }
 
 void AGGCharacter::LaunchGGCharacter(FVector LaunchVelocity, bool XYOverride, bool ZOverride) {
+}
+
+void AGGCharacter::JumpToMontageSection(UAnimMontage* Montage, FName Section) {
 }
 
 bool AGGCharacter::IsSimulatingPhysics() const {
@@ -586,6 +609,10 @@ void AGGCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
     DOREPLIFETIME(AGGCharacter, CurrentVehicle);
     DOREPLIFETIME(AGGCharacter, bCanInteract);
     DOREPLIFETIME(AGGCharacter, HeadBoneScale);
+    DOREPLIFETIME(AGGCharacter, LeftFootBoneScale);
+    DOREPLIFETIME(AGGCharacter, RightFootBoneScale);
+    DOREPLIFETIME(AGGCharacter, LeftHandBoneScale);
+    DOREPLIFETIME(AGGCharacter, RightHandBoneScale);
     DOREPLIFETIME(AGGCharacter, IsPerceivable);
     DOREPLIFETIME(AGGCharacter, ReplicatedEffectSources);
     DOREPLIFETIME(AGGCharacter, CurrentActorName);

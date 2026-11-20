@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "GameplayTagContainer.h"
 #include "EAttachmentHandSlot.h"
 #include "ECarryItemType.h"
@@ -14,6 +15,9 @@
 #include "ESameSocketAttach.h"
 #include "GGHandIKOwnerInterface.h"
 #include "GGNPC.h"
+#include "GGNPCInfo.h"
+#include "GGProxyNpc.h"
+#include "LoadedAppearancePart.h"
 #include "MatElement.h"
 #include "MoodSpeedElement.h"
 #include "MoodTree.h"
@@ -31,9 +35,11 @@ class AGGNPCEvent;
 class AGGNPCWaypoint;
 class AGGNPC_Humanoid;
 class UAnimInstance;
+class UGGLoadNPCAppearance;
 class UGGNPCAppearanceManager;
 class UMaterialInterface;
 class UObject;
+class USceneComponent;
 class USkeletalMeshComponent;
 class UStaticMeshComponent;
 
@@ -60,6 +66,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTag GenerateAppearanceWith;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bPrioritizeAreaParts;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FPredeterminedElement> PredeterminedElements;
@@ -267,6 +276,29 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void MoodChange(EMoodChange Direction, int32 ChanceToChange, TArray<EMoods> SkipMoods, AActor* ByActor);
     
+protected:
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContext"))
+    static AGGNPC_Humanoid* K2_SpawnNpcFromNpcInfo(const UObject* WorldContext, const FGGNPCInfo& NpcInfo, FTransform Transform, bool bRagdolled);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FGGNPCInfo K2_GetNpcInfoFromNpc(AGGNPC_Humanoid* NPC);
+    
+    UFUNCTION(BlueprintCallable)
+    static FGGProxyNpc K2_CreateProxyNpc(USceneComponent* AttachParent);
+    
+    UFUNCTION(BlueprintCallable)
+    static void K2_ClearProxyNpcAppearance(UPARAM(Ref) FGGProxyNpc& Proxy);
+    
+    UFUNCTION(BlueprintCallable)
+    static void K2_AssignNpcToProxy(const AGGNPC_Humanoid* NPC, FGGProxyNpc& Proxy);
+    
+    UFUNCTION(BlueprintCallable)
+    static UGGLoadNPCAppearance* K2_AssignNpcInfoToProxy(FGGNPCInfo NpcInfo, UPARAM(Ref) FGGProxyNpc& Proxy);
+    
+    UFUNCTION(BlueprintCallable)
+    static void K2_AssignAppearanceToProxyNpc(UPARAM(Ref) FGGProxyNpc& Proxy, const TArray<FLoadedAppearancePart>& AppearanceParts, UMaterialInterface* SkinMaterial);
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsUsingOverrideAnimBP() const;
     

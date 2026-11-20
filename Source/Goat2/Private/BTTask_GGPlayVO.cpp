@@ -5,6 +5,7 @@ UBTTask_GGPlayVO::UBTTask_GGPlayVO() {
     this->bBlocking = false;
     this->bCanInterruptCurrentLine = false;
     this->bCanBeStoppedByDamage = true;
+    this->MoodOverride = EMoods::M_None;
     this->NodeOwnerComp = NULL;
 }
 

@@ -6,6 +6,8 @@
 #include "GGPopupResponseDelegateDelegate.h"
 #include "MenuNavigationContext.h"
 #include "MenuNavigationContextContainer.h"
+#include "OnActivateEventsTabDelegate.h"
+#include "OnActivateInstinctsTabDelegate.h"
 #include "OnNavigationContextHandledDelegate.h"
 #include "OnRemovedContextHandledDelegate.h"
 #include "PopupDataRow.h"
@@ -60,6 +62,12 @@ protected:
     UInputComponent* PopupInputComponent;
     
 public:
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnActivateEventsTab OnActivateEventsTab;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnActivateInstinctsTab OnActivateInstinctsTab;
+    
     UGGMenuComponent(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable)

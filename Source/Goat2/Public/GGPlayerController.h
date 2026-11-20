@@ -17,11 +17,14 @@
 #include "ECastResult.h"
 #include "EGearEquipContext.h"
 #include "EKeyMappingInputMode.h"
+#include "ELoadingScreenType.h"
 #include "EMenuRequest.h"
 #include "ENotificationCommand.h"
 #include "EPostProcessCameraContext.h"
+#include "ERemovalReason.h"
 #include "EResourceAcquisitionType.h"
 #include "EResourceSpendType.h"
+#include "ERespawnReason.h"
 #include "GoatInTriggers.h"
 #include "MenuNavigationContext.h"
 #include "MenuNavigationContextContainer.h"
@@ -34,8 +37,10 @@
 #include "OnExitMedusaMobileDelegate.h"
 #include "OnExitUFODelegate.h"
 #include "OnGamepadChangedDelegate.h"
+#include "OnGearAbilityTutorialCompletedDelegate.h"
 #include "OnGoatReplacedDelegate.h"
 #include "OnHeadbuttDownDelegate.h"
+#include "OnInteractDownDelegate.h"
 #include "OnInteractWithEggDelegate.h"
 #include "OnKarmaSentFromClientDelegate.h"
 #include "OnLickDownDelegate.h"
@@ -58,7 +63,7 @@
 #include "ReplicatedObjectControl.h"
 #include "TeleportData.h"
 #include "Templates/SubclassOf.h"
-#include "TimedRagdollAuthorityOfNPC.h"
+#include "TimedRagdollAuthorityOfCharacter.h"
 #include "GGPlayerController.generated.h"
 
 class AActor;
@@ -102,7 +107,7 @@ class USoundBase;
 class USoundMix;
 class UUserWidget;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, Config=Engine)
 class GOAT2_API AGGPlayerController : public APlayerController {
     GENERATED_BODY()
 public:
@@ -241,6 +246,9 @@ public:
     float InteractCheckInterval;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float InteractStickyBias;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float TrackballDeceleration;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -353,7 +361,7 @@ public:
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FTimedRagdollAuthorityOfNPC> TimedRagdollAuthorityNPCs;
+    TArray<FTimedRagdollAuthorityOfCharacter> TimedRagdollAuthorityNPCs;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
@@ -424,8 +432,17 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AGGQuestBase*> CachedActiveInstincts;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FRotator ControlRotationFrameDelta;
+    
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnHeadbuttDown OnHeadbuttDown;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGearAbilityTutorialCompleted OnGearAbilityTutorialCompleted;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnInteractDown OnInteractDown;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnScrollInput OnScrollInput;
@@ -436,6 +453,11 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnLickDown OnLickDown;
     
+protected:
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftClassPtr<UActorComponent> GameNightControllerClass;
+    
+public:
     AGGPlayerController(const FObjectInitializer& ObjectInitializer);
 
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
@@ -555,7 +577,7 @@ public:
     void ServerSendKarmaAmountToServer(int32 KarmaAmount);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerRespawn(bool BypassCheck);
+    void ServerRespawn(bool BypassCheck, ERespawnReason Reason);
     
 private:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
@@ -642,7 +664,13 @@ public:
     void OverrideIntroSubtitleSetting();
     
     UFUNCTION(BlueprintCallable)
+    void OverrideControlRotation(FRotator NewRotation);
+    
+    UFUNCTION(BlueprintCallable)
     void OptionsMenu();
+    
+    UFUNCTION(BlueprintCallable)
+    void OpenOptionsMenuAndroid();
     
 private:
     UFUNCTION(BlueprintCallable)
@@ -823,11 +851,25 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetAccurateServerTime() const;
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void GameNightWebControllerShowInteractUI();
+    
+    UFUNCTION(BlueprintCallable)
+    void GameNightWebControllerHideInteractUI();
+    
+    UFUNCTION(BlueprintCallable)
+    void GameNightOnLoadingScreenRemoved(AGGPlayerController* Controller, ELoadingScreenType Type, ERemovalReason RemovalReason);
+    
+public:
     UFUNCTION(BlueprintCallable)
     void GameMenu();
     
     UFUNCTION(BlueprintCallable)
     void ForceUpdateTargetInteractableHint();
+    
+    UFUNCTION(BlueprintCallable)
+    void ForceEndInteraction();
     
     UFUNCTION(BlueprintCallable)
     void FinishedWatchingSequence(FGameplayTag SequenceTag);
@@ -855,6 +897,9 @@ public:
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientTriggerInstinct(FGameplayTag InstinctTag);
     
+    UFUNCTION(BlueprintCallable, Client, Unreliable)
+    void ClientSubmitRespawnTelemetry(ERespawnReason Reason, const FString& StateBefore, float Speed, bool bMinigameTeleport);
+    
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientSpendTokens(int32 TokenAmount, EResourceSpendType SpendType, const FString& SpendActionID, const FString& SpendSourceID);
     
@@ -881,6 +926,9 @@ public:
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientHideGameHUD();
+    
+    UFUNCTION(BlueprintCallable, Client, Reliable)
+    void ClientForceEndInteraction();
     
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientCreateNotification(FNotification Notification, FMenuNavigationContext MenuContext);
@@ -911,6 +959,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanUseChat();
+    
+    UFUNCTION(BlueprintCallable)
+    void CancelInteractionHold();
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void BP_ClientTriggerInstinct(FGameplayTag InstinctTag);

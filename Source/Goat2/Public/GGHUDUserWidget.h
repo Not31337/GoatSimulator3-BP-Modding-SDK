@@ -2,8 +2,11 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
+#include "EPopupResponse.h"
 #include "GGGameSetting.h"
 #include "GGHUDUserWidgetBase.h"
+#include "OnLunaPopupClearedDelegate.h"
+#include "OnLunaPopupShownDelegate.h"
 #include "GGHUDUserWidget.generated.h"
 
 class AGGPlayerGame_Base;
@@ -13,11 +16,13 @@ class UGGCompassUserWidget;
 class UGGInstinctsUserWidget;
 class UGGNotificationContainerWidget;
 class UGGNotificationUserWidget;
+class UGGPopupUserWidget;
 class UGGQuestUserWidget;
 class UGGRadarWidgetClassCollectionDataAsset;
 class UGGSubtitleNotificationUserWidget;
 class UGGTrackerUserWidget;
 class UGGUserWidget;
+class UObject;
 class UUserWidget;
 
 UCLASS(Blueprintable, EditInlineNew, Config=Game)
@@ -105,6 +110,17 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGameplayTagContainer WidgetsToHideInMinigames;
     
+private:
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftClassPtr<UGGPopupUserWidget> GameNightControllerRemovedPopup;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnLunaPopupShown OnLunaPopupShown;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnLunaPopupCleared OnLunaPopupCleared;
+    
+public:
     UGGHUDUserWidget();
 
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -160,6 +176,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasEffectSource(FGameplayTag EffectTag) const;
     
+private:
+    UFUNCTION(BlueprintCallable)
+    void GameNightDisconnectedPopupResponse(const FString& ID, UObject* Object, const FString& ButtonID, EPopupResponse Response);
+    
+public:
     UFUNCTION(BlueprintCallable)
     void AddEffectSources(FGameplayTag SourceTag, FGameplayTagContainer EffectTags, FGameplayTagContainer Targets);
     

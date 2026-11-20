@@ -13,6 +13,7 @@ class AActor;
 class AGGEventDiscoveryBroadcastVolume;
 class AGGGoatTower;
 class AGGLevelSequenceActor;
+class UDataTable;
 class UGGEventPointComponent;
 class ULevelSequence;
 class ULevelSequencePlayer;
@@ -23,6 +24,9 @@ class GOAT2_API AGGEventBase : public AGGQuestBase {
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGGEventPointComponent* MainEventPointComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<AActor> EventPointAssignmentSlot;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
     TArray<TSoftObjectPtr<UGGEventPointComponent>> EventPointComponents;
@@ -55,6 +59,15 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CompletedSequenceDelay;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName ChaosRewardRowName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bUseChaosRewardTable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UDataTable> ChaosRewardDataTable;
     
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRadarCoordinateData EventRadarData;
@@ -128,7 +141,7 @@ public:
     bool IsConsideredForNearestEvent();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool HasEverBeenDiscovered();
+    bool HasEverBeenDiscovered() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasBeenDiscoveredThisSession();
@@ -137,10 +150,13 @@ public:
     void GetEventStates(EEventActiveState& ActiveState, EEventCompletedState& CompletedState);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    EEventCompletedState GetCompletionState();
+    EEventCompletedState GetCompletionState() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetClosestEventPointLocation(FVector Location, float& OutDistance);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetChaosRewardAmount() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     EEventActiveState GetActiveState();

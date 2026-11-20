@@ -21,6 +21,9 @@ protected:
     void OnGoatAbilityActivated(AGGGoat* Goat, FGameplayTagContainer AbilityTags, UGGGearAbility* AbilityInstance);
     
     UFUNCTION(BlueprintCallable)
+    void OnGearAbilityTutorialCompleted(FGameplayTagContainer AbilityTags);
+    
+    UFUNCTION(BlueprintCallable)
     void OnAbilityDown();
     
     UFUNCTION(BlueprintCallable)

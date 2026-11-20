@@ -46,10 +46,16 @@ public:
     void SkipIntro();
     
     UFUNCTION(BlueprintCallable)
+    void ReleaseIntroResources();
+    
+    UFUNCTION(BlueprintCallable)
     void PlayIntro();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSkipIntro();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnReleaseIntroResources();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPlayIntro();

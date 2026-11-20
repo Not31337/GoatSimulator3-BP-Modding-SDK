@@ -161,6 +161,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetBoneAttachName() const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    AGGStatusEffectBase* FindStatusEffectByClass(TSubclassOf<AGGStatusEffectBase> StatusEffectClass) const;
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ClearStatusEffects();
     

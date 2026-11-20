@@ -20,5 +20,6 @@ FGGGrindingParams::FGGGrindingParams() {
     this->AutoJumpOffDelayWhenStuck = 0.00f;
     this->InitialLerpSpeed = 0.00f;
     this->StartGrindingTurnAroundDistance = 0.00f;
+    this->RotationSpeed = 0.00f;
 }
 

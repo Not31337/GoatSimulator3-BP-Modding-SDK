@@ -35,12 +35,6 @@ void UGGGearAbility_Satellite::OnOwnerRespawned(AGGCharacter* Character) {
 void UGGGearAbility_Satellite::OnOwnerPreScaled(bool bIsBeingCatched) {
 }
 
-void UGGGearAbility_Satellite::OnOwnerEnteredVehicle(AGGCharacter* Character, AGGVehicle* Vehicle) {
-}
-
-void UGGGearAbility_Satellite::OnOwnerCatched(AActor* CatchedActor, AActor* Catcher) {
-}
-
 void UGGGearAbility_Satellite::MulticastReleaseGrabbedActor_Implementation(AActor* GrabbedActor, FVector ReleaseLocation, FGGReleaseOptions Options) {
 }
 

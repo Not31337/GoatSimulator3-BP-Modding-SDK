@@ -257,7 +257,7 @@ public:
     static FString GetJoinCode(const UObject* WorldContextObject);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
-    static FString GetGamerPicUri(const UObject* WorldContextObject);
+    static FString GetGamerPicUri(const UObject* WorldContextObject, bool bIsSplitscreenUser);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool GetFriendObjectArray(const UObject* WorldContextObject, TArray<UGGOnlineFriendObject*>& OutFriends, UObject* Owner);

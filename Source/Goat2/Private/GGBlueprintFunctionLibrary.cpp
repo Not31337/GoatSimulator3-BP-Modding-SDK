@@ -68,11 +68,7 @@ UGGGroundAlignedParticleComponent* UGGBlueprintFunctionLibrary::SpawnGroundAlign
     return NULL;
 }
 
-UGGEffectsSpawnResult* UGGBlueprintFunctionLibrary::SpawnEffectGroup(const UObject* WorldContextObject, FVector SpawnLocation, FRotator SpawnRotation, UGGEffectsSpawnHolder* EffectsHolder, USceneComponent* AttachToComponent) {
-    return NULL;
-}
-
-AGGNPC* UGGBlueprintFunctionLibrary::SpawnDummyNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FGameplayTag Area, FVector Location, FRotator Rotation, FVector Impulse, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, bool ForceRelevant, bool CanGetFromPool, ESpawnActorCollisionHandlingMethod CollisionHandling) {
+AGGNPC* UGGBlueprintFunctionLibrary::SpawnDummyNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FGameplayTag Area, FVector Location, FRotator Rotation, FVector Impulse, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, bool ForceRelevant, bool CanGetFromPool, ESpawnActorCollisionHandlingMethod CollisionHandling, bool bPrioritizeAreaParts) {
     return NULL;
 }
 
@@ -80,7 +76,7 @@ AGGNPC* UGGBlueprintFunctionLibrary::SpawnDummyAnimalNPC(const UObject* WorldCon
     return NULL;
 }
 
-AGGNPC* UGGBlueprintFunctionLibrary::SpawnCivilianNPC(const UObject* WorldContextObject, FGameplayTag Area, FVector Location, FRotator Rotation, EGender Gender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, FGameplayTag CivilianClassOverride, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, bool AsRagdoll, FVector Impulse, ESpawnActorCollisionHandlingMethod CollisionHandling) {
+AGGNPC* UGGBlueprintFunctionLibrary::SpawnCivilianNPC(const UObject* WorldContextObject, FGameplayTag Area, FVector Location, FRotator Rotation, EGender Gender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, FGameplayTag CivilianClassOverride, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, bool AsRagdoll, FVector Impulse, ESpawnActorCollisionHandlingMethod CollisionHandling, bool bPrioritizeAreaParts) {
     return NULL;
 }
 
@@ -96,6 +92,10 @@ bool UGGBlueprintFunctionLibrary::SkeletonMatchesAnimation(USkeletalMesh* Skelet
 }
 
 void UGGBlueprintFunctionLibrary::ShowSplashText(FText SplashTitle, FText SplashDescription, AActor* TargetPlayer) {
+}
+
+bool UGGBlueprintFunctionLibrary::ShouldSkipPreRenderedVideos() {
+    return false;
 }
 
 void UGGBlueprintFunctionLibrary::SetUpdateAnimationInEditor(USkeletalMeshComponent* MeshComp, bool ShouldUpdate) {
@@ -155,6 +155,9 @@ void UGGBlueprintFunctionLibrary::RemoveGenericTickObjectFromSignificanceManager
 }
 
 void UGGBlueprintFunctionLibrary::RemoveGameplayCue(AGGGoat* Goat, FGameplayTag GameplayTag) {
+}
+
+void UGGBlueprintFunctionLibrary::ReleaseMediaPlayback(UMediaPlayer* MediaPlayer, UMediaSoundComponent* MediaSoundComponent) {
 }
 
 void UGGBlueprintFunctionLibrary::RecreateMeshPhysState(UMeshComponent* MeshComp) {
@@ -269,6 +272,10 @@ bool UGGBlueprintFunctionLibrary::IsShippingBuild() {
 }
 
 bool UGGBlueprintFunctionLibrary::IsPlaytestingBuild() {
+    return false;
+}
+
+bool UGGBlueprintFunctionLibrary::IsNPCBusy(AGGNPC_Humanoid* NPC) {
     return false;
 }
 
@@ -468,6 +475,10 @@ FSoftObjectPath UGGBlueprintFunctionLibrary::GetOverrideMainMap() {
     return FSoftObjectPath{};
 }
 
+TArray<AActor*> UGGBlueprintFunctionLibrary::GetOverlappingActorsOfClass(const AActor* Actor, TSubclassOf<AActor> ClassFilter) {
+    return TArray<AActor*>();
+}
+
 UGGNPCManager* UGGBlueprintFunctionLibrary::GetNPCManager(const UObject* WorldContextObject) {
     return NULL;
 }
@@ -618,6 +629,35 @@ TEnumAsByte<ENetRole> UGGBlueprintFunctionLibrary::GetActorRole(AActor* Actor) {
 
 ULevel* UGGBlueprintFunctionLibrary::GetActorLevel(AActor* Actor) {
     return NULL;
+}
+
+void UGGBlueprintFunctionLibrary::GameNight_UnbindFunctionOnStartSession(const UObject* WorldContextObject) {
+}
+
+void UGGBlueprintFunctionLibrary::GameNight_StartGameNightFlow(const UObject* WorldContextObject) {
+}
+
+bool UGGBlueprintFunctionLibrary::GameNight_IsUsingPhysicalController(const UObject* WorldContextObject) {
+    return false;
+}
+
+bool UGGBlueprintFunctionLibrary::GameNight_HasMadeControllerChoice(const UObject* WorldContextObject) {
+    return false;
+}
+
+float UGGBlueprintFunctionLibrary::GameNight_GetHoldDuration(const UObject* WorldContextObject) {
+    return 0.0f;
+}
+
+TArray<UActorComponent*> UGGBlueprintFunctionLibrary::GameNight_GetControllerArray(const UObject* WorldContextObject) {
+    return TArray<UActorComponent*>();
+}
+
+void UGGBlueprintFunctionLibrary::GameNight_BindFunctionOnStartSession(const UObject* WorldContextObject, FName FunctionName) {
+}
+
+bool UGGBlueprintFunctionLibrary::ForceMediaEndReached(UMediaPlayer* MediaPlayer) {
+    return false;
 }
 
 APlayerController* UGGBlueprintFunctionLibrary::FindLocalPlayerControllerWithPlayerState(const UObject* WorldContextObject, AGGPlayerState* PlayerState) {

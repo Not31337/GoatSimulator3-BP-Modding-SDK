@@ -36,7 +36,7 @@ bool UGGGrindableSplineComponent::GetAutoInteractPastDuration_Implementation() {
     return false;
 }
 
-UGGGrindableSplineComponent* UGGGrindableSplineComponent::CreateGrindableSplineComponent(AActor* Owner, UStaticMesh* SplineMesh, FName SplineCompName, USceneComponent* StartPoint, USceneComponent* NewEndPoint, TEnumAsByte<ESplineMeshAxis::Type> MeshForwardAxis, float VerticalTangent, float MeshScale, float CullDistance, bool bShouldCastShadows, UMaterialInterface* OverrideMeshMaterial, EComponentCreationMethod SplineCreationMethod) {
+UGGGrindableSplineComponent* UGGGrindableSplineComponent::CreateGrindableSplineComponent(AActor* Owner, UStaticMesh* SplineMesh, FName SplineCompName, USceneComponent* StartPoint, USceneComponent* NewEndpoint, TEnumAsByte<ESplineMeshAxis::Type> MeshForwardAxis, float VerticalTangent, float MeshScale, float CullDistance, bool bShouldCastShadows, UMaterialInterface* OverrideMeshMaterial, EComponentCreationMethod SplineCreationMethod) {
     return NULL;
 }
 

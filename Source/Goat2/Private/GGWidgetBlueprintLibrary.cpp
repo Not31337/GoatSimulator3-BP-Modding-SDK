@@ -10,7 +10,7 @@ FText UGGWidgetBlueprintLibrary::TimecodeToPlaytimeText(const FTimecode& Timecod
     return FText::GetEmpty();
 }
 
-void UGGWidgetBlueprintLibrary::TestNotificationWidget(UObject* WorldContextObject, TSoftClassPtr<UUserWidget> InWidget, FGameplayTag InPosition, FNotification InNotification, float InDuration) {
+void UGGWidgetBlueprintLibrary::TestNotificationWidget(UObject* WorldContextObject, TSoftClassPtr<UUserWidget> InWidget, FGameplayTag InPosition, FNotification InNotification, float InDuration, bool bCoverEntireScreen, bool bDebug) {
 }
 
 bool UGGWidgetBlueprintLibrary::SplitNewline(FText InText, FString& OutLeftString, FString& OutRightString) {

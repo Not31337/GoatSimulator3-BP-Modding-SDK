@@ -8,7 +8,7 @@ UAnimNotifyState_GGAnimationActor::UAnimNotifyState_GGAnimationActor() {
     this->OverrideSkeletalMesh = NULL;
     this->bDropOnRagdoll = false;
     this->bRemoveOnRagdoll = true;
-    this->DroppedLifespan = 10.00f;
+    this->DroppedLifeSpan = 10.00f;
     this->bHideRightHandActor = false;
     this->bHideLeftHandActor = false;
 }

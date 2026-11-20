@@ -1,20 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
 #include "GGGoatPlayerState.h"
 #include "GGPlayerState_Apocalypse.generated.h"
 
 class AGGPlayerState_Apocalypse;
+class UGGCurrencyPlayerStateComponent;
 
 UCLASS(Blueprintable)
 class GOATAPOCALYPSE_API AGGPlayerState_Apocalypse : public AGGGoatPlayerState {
     GENERATED_BODY()
 public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UGGCurrencyPlayerStateComponent* CurrencyComponent;
+    
     AGGPlayerState_Apocalypse(const FObjectInitializer& ObjectInitializer);
 
-    UFUNCTION(BlueprintCallable, Reliable, Server)
-    void ServerSpawnCurrency(int32 Amount, FVector SpawnLocation, bool bIsImportant);
-    
     UFUNCTION(BlueprintCallable)
     void OnCactusStreakStarted(AGGPlayerState_Apocalypse* Player);
     

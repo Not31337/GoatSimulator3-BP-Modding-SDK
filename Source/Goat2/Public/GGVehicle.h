@@ -932,6 +932,14 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     
+public:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnSpeedBoostUp();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnSpeedBoostDown();
+    
+protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_VehicleSpawner();
     
@@ -1091,6 +1099,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UPawnMovementComponent* GetVehicleMovement() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    AGGVehicleAIController* GetVehicleController() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     UGGStatusEffectManager* GetStatusEffectManager();

@@ -12,7 +12,7 @@ struct FNPCAppearanceInfo {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FString> NPCAppearance;
+    TArray<FString> NpcAppearance;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AGGNPC> NPCClass;

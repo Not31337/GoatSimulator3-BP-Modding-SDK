@@ -2,8 +2,11 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "EFloatSoundClassTypes.h"
+#include "GGWaterEffectOverride.h"
+#include "Templates/SubclassOf.h"
 #include "GGWaterVolumeEffects.generated.h"
 
+class AActor;
 class UMaterialInterface;
 class UParticleSystem;
 class USoundBase;
@@ -70,6 +73,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinMovingFastFloatingVelocity;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<TSubclassOf<AActor>, FGGWaterEffectOverride> SpecificClassEffectsOverride;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UStaticMesh* RectangularWaterPlane;

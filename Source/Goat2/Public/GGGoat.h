@@ -7,6 +7,7 @@
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
+#include "Components/SceneComponent.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/Scene.h"
 #include "Curves/CurveFloat.h"
@@ -23,6 +24,7 @@
 #include "DefaultGearOverrides.h"
 #include "EApplicationMethod.h"
 #include "EGoatAbilitySlot.h"
+#include "ERespawnReason.h"
 #include "EStatusEffectTypes.h"
 #include "ETeleportVehicleHandle.h"
 #include "FurSplineOverride.h"
@@ -81,6 +83,7 @@ class UGGGoatAbility;
 class UGGGoatAbility_BackKick;
 class UGGGoatAbility_ChargeHeadbutt;
 class UGGGoatAbility_Headbutt;
+class UGGGoatAbility_Lick;
 class UGGGoatAttributeSet;
 class UGGGoatEmote;
 class UGGGoatGearInfoDataAsset;
@@ -334,6 +337,9 @@ public:
     FOnAltGoatChanged OnAltGoatChanged;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGGGoatAbility_Lick* LickAbilityInstance;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UClass*> AlwaysLoadedGameplayCues;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -415,9 +421,6 @@ protected:
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSubclassOf<UGGGoatAbility> LickAbility;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bDisableGearPartsWhenBeingLicked;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -444,7 +447,7 @@ private:
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UAnimMontage* HeadbuttMontage;
+    TArray<UAnimMontage*> HeadbuttMontages;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAnimMontage* ChargeHeadbuttMontage;
@@ -623,11 +626,6 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetTongueConstraintsLocked(bool ShouldBeLocked);
     
-private:
-    UFUNCTION(BlueprintCallable)
-    void SetOwnMeshesVisible(bool bVisible);
-    
-public:
     UFUNCTION(BlueprintCallable)
     void SetNeckRagdollDisabled(bool bShouldBeDisabled);
     
@@ -643,11 +641,17 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetGFurVisibility(bool bNewVisibility);
     
+    UFUNCTION(BlueprintCallable)
+    void SetDefaultCameraValuesToCurrentAltGoat();
+    
+    UFUNCTION(BlueprintCallable)
+    void SetDefaultCameraValues(float MinBoomLength, float MaxBoomLength, float NewBoomLength, FVector RelativeBoomLocation, FVector RelativeZoomedInCameraBoomLocation, float BlendSpeed);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SetCanAnimate(bool NewCanAnimate);
     
     UFUNCTION(BlueprintCallable)
-    void SetCameraOverrideFocusRelativeLocation(FVector RelativeLocation, float BlendSpeed);
+    void SetCameraOverrideFocusRelativeLocation(FVector RelativeLocation, float BlendSpeed, TEnumAsByte<ERelativeTransformSpace> BlendSpace);
     
     UFUNCTION(BlueprintCallable)
     void SetCameraArmValues(float Min, float Max);
@@ -710,6 +714,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void SaveGameStartLocation(FVector Location);
+    
+    UFUNCTION(BlueprintCallable)
+    void RespawnWithReason(ERespawnReason Reason, bool BypassCheck);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ResetToDefaultGoat();

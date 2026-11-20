@@ -72,7 +72,13 @@ void UGGGlobalEventHandler::OnInteracted(AActor* SourceActor, AActor* TargetActo
 void UGGGlobalEventHandler::OnInstinctTriggered(AGGGoat* Goat, FGameplayTag InstinctTag) {
 }
 
+void UGGGlobalEventHandler::OnGoatTurnedIntoBalloon(AGGGoat* Goat) {
+}
+
 void UGGGlobalEventHandler::OnGoatTowerSynchronised(AGGGoatTower* GoatTower, ETowerSynchronizationEvent SynchronizationEvent) {
+}
+
+void UGGGlobalEventHandler::OnGoatReachedStratosphereInBalloon(AActor* Goat, AActor* Balloon) {
 }
 
 void UGGGlobalEventHandler::OnGoatLickedActor(AGGGoat* Goat, AActor* LickedActor) {
@@ -81,13 +87,34 @@ void UGGGlobalEventHandler::OnGoatLickedActor(AGGGoat* Goat, AActor* LickedActor
 void UGGGlobalEventHandler::OnGoatHeadbuttedActor(AGGGoat* Goat, AActor* HeadbuttedActor) {
 }
 
+void UGGGlobalEventHandler::OnGoatFinishedVelociRaftersRide(AGGGoat* Goat) {
+}
+
 void UGGGlobalEventHandler::OnGoatExitedThroneRoom(AGGGoat* Goat, AGGGoatTower* GoatTower) {
+}
+
+void UGGGlobalEventHandler::OnGoatExitedRaft(AGGGoat* Goat, AActor* Raft) {
 }
 
 void UGGGlobalEventHandler::OnGoatEnteredThroneRoom(AGGGoat* Goat, AGGGoatTower* GoatTower) {
 }
 
+void UGGGlobalEventHandler::OnGoatEnteredRideSeat(AGGGoat* Goat, AActor* RideSeat) {
+}
+
+void UGGGlobalEventHandler::OnGoatEnteredRaft(AGGGoat* Goat, AActor* Raft) {
+}
+
+void UGGGlobalEventHandler::OnGoatCompletedAchievement(AGGGoat* Goat, const FString& AchievementID) {
+}
+
+void UGGGlobalEventHandler::OnGoatBeatFlapMaster(AGGGoat* Goat) {
+}
+
 void UGGGlobalEventHandler::OnGoatBaa(AGGGoat* Goat) {
+}
+
+void UGGGlobalEventHandler::OnGoatAppliedStickyEffect(AActor* Goat, AActor* StickyEffect) {
 }
 
 void UGGGlobalEventHandler::OnGameCurrentActiveGameChanged(AGGPlayerGame_Base* PlayerGame) {
@@ -108,7 +135,13 @@ void UGGGlobalEventHandler::OnCompletedAchievement(const FString& AchievementID)
 void UGGGlobalEventHandler::OnCharacterJumped(AGGCharacter* Character) {
 }
 
+void UGGGlobalEventHandler::OnBalloonAttachedToActor(AActor* Balloon, AActor* Actor) {
+}
+
 void UGGGlobalEventHandler::OnActorTookDamage(AActor* SourceActor, AActor* TargetActor, float DamageAmount, const UDamageType* DamageType) {
+}
+
+void UGGGlobalEventHandler::OnActorAttachedToCottonCandy(AGGGoat* Goat) {
 }
 
 

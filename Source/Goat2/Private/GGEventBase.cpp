@@ -18,6 +18,8 @@ AGGEventBase::AGGEventBase(const FObjectInitializer& ObjectInitializer) : Super(
     this->bHideOnMapTilCompleted = false;
     this->CompletedSequence = NULL;
     this->CompletedSequenceDelay = 0.00f;
+    this->ChaosRewardRowName = TEXT("DefaultEventReward");
+    this->bUseChaosRewardTable = false;
     this->bWasDeactivatedAfterCompletion = false;
     this->CompletedSequenceActor = NULL;
     this->CompletedSequencePlayer = NULL;
@@ -43,7 +45,7 @@ bool AGGEventBase::IsConsideredForNearestEvent() {
     return false;
 }
 
-bool AGGEventBase::HasEverBeenDiscovered() {
+bool AGGEventBase::HasEverBeenDiscovered() const {
     return false;
 }
 
@@ -54,12 +56,16 @@ bool AGGEventBase::HasBeenDiscoveredThisSession() {
 void AGGEventBase::GetEventStates(EEventActiveState& ActiveState, EEventCompletedState& CompletedState) {
 }
 
-EEventCompletedState AGGEventBase::GetCompletionState() {
+EEventCompletedState AGGEventBase::GetCompletionState() const {
     return EEventCompletedState::Error;
 }
 
 FVector AGGEventBase::GetClosestEventPointLocation(FVector Location, float& OutDistance) {
     return FVector{};
+}
+
+int32 AGGEventBase::GetChaosRewardAmount() const {
+    return 0;
 }
 
 EEventActiveState AGGEventBase::GetActiveState() {

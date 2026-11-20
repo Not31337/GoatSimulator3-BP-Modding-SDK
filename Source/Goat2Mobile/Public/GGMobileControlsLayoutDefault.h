@@ -8,7 +8,6 @@
 #include "Styling/SlateTypes.h"
 #include "Components/SlateWrapperTypes.h"
 #include "GGMobileControlsLayoutBase.h"
-#include "Templates/SubclassOf.h"
 #include "GGMobileControlsLayoutDefault.generated.h"
 
 class AActor;
@@ -103,9 +102,6 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FButtonStyle BikePassengerButtonStyle;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSubclassOf<AActor> DamItCannon;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     AGGGoat* ControlledGoat;

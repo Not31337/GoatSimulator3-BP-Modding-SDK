@@ -263,8 +263,17 @@ public:
     UFUNCTION(BlueprintCallable)
     void OnDeleteButtonPressed();
     
+private:
+    UFUNCTION(BlueprintCallable)
+    void LoadGearIconForImage(UImage* ImageSlot, const TSoftObjectPtr<UTexture2D> InGearIcon);
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsPresetEquipped();
+    
+private:
+    UFUNCTION(BlueprintCallable)
+    void CancelLoadGearIconForImage(UImage* ImageSlot);
     
 };
 

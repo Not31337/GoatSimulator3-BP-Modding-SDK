@@ -33,6 +33,7 @@ class ULevelSequence;
 class UMaterialInterface;
 class UPhysicsAsset;
 class USkeletalMesh;
+class USoundBase;
 class USoundCue;
 class UStaticMesh;
 
@@ -80,6 +81,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FVector MeshRelativeLocationAsRider;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FVector FirstPersonCameraOffsetFromHeadBone;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bHideMeshInFirstPersonView;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<TSoftClassPtr<AGGVehicle>, FGGAltGoatMeshTransformsForVehicles> MeshTransformsForVehicles;
@@ -348,6 +355,9 @@ public:
     UAnimMontage* HeadbuttMontage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UAnimMontage*> HeadbuttMontagesRandom;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UAnimMontage* ChargeHeadbuttMontage;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -415,6 +425,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     USoundCue* LickSound;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<float, USoundBase*> GoatRagdollImpactSounds;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UGGGoatEmote*> Emotes;

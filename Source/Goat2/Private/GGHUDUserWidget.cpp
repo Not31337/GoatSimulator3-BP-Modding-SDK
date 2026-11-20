@@ -71,6 +71,9 @@ bool UGGHUDUserWidget::HasEffectSource(FGameplayTag EffectTag) const {
     return false;
 }
 
+void UGGHUDUserWidget::GameNightDisconnectedPopupResponse(const FString& ID, UObject* Object, const FString& ButtonID, EPopupResponse Response) {
+}
+
 void UGGHUDUserWidget::AddEffectSources(FGameplayTag SourceTag, FGameplayTagContainer EffectTags, FGameplayTagContainer Targets) {
 }
 

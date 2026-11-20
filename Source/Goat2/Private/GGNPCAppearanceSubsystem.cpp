@@ -1,13 +1,17 @@
 #include "GGNPCAppearanceSubsystem.h"
 
 UGGNPCAppearanceSubsystem::UGGNPCAppearanceSubsystem() {
-    this->AdditionalHeadTables.AddDefaulted(2);
-    this->AdditionalHairTables.AddDefaulted(2);
-    this->AdditionalUpperBodyTables.AddDefaulted(2);
-    this->AdditionalLowerBodyTables.AddDefaulted(2);
-    this->AdditionalAccessoriesTables.AddDefaulted(2);
-    this->AdditionalSetTables.AddDefaulted(2);
-    this->AdditionalNameDataTables.AddDefaulted(2);
+    this->AdditionalHeadTables.AddDefaulted(3);
+    this->AdditionalHairTables.AddDefaulted(3);
+    this->AdditionalUpperBodyTables.AddDefaulted(3);
+    this->AdditionalLowerBodyTables.AddDefaulted(3);
+    this->AdditionalAccessoriesTables.AddDefaulted(3);
+    this->AdditionalSetTables.AddDefaulted(3);
+    this->AdditionalNameDataTables.AddDefaulted(3);
+}
+
+TArray<FString> UGGNPCAppearanceSubsystem::ShouldUseHatFriendlyHair(UObject* WorldContext, EGender Gender, FGameplayTag AreaTag, TArray<FString> NPCAppearanceArray) {
+    return TArray<FString>();
 }
 
 TArray<UDataTable*> UGGNPCAppearanceSubsystem::GetSetTables(UObject* WorldContext) {
@@ -40,6 +44,10 @@ TArray<FString> UGGNPCAppearanceSubsystem::GetRandomAccessories(UObject* WorldCo
 
 TArray<FText> UGGNPCAppearanceSubsystem::GetNPCNamesForRow(UObject* WorldContext, const FName& RowName) {
     return TArray<FText>();
+}
+
+TArray<FString> UGGNPCAppearanceSubsystem::GenerateRandomAppearance(UObject* WorldContext, EGender Gender, FGameplayTag AreaTag, TArray<FString> PredeterminedElements, bool bForceAreaTag, bool bHandleHatFriendlyHair) {
+    return TArray<FString>();
 }
 
 

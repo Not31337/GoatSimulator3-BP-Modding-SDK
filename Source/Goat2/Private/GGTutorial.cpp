@@ -35,6 +35,9 @@ void AGGTutorial::OnGoatReplaced(AGGGoat* OldGoat, AGGGoat* NewGoat) {
 void AGGTutorial::OnGamepadChanged(bool bInActive) {
 }
 
+void AGGTutorial::OnControlledGoatReplicated(AGGGoat* NewGoat) {
+}
+
 bool AGGTutorial::IsTutorialShown() {
     return false;
 }

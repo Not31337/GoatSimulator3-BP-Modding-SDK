@@ -119,6 +119,9 @@ protected:
     ULSRagdollSyncParameters* RagdollSyncParameters;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bCanSetNewRagdollAuthController;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxRagdollImpulseStrength;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -254,9 +257,11 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bReplicateRagdollLocation;
     
+public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FVector_NetQuantize RagdollVelocity;
     
+private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FVector_NetQuantize100 RagdollAngularVelocity;
     
@@ -411,6 +416,9 @@ public:
     void SetRotationMode(ELSRotationMode newRotationMode);
     
     UFUNCTION(BlueprintCallable)
+    void SetMovementSpeeds(const FLSGaitsFloat& NewMovementSpeeds);
+    
+    UFUNCTION(BlueprintCallable)
     void SetInAirRotationMode(ELSInAirRotationMode NewInAirRotationMode);
     
 private:
@@ -425,6 +433,11 @@ private:
     UFUNCTION(BlueprintCallable, Reliable, Server)
     void SetFixedRotationMode_Server(FRotator FixedRotation, bool bIsLocked);
     
+public:
+    UFUNCTION(BlueprintCallable)
+    void SetCrouchMovementSpeeds(const FLSGaitsFloat& NewMovementSpeeds);
+    
+private:
     UFUNCTION(BlueprintCallable, Server, Unreliable)
     void SetCharacterRotation_Server(FRotator NewCharacterRotation, bool bInterpolate);
     

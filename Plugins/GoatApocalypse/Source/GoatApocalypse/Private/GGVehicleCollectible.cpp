@@ -1,8 +1,11 @@
 #include "GGVehicleCollectible.h"
 #include "GGDynamicAssetHoldingComponent.h"
-#include "Net/UnrealNetwork.h"
 
 AGGVehicleCollectible::AGGVehicleCollectible(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bAlwaysRelevant = false;
+    this->bReplicates = false;
+    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_None;
     this->QuestProgressTiers.AddDefaulted(1);
     this->UnreadMenuCategory = TEXT("achievements");
     this->UnreadQuestCategory = TEXT("achievements_vehiclecollectible");
@@ -25,9 +28,6 @@ void AGGVehicleCollectible::SetPickupActive(bool bInActive) {
 void AGGVehicleCollectible::PickUpCollectible(AActor* InInstigator) {
 }
 
-void AGGVehicleCollectible::OnRep_IsActive() {
-}
-
 
 
 void AGGVehicleCollectible::OnDynamicLoadingFinished(UGGDynamicAssetHoldingComponent* InDynAssetComp) {
@@ -37,11 +37,5 @@ bool AGGVehicleCollectible::HasBeenPickedUp() {
     return false;
 }
 
-
-void AGGVehicleCollectible::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
-    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-    
-    DOREPLIFETIME(AGGVehicleCollectible, bIsPickupActive);
-}
 
 

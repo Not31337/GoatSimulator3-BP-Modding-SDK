@@ -11,6 +11,9 @@ UGGTeleportationComponent::UGGTeleportationComponent(const FObjectInitializer& O
 void UGGTeleportationComponent::TeleportPlayer_WithCallbacks(APlayerController* PlayerController, FVector Location, FRotator Rotation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, FOnTeleportStageUpdate OnTeleportStageUpdate, UGGTeleportSettingsDataAsset* SettingsAsset) {
 }
 
+void UGGTeleportationComponent::TeleportPlayer_ToTargetComponent(AGGPlayerController* PlayerController, USceneComponent* Target, const FTeleportParameters& TeleportParameters, const FLoadingScreenParameters& LoadingScreenParameters) {
+}
+
 void UGGTeleportationComponent::TeleportPlayer_LookAt_WithCallbacks(APlayerController* PlayerController, FVector Location, FVector LookAtLocation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, FOnTeleportStageUpdate OnTeleportStageUpdate, UGGTeleportSettingsDataAsset* SettingsAsset) {
 }
 
@@ -25,6 +28,12 @@ void UGGTeleportationComponent::ShowTeleportWarning() {
 
 bool UGGTeleportationComponent::ShouldTeleportWithVehicle(APlayerController* PlayerController) {
     return false;
+}
+
+void UGGTeleportationComponent::ServerTeleportPlayer_ToTarget_Implementation(USceneComponent* Target, const FTeleportParameters& TeleportParams, const FLoadingScreenParameters& LoadingParams) {
+}
+bool UGGTeleportationComponent::ServerTeleportPlayer_ToTarget_Validate(USceneComponent* Target, const FTeleportParameters& TeleportParams, const FLoadingScreenParameters& LoadingParams) {
+    return true;
 }
 
 void UGGTeleportationComponent::ServerTeleportPlayer_Implementation(FVector_NetQuantize Location, FRotator Rotation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, bool bUseLookAt, FVector LookAtLocation) {

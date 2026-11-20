@@ -16,7 +16,7 @@ class GOAT2_API UGGPersonalGearPresetHandle : public UObject, public IGGListElem
 public:
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    int32 PlayerId;
+    int32 playerId;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGuid GearSetId;

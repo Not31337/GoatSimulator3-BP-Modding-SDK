@@ -15,5 +15,7 @@ enum class EPlatformFlagsBP : uint8 {
     PS4,
     XboxOne,
     Steam,
+    Sage,
+    Luna,
 };
 

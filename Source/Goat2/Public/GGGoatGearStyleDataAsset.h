@@ -19,7 +19,7 @@ public:
     FText Title;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UTexture2D* StyleIcon;
+    TSoftObjectPtr<UTexture2D> StyleIcon;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<USceneComponent> GoatGearStyle;

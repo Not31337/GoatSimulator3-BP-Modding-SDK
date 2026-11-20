@@ -32,6 +32,9 @@ public:
     UGGGoatGearInfoDataAsset* RequiredUnlockedGearAsset;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<UGGGoatGearInfoDataAsset*> AlternativeRequiredGearAssets;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 BasePriority;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

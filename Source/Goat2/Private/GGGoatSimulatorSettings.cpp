@@ -3,16 +3,17 @@
 UGGGoatSimulatorSettings::UGGGoatSimulatorSettings() {
     this->PreReleaseCertBuildTags_Apocalypse_Names.AddDefaulted(2);
     this->bIsPreReleaseCertBuild_Apocalypse = false;
+    this->bIsPreReleaseCertBuild_ThemePark = false;
     this->DebugLanguageName = TEXT("io");
     this->bShowGoatDLCs = false;
-    this->Updates.AddDefaulted(12);
+    this->Updates.AddDefaulted(13);
     this->GoatGearFolder = TEXT("DataAssets/GoatGear");
     this->ThumbnailSaveLocation = TEXT("UI/Textures/GoatGear");
     this->InstinctsFolder = TEXT("DataAssets/Instincts");
     this->QuestTemplateFolder = TEXT("Blueprints/Quests/Templates");
-    this->NotificationWidgetClassesDataTables.AddDefaulted(2);
+    this->NotificationWidgetClassesDataTables.AddDefaulted(3);
     this->bUseNewNotificationDataTables = false;
-    this->MenuIconDataTables.AddDefaulted(1);
+    this->MenuIconDataTables.AddDefaulted(2);
 }
 
 bool UGGGoatSimulatorSettings::UseNewNotificationDataTables() {
@@ -20,6 +21,10 @@ bool UGGGoatSimulatorSettings::UseNewNotificationDataTables() {
 }
 
 bool UGGGoatSimulatorSettings::IsTagRestricted(FGameplayTag InTag) {
+    return false;
+}
+
+bool UGGGoatSimulatorSettings::IsPreReleaseCertBuild_ThemePark() {
     return false;
 }
 
@@ -72,6 +77,10 @@ FText UGGGoatSimulatorSettings::GetDisplayNameForSetting(FName SettingName) {
 }
 
 TSoftObjectPtr<UDataTable> UGGGoatSimulatorSettings::GetDefaultNotificationWidgetClassesDataTable() {
+    return NULL;
+}
+
+UDataTable* UGGGoatSimulatorSettings::GetDefaultInputButtonIcons() {
     return NULL;
 }
 

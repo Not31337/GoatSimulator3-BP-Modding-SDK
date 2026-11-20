@@ -1,7 +1,7 @@
 #include "GGCustomCheatManagerApocalypse.h"
 
 UGGCustomCheatManagerApocalypse::UGGCustomCheatManagerApocalypse(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->ConsoleVehicleArray.AddDefaulted(34);
+    this->ConsoleVehicleArray.AddDefaulted(33);
     this->NPCClasses.AddDefaulted(26);
     this->NotificationTestingStatics_Apocalypse = NULL;
 }
@@ -13,9 +13,6 @@ void UGGCustomCheatManagerApocalypse::UnlockAllRadioTowers() {
 }
 
 void UGGCustomCheatManagerApocalypse::ToggleFormerGearsLocked(bool bUnlocked) {
-}
-
-void UGGCustomCheatManagerApocalypse::SpawnCurrency(int32 Amount) {
 }
 
 void UGGCustomCheatManagerApocalypse::ShowCactusCounterNotification() {

@@ -3,6 +3,7 @@
 #include "Components/ActorComponent.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTagContainer.h"
+#include "EMoods.h"
 #include "OnVoiceLineFinishedDelegate.h"
 #include "GGVoiceOverComponent.generated.h"
 
@@ -64,14 +65,14 @@ public:
     void RandomizeVoiceIdentity_BP(TArray<FGameplayTag> OverrideVoiceIdentities);
     
     UFUNCTION(BlueprintCallable)
-    bool PlayVoiceOver(FGameplayTag VoiceOverType, bool bReplicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage);
+    bool PlayVoiceOver(FGameplayTag VoiceOverType, bool bReplicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride);
     
 private:
     UFUNCTION(BlueprintCallable)
     void OnAudioFinished();
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void MulticastPlayVoiceOver(FGameplayTag VoiceOverType, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage);
+    void MulticastPlayVoiceOver(FGameplayTag VoiceOverType, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride);
     
 };
 

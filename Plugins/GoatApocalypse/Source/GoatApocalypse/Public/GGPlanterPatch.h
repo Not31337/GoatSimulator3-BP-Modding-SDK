@@ -39,6 +39,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AGGPlayerController* PlantedBy;
     
+private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 MobileGearPlanterLimit;
+    
 public:
     AGGPlanterPatch(const FObjectInitializer& ObjectInitializer);
 

@@ -3,4 +3,7 @@
 UGGMobileControlsLayoutDefault_AP::UGGMobileControlsLayoutDefault_AP() {
 }
 
+void UGGMobileControlsLayoutDefault_AP::OnApocalypseIntroVideoFinished() {
+}
+
 

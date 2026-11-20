@@ -20,8 +20,12 @@
 #include "OnFirstInstinctPackUnlockedDelegate.h"
 #include "OnGameCurrentActiveGameChangedDelegate.h"
 #include "OnGoatChangedMovementModeDelegate.h"
+#include "OnGoatCompletedAchievementDelegate.h"
 #include "OnGoatDroppedLickedActorDelegate.h"
+#include "OnGoatEnteredRaftDelegate.h"
+#include "OnGoatEnteredRideSeatDelegate.h"
 #include "OnGoatEnteredThroneRoomDelegate.h"
+#include "OnGoatExitedRaftDelegate.h"
 #include "OnGoatExitedThroneRoomDelegate.h"
 #include "OnGoatJumpedDelegate.h"
 #include "OnGoatLandedDelegate.h"
@@ -38,6 +42,7 @@
 #include "OnInventoryInitializedDelegate.h"
 #include "OnLoadingScreenRemovedDelegate.h"
 #include "OnLocalGearEquipDelegate.h"
+#include "OnLocalGearEquipWithContextDelegate.h"
 #include "OnLocalGearUnEquipDelegate.h"
 #include "OnLocalGoatActionInputDelegate.h"
 #include "OnMenuActionResolveDelegate.h"
@@ -123,6 +128,9 @@ public:
     FOnLocalGearEquip OnLocalGearEquipDelegate;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnLocalGearEquipWithContext OnLocalGearEquipWithContextDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnLocalGearUnEquip OnLocalGearUnEquipDelegate;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -139,6 +147,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnCompletedAchievement OnCompletedAchievementDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatCompletedAchievement OnGoatCompletedAchievementDelegate;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnDecorateThroneRoom OnDecorateThroneRoomDelegate;
@@ -243,6 +254,24 @@ public:
     FOnGoatChangedMovementMode OnGoatChangedMovementMode;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGoatEvent OnGoatTurnedIntoBalloonDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGoatEvent OnActorAttachedToCottonCandyDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGoatEvent OnGoatBeatFlapMasterDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnInteracted OnGoatAppliedStickyEffectDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnInteracted OnGoatReachedStratosphereInBalloonDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnInteracted OnBalloonAttachedToActorDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnGoatDroppedLickedActor OnGoatDroppedLickedActor;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -250,6 +279,18 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnCharacterExitedVehicle OnCharacterExitedVehicle;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatEnteredRideSeat OnGoatEnteredRideSeatDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatEnteredRaft OnGoatEnteredRaftDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnGoatExitedRaft OnGoatExitedRaftDelegate;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGoatEvent OnGoatFinishedVelociRaftersRideDelegate;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnGoatRequestConstraintBreak OnGoatRequestConstraintBreak;
@@ -332,7 +373,13 @@ public:
     void OnInstinctTriggered(AGGGoat* Goat, FGameplayTag InstinctTag);
     
     UFUNCTION(BlueprintCallable)
+    void OnGoatTurnedIntoBalloon(AGGGoat* Goat);
+    
+    UFUNCTION(BlueprintCallable)
     void OnGoatTowerSynchronised(AGGGoatTower* GoatTower, ETowerSynchronizationEvent SynchronizationEvent);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatReachedStratosphereInBalloon(AActor* Goat, AActor* Balloon);
     
     UFUNCTION(BlueprintCallable)
     void OnGoatLickedActor(AGGGoat* Goat, AActor* LickedActor);
@@ -341,13 +388,34 @@ public:
     void OnGoatHeadbuttedActor(AGGGoat* Goat, AActor* HeadbuttedActor);
     
     UFUNCTION(BlueprintCallable)
+    void OnGoatFinishedVelociRaftersRide(AGGGoat* Goat);
+    
+    UFUNCTION(BlueprintCallable)
     void OnGoatExitedThroneRoom(AGGGoat* Goat, AGGGoatTower* GoatTower);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatExitedRaft(AGGGoat* Goat, AActor* Raft);
     
     UFUNCTION(BlueprintCallable)
     void OnGoatEnteredThroneRoom(AGGGoat* Goat, AGGGoatTower* GoatTower);
     
     UFUNCTION(BlueprintCallable)
+    void OnGoatEnteredRideSeat(AGGGoat* Goat, AActor* RideSeat);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatEnteredRaft(AGGGoat* Goat, AActor* Raft);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatCompletedAchievement(AGGGoat* Goat, const FString& AchievementID);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatBeatFlapMaster(AGGGoat* Goat);
+    
+    UFUNCTION(BlueprintCallable)
     void OnGoatBaa(AGGGoat* Goat);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGoatAppliedStickyEffect(AActor* Goat, AActor* StickyEffect);
     
     UFUNCTION(BlueprintCallable)
     void OnGameCurrentActiveGameChanged(AGGPlayerGame_Base* PlayerGame);
@@ -368,7 +436,13 @@ public:
     void OnCharacterJumped(AGGCharacter* Character);
     
     UFUNCTION(BlueprintCallable)
+    void OnBalloonAttachedToActor(AActor* Balloon, AActor* Actor);
+    
+    UFUNCTION(BlueprintCallable)
     void OnActorTookDamage(AActor* SourceActor, AActor* TargetActor, float DamageAmount, const UDamageType* DamageType);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnActorAttachedToCottonCandy(AGGGoat* Goat);
     
 };
 

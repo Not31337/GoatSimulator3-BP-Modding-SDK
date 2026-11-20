@@ -4,6 +4,7 @@ UGGSpline_SplineMeshSpawner::UGGSpline_SplineMeshSpawner() {
     this->Mesh = NULL;
     this->MeshForwardAxis = ESplineMeshAxis::X;
     this->SpawnMode = EGGSplineMeshSpawnMode::OneMeshBetweenSplinePoints;
+    this->bEnableCollision = false;
 }
 
 

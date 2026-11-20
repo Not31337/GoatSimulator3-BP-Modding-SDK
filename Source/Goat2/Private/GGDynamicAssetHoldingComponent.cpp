@@ -5,7 +5,8 @@ UGGDynamicAssetHoldingComponent::UGGDynamicAssetHoldingComponent(const FObjectIn
     this->bShouldHandleSignificance = true;
     this->bLoadOnSignificance = true;
     this->SignificanceDistance = 6000.00f;
-    this->bIsLoaded = false;
+    this->bAssetsMapLoaded = false;
+    this->bEffectSpawnersLoaded = false;
 }
 
 void UGGDynamicAssetHoldingComponent::UnloadAssets() {
@@ -14,7 +15,11 @@ void UGGDynamicAssetHoldingComponent::UnloadAssets() {
 void UGGDynamicAssetHoldingComponent::StartLoadingAssets() {
 }
 
-UGGEffectsSpawnResult* UGGDynamicAssetHoldingComponent::SpawnEffectsHolder(const UObject* WorldContextObject, const FString& EffectsKey, FVector SpawnLocation, FRotator SpawnRotator, USceneComponent* AttachToComponent) {
+UGGEffectsSpawnResult* UGGDynamicAssetHoldingComponent::SpawnEffectsHolderAtWorldPosition(const FString& EffectsKey, FVector SpawnLocation, FRotator SpawnRotation) {
+    return NULL;
+}
+
+UGGEffectsSpawnResult* UGGDynamicAssetHoldingComponent::SpawnEffectsHolderAttachedToComponent(USceneComponent* AttachComponent, const FString& EffectsKey, FVector Location, FRotator Rotation, TEnumAsByte<EAttachLocation::Type> AttachLocation) {
     return NULL;
 }
 

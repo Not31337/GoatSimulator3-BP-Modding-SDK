@@ -24,11 +24,11 @@ AGGNPC_Animal* UGGNPCSpawnStatics::SpawnDummyAnimal(const UObject* WorldContextO
     return NULL;
 }
 
-AGGNPC* UGGNPCSpawnStatics::SpawnDummy(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FNPCSpawnParameters SpawnParameters, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements) {
+AGGNPC* UGGNPCSpawnStatics::SpawnDummy(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FNPCSpawnParameters SpawnParameters, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements, bool bPrioritizeAreaParts) {
     return NULL;
 }
 
-AGGNPC* UGGNPCSpawnStatics::SpawnCivilian(const UObject* WorldContextObject, FNPCSpawnParameters SpawnParameters, EGender Gender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements) {
+AGGNPC* UGGNPCSpawnStatics::SpawnCivilian(const UObject* WorldContextObject, FNPCSpawnParameters SpawnParameters, EGender Gender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements, bool bPrioritizeAreaParts) {
     return NULL;
 }
 

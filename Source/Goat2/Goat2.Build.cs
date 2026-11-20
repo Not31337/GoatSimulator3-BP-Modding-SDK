@@ -14,6 +14,7 @@ public class Goat2 : ModuleRules {
             "Core",
             "CoreUObject",
             "DeveloperSettings",
+            "Duckfeed",
             "Engine",
             "EngineSettings",
             "GFur",

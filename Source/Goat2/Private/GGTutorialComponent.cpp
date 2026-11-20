@@ -45,7 +45,7 @@ void UGGTutorialComponent::OnGoatEnteredVehicleIsh(AGGGoat* Goat, APawn* FlyingB
 void UGGTutorialComponent::OnGearUnEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearUnequipped) {
 }
 
-void UGGTutorialComponent::OnGearEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearEquipped) {
+void UGGTutorialComponent::OnGearEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearEquipped, EGearEquipContext EquipContext) {
 }
 
 void UGGTutorialComponent::OnGamepadChanged(bool bUsingGamepad) {

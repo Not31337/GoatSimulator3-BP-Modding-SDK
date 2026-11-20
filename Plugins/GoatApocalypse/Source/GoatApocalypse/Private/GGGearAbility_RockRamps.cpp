@@ -5,6 +5,7 @@ UGGGearAbility_RockRamps::UGGGearAbility_RockRamps() {
     this->RockRampClass = NULL;
     this->MaxDistanceInFront = 4000.00f;
     this->CurrentRamp = NULL;
+    this->MobileGearRampLimit = 10;
 }
 
 

@@ -21,6 +21,9 @@ public:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, NotReplicated, meta=(AllowPrivateAccess=true))
     bool bUseVelocityForInterpolationSpeed;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, NotReplicated, meta=(AllowPrivateAccess=true))
+    float PingExtrapolationTime;
+    
     FGGSmoothNetInterpolate();
 };
 

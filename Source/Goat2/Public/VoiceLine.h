@@ -24,6 +24,9 @@ public:
     FGameplayTagContainer AreaTags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGameplayTag NpcIdTag;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<USoundWave> SoundWave;
     
 protected:

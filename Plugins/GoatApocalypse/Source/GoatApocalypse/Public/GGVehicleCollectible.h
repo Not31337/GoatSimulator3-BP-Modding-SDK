@@ -35,7 +35,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRadarCoordinateData RadarData;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_IsActive, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsPickupActive;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -46,8 +46,6 @@ public:
     
     AGGVehicleCollectible(const FObjectInitializer& ObjectInitializer);
 
-    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-
     UFUNCTION(BlueprintCallable)
     void SetupCollectible();
     
@@ -56,9 +54,6 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void PickUpCollectible(AActor* InInstigator);
-    
-    UFUNCTION(BlueprintCallable)
-    void OnRep_IsActive();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnPickedUp_BP(AActor* InInstigator);

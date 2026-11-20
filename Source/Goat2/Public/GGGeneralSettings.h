@@ -32,6 +32,15 @@ public:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGGGameSetting MobilePrivacyPolicyButton;
     
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGGameSetting ImportSwitchProgress;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGGameSetting AllowDataCollection;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGGameSetting ShowAnonymousPlayerId;
+    
     FGGGeneralSettings();
 };
 

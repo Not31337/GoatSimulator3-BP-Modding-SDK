@@ -24,6 +24,10 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     AGGRockRamp* CurrentRamp;
     
+private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 MobileGearRampLimit;
+    
 public:
     UGGGearAbility_RockRamps();
 

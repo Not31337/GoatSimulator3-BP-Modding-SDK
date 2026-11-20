@@ -8,5 +8,6 @@ enum class EActorScanTypes : uint8 {
     AST_PaperboyPoint,
     AST_BurningActor,
     AST_PhysicsActors,
+    AST_SpecifiedClass,
 };
 

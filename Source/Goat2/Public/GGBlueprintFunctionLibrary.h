@@ -63,9 +63,7 @@ class UAnimInstance;
 class UAnimationAsset;
 class UAudioComponent;
 class UDamageType;
-class UGGEffectsSpawnHolder;
 class UGGEffectsSpawnHolderSoftPtrs;
-class UGGEffectsSpawnResult;
 class UGGGameInstance;
 class UGGGlobalEventHandler;
 class UGGGroundAlignedParticleComponent;
@@ -81,6 +79,7 @@ class UGameplayEffect;
 class ULevel;
 class ULocalPlayer;
 class UMaterialInterface;
+class UMediaPlayer;
 class UMediaSoundComponent;
 class UMeshComponent;
 class UObject;
@@ -155,17 +154,14 @@ public:
     UFUNCTION(BlueprintCallable)
     static UGGGroundAlignedParticleComponent* SpawnGroundAlignedParticle(USceneComponent* AttachToComponent, FName AttachPointName, UParticleSystem* GroundParticle, UParticleSystem* InAirParticle, float LifeSpan);
     
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static UGGEffectsSpawnResult* SpawnEffectGroup(const UObject* WorldContextObject, FVector SpawnLocation, FRotator SpawnRotation, UGGEffectsSpawnHolder* EffectsHolder, USceneComponent* AttachToComponent);
-    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static AGGNPC* SpawnDummyNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FGameplayTag Area, FVector Location, FRotator Rotation, FVector Impulse, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, bool ForceRelevant, bool CanGetFromPool, ESpawnActorCollisionHandlingMethod CollisionHandling);
+    static AGGNPC* SpawnDummyNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FGameplayTag Area, FVector Location, FRotator Rotation, FVector Impulse, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, bool ForceRelevant, bool CanGetFromPool, ESpawnActorCollisionHandlingMethod CollisionHandling, bool bPrioritizeAreaParts);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AGGNPC* SpawnDummyAnimalNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC_Animal> NPCClass, FGameplayTag Area, FVector Location, FRotator Rotation, FVector Impulse, const FAnimalMaterialCollection& MaterialOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, ESpawnActorCollisionHandlingMethod CollisionHandling);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static AGGNPC* SpawnCivilianNPC(const UObject* WorldContextObject, FGameplayTag Area, FVector Location, FRotator Rotation, EGender Gender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, FGameplayTag CivilianClassOverride, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, bool AsRagdoll, FVector Impulse, ESpawnActorCollisionHandlingMethod CollisionHandling);
+    static AGGNPC* SpawnCivilianNPC(const UObject* WorldContextObject, FGameplayTag Area, FVector Location, FRotator Rotation, EGender Gender, FGameplayTag AppearanceArea, TArray<FString> PredeterminedElements, TArray<FPredeterminedElement> PredeterminedRowElements, const FString& AppearanceSet, TArray<FString> AppearanceOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, FGameplayTag CivilianClassOverride, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, bool AsRagdoll, FVector Impulse, ESpawnActorCollisionHandlingMethod CollisionHandling, bool bPrioritizeAreaParts);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AGGNPC* SpawnAnimalNPC(const UObject* WorldContextObject, TSubclassOf<AGGNPC_Animal> NPCClass, FGameplayTag Area, FVector Location, FRotator Rotation, const FAnimalMaterialCollection& MaterialOverride, FText DisplayNameOverride, FDataTableRowHandle FemFirstName, FDataTableRowHandle MaleFirstName, FDataTableRowHandle LastName, EMoods StartingMood, bool ForceRelevant, bool CanGetFromPool, bool AsRagdoll, FVector Impulse, ESpawnActorCollisionHandlingMethod CollisionHandling);
@@ -178,6 +174,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static void ShowSplashText(FText SplashTitle, FText SplashDescription, AActor* TargetPlayer);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool ShouldSkipPreRenderedVideos();
     
     UFUNCTION(BlueprintCallable)
     static void SetUpdateAnimationInEditor(USkeletalMeshComponent* MeshComp, bool ShouldUpdate);
@@ -235,6 +234,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static void RemoveGameplayCue(AGGGoat* Goat, FGameplayTag GameplayTag);
+    
+    UFUNCTION(BlueprintCallable)
+    static void ReleaseMediaPlayback(UMediaPlayer* MediaPlayer, UMediaSoundComponent* MediaSoundComponent);
     
     UFUNCTION(BlueprintCallable)
     static void RecreateMeshPhysState(UMeshComponent* MeshComp);
@@ -328,6 +330,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPlaytestingBuild();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsNPCBusy(AGGNPC_Humanoid* NPC);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsMobilePlatform(bool bForUI);
@@ -476,6 +481,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FSoftObjectPath GetOverrideMainMap();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static TArray<AActor*> GetOverlappingActorsOfClass(const AActor* Actor, TSubclassOf<AActor> ClassFilter);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static UGGNPCManager* GetNPCManager(const UObject* WorldContextObject);
     
@@ -589,6 +597,30 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static ULevel* GetActorLevel(AActor* Actor);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void GameNight_UnbindFunctionOnStartSession(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void GameNight_StartGameNightFlow(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool GameNight_IsUsingPhysicalController(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool GameNight_HasMadeControllerChoice(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static float GameNight_GetHoldDuration(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static TArray<UActorComponent*> GameNight_GetControllerArray(const UObject* WorldContextObject);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void GameNight_BindFunctionOnStartSession(const UObject* WorldContextObject, FName FunctionName);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool ForceMediaEndReached(UMediaPlayer* MediaPlayer);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static APlayerController* FindLocalPlayerControllerWithPlayerState(const UObject* WorldContextObject, AGGPlayerState* PlayerState);

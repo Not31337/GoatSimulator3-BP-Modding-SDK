@@ -2,7 +2,7 @@
 
 UGGAchievementSubsystem::UGGAchievementSubsystem() {
     this->LoadedAchievementDataTables = NULL;
-    this->AchievementDataTables.AddDefaulted(3);
+    this->AchievementDataTables.AddDefaulted(4);
 }
 
 void UGGAchievementSubsystem::UnlockAchievements(TArray<FString> AchievementIDs, AGGPlayerController* PC) {

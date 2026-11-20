@@ -12,5 +12,6 @@ enum class EGoatDLC : uint8 {
     GoatApocalypse,
     GearPack_Supergoats,
     GearPack_Future,
+    GoatThemePark,
 };
 

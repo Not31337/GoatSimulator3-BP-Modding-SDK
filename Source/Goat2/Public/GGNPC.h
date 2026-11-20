@@ -107,6 +107,9 @@ public:
     bool bIsDefaultClassOverride;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGameplayTag OverrideClassTag;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bStartedAsEnvironmental;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -420,6 +423,12 @@ public:
     FGameplayTag GrabbedCharacterMeshCollision;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GrabbedCharacterLinearDamping;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float GrabbedCharacterAngularDamping;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FRecentlyGrabbedCharacter> RecentlyGrabbedCharacters;
     
 private:
@@ -576,7 +585,7 @@ public:
     void PoolNPC();
     
     UFUNCTION(BlueprintCallable)
-    bool PlayVoiceOver(FGameplayTag VoiceOverType, bool Replicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage);
+    bool PlayVoiceOver(FGameplayTag VoiceOverType, bool Replicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -764,6 +773,9 @@ public:
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void DropCharacter(bool bSetMeshProfile);
+    
+    UFUNCTION(BlueprintCallable)
+    void ClearReactionCooldown(FGameplayTag ReactionTag);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void ClearNPCIdentifierTags(bool bResetBackToDefaults);

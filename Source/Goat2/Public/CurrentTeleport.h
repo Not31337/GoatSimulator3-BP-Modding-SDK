@@ -8,6 +8,8 @@
 #include "TeleportParameters.h"
 #include "CurrentTeleport.generated.h"
 
+class USceneComponent;
+
 USTRUCT(BlueprintType)
 struct FCurrentTeleport {
     GENERATED_BODY()
@@ -47,6 +49,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, NotReplicated, meta=(AllowPrivateAccess=true))
     int32 FramesSincePlayerMovedStart;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    USceneComponent* Target;
     
     GOAT2_API FCurrentTeleport();
 };

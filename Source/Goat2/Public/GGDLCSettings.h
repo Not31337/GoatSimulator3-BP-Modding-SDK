@@ -38,6 +38,9 @@ public:
     bool bEditorDefaultOwnership_GoatApocalypse;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bEditorDefaultOwnership_GoatThemePark;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bEditorDefaultOwnership_MagicPack;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))

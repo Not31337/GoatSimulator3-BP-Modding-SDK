@@ -1,0 +1,18 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Goat Reference Validator",
+	"Description": "Editor tooling that finds references breaking the project's content isolation rules: DLC content plugins referencing each other, and content that ships referencing an asset under a NeverCook directory.",
+	"Category": "Other",
+	"CreatedBy": "Coffee Stain North",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EnabledByDefault": true,
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false
+}

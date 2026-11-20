@@ -11,5 +11,7 @@ enum class EVehicleType : uint8 {
     VT_Motorcycle,
     VT_Helicopter,
     VT_SandWorm,
+    VT_Train,
+    VT_ThemeParkRide,
 };
 

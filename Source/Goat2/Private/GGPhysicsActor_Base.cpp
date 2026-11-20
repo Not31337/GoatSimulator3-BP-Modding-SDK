@@ -36,6 +36,7 @@ AGGPhysicsActor_Base::AGGPhysicsActor_Base(const FObjectInitializer& ObjectIniti
     this->bCanBeGrabbed = true;
     this->AttachedToActor = NULL;
     this->IsAttachedToSomething = false;
+    this->DroppedLifeSpan = 120.00f;
     this->ShouldDetach = false;
     this->bOverrideImpactEffectMeshSettings = false;
     this->ImpactEffectComp = NULL;
@@ -101,11 +102,17 @@ void AGGPhysicsActor_Base::SetMaterial(UMaterialInterface* Material) {
 void AGGPhysicsActor_Base::SetLatestInstigator_Implementation(APawn* InInstigator, FGameplayTag Interaction, float ClearAfter, bool bUnragdollReset) {
 }
 
+void AGGPhysicsActor_Base::SetIsAttachedToSomething(bool bNewIsAttachedToSomething) {
+}
+
 bool AGGPhysicsActor_Base::SetGoatSimName_Implementation(const FText& NewName) {
     return false;
 }
 
 void AGGPhysicsActor_Base::SetDesiredColorMaterialIndex(int32 DesiredIndex) {
+}
+
+void AGGPhysicsActor_Base::SetDefaultToSimulatingPhysics(bool bNewDefaultToSimulatingPhysics) {
 }
 
 void AGGPhysicsActor_Base::SetCollisionProfile(const FName& CollisionProfileName) {
@@ -114,7 +121,13 @@ void AGGPhysicsActor_Base::SetCollisionProfile(const FName& CollisionProfileName
 void AGGPhysicsActor_Base::SetCollisionEnabled(bool NewEnabled) {
 }
 
+void AGGPhysicsActor_Base::SetClientAuthority(AGGPlayerController* Player, float Duration, float BlendOutTime) {
+}
+
 void AGGPhysicsActor_Base::SetAISightVisible(bool bShouldBeVisible) {
+}
+
+void AGGPhysicsActor_Base::ServerSendMovementUpdate_Implementation(FRigidBodyState RigidBodyState) {
 }
 
 void AGGPhysicsActor_Base::ResetOriginalMatOverride() {
@@ -124,6 +137,9 @@ void AGGPhysicsActor_Base::ResetMaterial() {
 }
 
 void AGGPhysicsActor_Base::ResetDesiredColorMaterialIndex() {
+}
+
+void AGGPhysicsActor_Base::ResetClientAuthority(bool bResetOwner) {
 }
 
 bool AGGPhysicsActor_Base::RemoveStatusEffect_Implementation(EStatusEffectTypes TypeToRemove) {
@@ -225,6 +241,10 @@ bool AGGPhysicsActor_Base::HasStatusEffectByClass_Implementation(TSubclassOf<AGG
     return false;
 }
 
+bool AGGPhysicsActor_Base::HasLocalClientAuthority() const {
+    return false;
+}
+
 void AGGPhysicsActor_Base::HandleConveyorMovement(FVector MoveDelta, ETeleportType TeleportType) {
 }
 
@@ -276,6 +296,10 @@ bool AGGPhysicsActor_Base::GetIsOptimized() const {
     return false;
 }
 
+bool AGGPhysicsActor_Base::GetIsAttachedToSomething() const {
+    return false;
+}
+
 FGameplayTagContainer AGGPhysicsActor_Base::GetIdentifierTags() {
     return FGameplayTagContainer{};
 }
@@ -294,6 +318,10 @@ FText AGGPhysicsActor_Base::GetFullGoatSimName_Implementation(bool WithStyling) 
 
 int32 AGGPhysicsActor_Base::GetDesiredColorMaterialIndex() {
     return 0;
+}
+
+bool AGGPhysicsActor_Base::GetDefaultToSimulatingPhysics() const {
+    return false;
 }
 
 FVector AGGPhysicsActor_Base::GetCenterOfMass() const {
@@ -318,6 +346,9 @@ bool AGGPhysicsActor_Base::CanBeLicked_Implementation() {
 
 bool AGGPhysicsActor_Base::CanBeHeadbutted_Implementation(AGGGoat* HeadbuttingGoat) {
     return false;
+}
+
+void AGGPhysicsActor_Base::BlendOutClientAuthority(float BlendOutTime) {
 }
 
 AGGStatusEffectBase* AGGPhysicsActor_Base::ApplyStatusEffect_Implementation(EStatusEffectTypes TypeToApply, EApplicationMethod ApplicationMethod, AActor* SpreadFrom, TSubclassOf<AGGStatusEffectBase> StatusEffectClass, AGGStatusEffectBase* SpreadFromStatus) {

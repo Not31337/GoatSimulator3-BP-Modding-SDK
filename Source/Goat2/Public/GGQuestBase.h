@@ -94,6 +94,9 @@ public:
     TSet<FGameplayTag> QuestCollectionSet;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bShowOnly0To1Progress;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FQuestTier> QuestCollectionMilestones;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -240,17 +243,17 @@ protected:
     void MulticastActivateQuest();
     
 public:
-    UFUNCTION(BlueprintCallable)
-    void LogQuestWarning(const FString& InFunction, const FString& InMessage);
+    UFUNCTION(BlueprintCallable, BlueprintPure=false)
+    void LogQuestWarning(const FString& InFunction, const FString& InMessage) const;
     
-    UFUNCTION(BlueprintCallable)
-    void LogQuestEvent(const FString& InFunction, const FString& InMessage, EQuestDebugType Verbosity);
+    UFUNCTION(BlueprintCallable, BlueprintPure=false)
+    void LogQuestEvent(const FString& InFunction, const FString& InMessage, EQuestDebugType Verbosity) const;
     
-    UFUNCTION(BlueprintCallable)
-    void LogQuestError(const FString& InFunction, const FString& InMessage);
+    UFUNCTION(BlueprintCallable, BlueprintPure=false)
+    void LogQuestError(const FString& InFunction, const FString& InMessage) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool IsTierCompleted(FQuestTier Tier);
+    bool IsTierCompleted(FQuestTier Tier) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsQuestUserVisible();
@@ -259,22 +262,25 @@ public:
     bool IsQuestStepVisible(const FString& StepID);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool IsQuestSecret(bool bSecretIfCompleted);
+    bool IsQuestSecret(bool bSecretIfCompleted) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool IsInitializedFully();
+    bool IsInitializedFully() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInitialized();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    bool IsCompleted();
+    bool IsCompleted() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsActive();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasLoadedStateFromServer();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetTargetProgressForUI() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetQuestTitle();
@@ -301,13 +307,16 @@ public:
     FText GetQuestCompletionSplashBody();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    int32 GetProgress(bool& ReachedMaximum);
+    int32 GetProgressForUI() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetProgress(bool& ReachedMaximum) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FQuestTier GetPreviousQuestTier();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    int32 GetNumberOfSteps();
+    int32 GetNumberOfSteps() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetNumberOfQuestTiers();
@@ -319,16 +328,16 @@ public:
     FQuestStep GetNextUncompletedStep();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    int32 GetMaximumTargetProgress();
+    int32 GetMaximumTargetProgress() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FQuestTier GetLastQuestTier();
+    FQuestTier GetLastQuestTier() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentQuestTierIndex();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FQuestTier GetCurrentQuestTier();
+    FQuestTier GetCurrentQuestTier() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     bool GetCompletedOrderIndexForStep(int32 StepTier, const FString& StepID, int32& OutCompletedOrderIndex) const;

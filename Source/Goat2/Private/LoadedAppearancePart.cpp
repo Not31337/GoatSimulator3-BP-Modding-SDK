@@ -5,6 +5,8 @@ FLoadedAppearancePart::FLoadedAppearancePart() {
     this->StaticMesh = NULL;
     this->SkeletalMesh = NULL;
     this->Material = NULL;
+    this->bUseMaterialCollection = false;
     this->bHideLowerBody = false;
+    this->bHideUpperBody = false;
 }
 

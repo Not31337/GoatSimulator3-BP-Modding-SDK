@@ -75,6 +75,12 @@ protected:
     UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     FCachedPropertyPath CustomSetter;
     
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FCachedPropertyPath CustomLoadFunction;
+    
+    UPROPERTY(EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FCachedPropertyPath CustomSaveFunction;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bOnlyVisibleForPrimaryPlayer;
     

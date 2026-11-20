@@ -1,10 +1,10 @@
 #include "GGGameVersion.h"
 
 UGGGameVersion::UGGGameVersion() {
-    this->BuildCL = TEXT("485636");
-    this->BuildDate = TEXT("2026-04-13 12:15:11");
-    this->BuildName = TEXT("1.2.1.1");
+    this->BuildCL = TEXT("517119");
+    this->BuildName = TEXT("1.3.0.0");
     this->SentryEnvironment = TEXT("Release");
+    this->BuildConfiguration = TEXT("Shipping");
 }
 
 EGameVersion UGGGameVersion::Get() {

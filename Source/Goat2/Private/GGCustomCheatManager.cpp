@@ -2,8 +2,9 @@
 
 UGGCustomCheatManager::UGGCustomCheatManager(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->GoatBugitLocation = TEXT("C:\\Users\\GoneNorthGames\\Documents\\TestLocation");
-    this->ConsoleVehicleArray.AddDefaulted(34);
+    this->ConsoleVehicleArray.AddDefaulted(33);
     this->NPCClasses.AddDefaulted(26);
+    this->bFreeCamMode = false;
     this->bInCursorMode = false;
     this->bHasBoundMouseDown = false;
 }
@@ -125,10 +126,19 @@ void UGGCustomCheatManager::SpendTokens(int32 Amount) {
 void UGGCustomCheatManager::SpawnNPC(const FString& NPCName) {
 }
 
+void UGGCustomCheatManager::SpawnGameNightFlow() {
+}
+
+void UGGCustomCheatManager::SpawnCurrency(int32 Amount) {
+}
+
 void UGGCustomCheatManager::SpawnCars(int32 Index) {
 }
 
 void UGGCustomCheatManager::SpawnCar() {
+}
+
+void UGGCustomCheatManager::SpawnBPActor(const FString& BPActorName) {
 }
 
 void UGGCustomCheatManager::SpawnBike() {
@@ -462,6 +472,9 @@ void UGGCustomCheatManager::GGOnline_AddDummyLobby(bool bOwner) {
 }
 
 void UGGCustomCheatManager::GGOnline_AddDummyFriends(int32 Amount) {
+}
+
+void UGGCustomCheatManager::FreeCamMode() {
 }
 
 void UGGCustomCheatManager::ForceStopMinigame(const FString& GameOutcome) {

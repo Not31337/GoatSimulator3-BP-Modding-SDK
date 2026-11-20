@@ -19,8 +19,13 @@ UGGNPCManager::UGGNPCManager() {
     this->Gen8ConfigAsset = NULL;
     this->MobileConfigAsset = NULL;
     this->SwitchConfigAsset = NULL;
+    this->Switch2ConfigAsset = NULL;
+    this->SteamDeckConfigAsset = NULL;
     this->HardCivilianClass = NULL;
     this->HardEnvironmentalClass = NULL;
+    this->DynamicReactTrees.AddDefaulted(7);
+    this->ReactResetOverrides.AddDefaulted(3);
+    this->GlobalPreLoadBehaviorTrees.AddDefaulted(18);
     this->VehicleManager = NULL;
 }
 
@@ -110,7 +115,18 @@ TArray<AGGNPC*> UGGNPCManager::GetActiveAnimalNPCs() const {
     return TArray<AGGNPC*>();
 }
 
+void UGGNPCManager::CheckDynamicReactTreesLoaded() {
+}
+
 void UGGNPCManager::ChangeNPCRelevantDistMobile(bool bIncrease) {
+}
+
+bool UGGNPCManager::CanReactResetFromCase(FGameplayTag Type, EReactResetCase Case) {
+    return false;
+}
+
+bool UGGNPCManager::CanCurrentReactResetFromCase(AGGNPC_Humanoid* NPC, EReactResetCase Case) {
+    return false;
 }
 
 void UGGNPCManager::AddProfessionalToSpawnPool(TSubclassOf<AGGNPC_Humanoid> ProfessionalClass, int32 Weight, EMoods StartMood) {

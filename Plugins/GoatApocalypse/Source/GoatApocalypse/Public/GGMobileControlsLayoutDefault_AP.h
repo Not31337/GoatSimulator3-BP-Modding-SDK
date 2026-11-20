@@ -9,5 +9,9 @@ class GOATAPOCALYPSE_API UGGMobileControlsLayoutDefault_AP : public UGGMobileCon
 public:
     UGGMobileControlsLayoutDefault_AP();
 
+private:
+    UFUNCTION(BlueprintCallable)
+    void OnApocalypseIntroVideoFinished();
+    
 };
 

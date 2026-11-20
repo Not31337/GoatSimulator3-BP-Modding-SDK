@@ -10,9 +10,15 @@
 #include "StartleDetailsSettings.h"
 #include "GGGearAbility.generated.h"
 
+class AActor;
 class ACharacter;
+class AGGCharacter;
 class AGGGoat;
+class AGGPlayerController;
+class AGGVehicle;
+class APawn;
 class ULSCharacterMovementComponent;
+class UObject;
 class USceneComponent;
 
 UCLASS(Blueprintable)
@@ -24,6 +30,21 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EAbilityInput ActivationInput;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bCanActivateWhileRagdoll;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bCanActivateWhileInsideAVehicle;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bCanActivateWhileCatched;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bUseHeadbuttForAbility;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bManuallyCompleteGearTutorial;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* GearPart;
@@ -61,11 +82,46 @@ public:
     void PlayForceFeedbackForOwner(const FGameplayTag& ForceFeedbackEffect, bool bLoop) const;
     
 protected:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnOwnerStopRagdolling(bool bRagdollOnGround, ULSCharacterMovementComponent* MovementComp, ACharacter* OwnerCharacter, const FRagdollStateChangeSettings& StateChangeSettings);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnOwnerReleased(AActor* CatchedActor, AActor* Catched);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnOwnerRagdolling(ULSCharacterMovementComponent* MovementComp, ACharacter* OwnerCharacter, const FRagdollStateChangeSettings& StateChangeSettings);
+    
+private:
+    UFUNCTION(BlueprintCallable)
+    void OnOwnerExitedVehicleIsh(AGGGoat* Goat, APawn* Vehicle);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnOwnerExitedVehicle(AGGCharacter* CharacterGoat, AGGVehicle* Vehicle);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnOwnerEnteredVehicleIsh(AGGGoat* Goat, APawn* Vehicle);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnOwnerEnteredVehicle(AGGCharacter* CharacterGoat, AGGVehicle* Vehicle);
+    
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnOwnerCatched(AActor* CatchedActor, AActor* Catcher);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnHeadbuttButtonPressed(AGGPlayerController* PlayerController);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnGoatExitedVehicle(AGGGoat* Goat, APawn* Vehicle);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnGoatEnteredVehicle(AGGGoat* Goat, APawn* Vehicle);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnGoatControllingObjectStarted(UObject* ControlledObject);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnGoatControllingObjectEnded(UObject* ControlledObject);
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
@@ -77,6 +133,10 @@ public:
 protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AGGGoat* GetGoatOwner() const;
+    
+public:
+    UFUNCTION(BlueprintCallable, BlueprintPure=false)
+    void CompleteGearTutorial() const;
     
 };
 

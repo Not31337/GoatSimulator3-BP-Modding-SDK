@@ -7,8 +7,9 @@ class AGGPlayerController;
 class UGGGoatGearInfoDataAsset;
 class UGGInventory;
 class UGGNotificationDispatcher;
+class UGGNotificationTestingStatics;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, Config=Game)
 class GOAT2_API UGGNotificationTestingStatics : public UObject {
     GENERATED_BODY()
 public:
@@ -21,7 +22,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGInventory* Inventory;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UGGGoatGearInfoDataAsset> TestGoatGearInfoDataAsset;
     
     UGGNotificationTestingStatics();
@@ -57,6 +58,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void GoatTowerSynchronizedWidget();
+    
+    UFUNCTION(BlueprintCallable)
+    static UGGNotificationTestingStatics* Get();
     
     UFUNCTION(BlueprintCallable)
     void GatherGoats_CreateInviteNotification();

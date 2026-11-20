@@ -1,11 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "UObject/NoExportTypes.h"
 #include "Animation/AnimInstanceProxy.h"
 #include "SequenceEntryPinArray.h"
+#include "EGGVehicleAnimationType.h"
 #include "ELSMovementDirection.h"
 #include "LSAnimInstanceProxy_MovementStates.generated.h"
 
+class UAnimSequenceBase;
 class ULSAnimInstance_MovementStates;
 
 USTRUCT(BlueprintType)
@@ -57,6 +60,21 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     bool bPlayWalkAnimationsWhileFlying;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    bool bForceFallingAnimation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    EGGVehicleAnimationType VehicleAnimationType;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FVector VehicleOffsetLocation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FRotator VehicleOffsetRotation;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UAnimSequenceBase* VehicleCustomAnimation;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))

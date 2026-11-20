@@ -11,7 +11,7 @@ UGGStatusEffectManager::UGGStatusEffectManager(const FObjectInitializer& ObjectI
     this->bCanEditStatusEffectOverrides = true;
     this->DefaultShapeSizeMulti = 1.30f;
     this->ParticleScale = 1.00f;
-    this->CanBeAffectedBy.AddDefaulted(7);
+    this->CanBeAffectedBy.AddDefaulted(8);
     this->CurrentMatChangeEffect = NULL;
     this->bCanGetBurnt = true;
     this->BurntMaterialOverride = NULL;
@@ -83,6 +83,10 @@ TArray<EStatusEffectTypes> UGGStatusEffectManager::GetCanBeAffectedBy() const {
 
 FName UGGStatusEffectManager::GetBoneAttachName() const {
     return NAME_None;
+}
+
+AGGStatusEffectBase* UGGStatusEffectManager::FindStatusEffectByClass(TSubclassOf<AGGStatusEffectBase> StatusEffectClass) const {
+    return NULL;
 }
 
 void UGGStatusEffectManager::ClearStatusEffects() {

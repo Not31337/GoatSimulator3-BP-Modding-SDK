@@ -1,7 +1,7 @@
 #include "GGPersonalGearPresetHandle.h"
 
 UGGPersonalGearPresetHandle::UGGPersonalGearPresetHandle() {
-    this->PlayerId = 0;
+    this->playerId = 0;
     this->bSavingDeferred = false;
     this->DeferredLocalPlayer = NULL;
 }

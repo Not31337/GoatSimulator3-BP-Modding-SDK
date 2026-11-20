@@ -184,6 +184,9 @@ AGGInstinct* UGGGoatMovementComponent::ResolveTrampolineBounceInstinct() {
     return NULL;
 }
 
+void UGGGoatMovementComponent::ResetMovementSpeeds() {
+}
+
 void UGGGoatMovementComponent::PlayJumpModEffectsMultiCast_Implementation(FJumpModifierEffectSettings JumpModifierEffectSettings) {
 }
 
@@ -197,9 +200,6 @@ void UGGGoatMovementComponent::PlayContinuousWallrunModEffectsMultiCast_Implemen
 }
 
 void UGGGoatMovementComponent::PlayContinuousWallrunModEffects(FWallrunModifierEffectSettings WallrunModifierEffectSettings) {
-}
-
-void UGGGoatMovementComponent::OnRep_CurrentGrindedSpline() {
 }
 
 void UGGGoatMovementComponent::OnRep_BrakingStruct() {
@@ -223,7 +223,7 @@ void UGGGoatMovementComponent::OnAltGoatChanged(AGGGoat* Goat, UGGAlternativeGoa
 void UGGGoatMovementComponent::MulticastSetIsHyperspeedGrinding_Implementation(bool bIsHyperspeedGrindingNow) {
 }
 
-void UGGGoatMovementComponent::MulticastReplicateCurrentGrindedSpline_Implementation(UGGGrindableSplineComponent* GrindedSpline) {
+void UGGGoatMovementComponent::MulticastSetCurrentGrindSpline_Implementation(UGGGrindableSplineComponent* GrindedSpline) {
 }
 
 void UGGGoatMovementComponent::MulticastReactivateSprintingTrail_Implementation() {

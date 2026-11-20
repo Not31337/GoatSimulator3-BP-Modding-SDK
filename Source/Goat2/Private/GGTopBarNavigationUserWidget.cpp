@@ -1,6 +1,7 @@
 #include "GGTopBarNavigationUserWidget.h"
 
 UGGTopBarNavigationUserWidget::UGGTopBarNavigationUserWidget() {
+    this->Background = NULL;
 }
 
 void UGGTopBarNavigationUserWidget::ToggleTabButtonVisible(UGGMenuDataAsset* InMenuData, bool bInVisible) {

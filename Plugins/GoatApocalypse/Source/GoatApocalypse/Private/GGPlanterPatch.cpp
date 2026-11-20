@@ -14,6 +14,7 @@ AGGPlanterPatch::AGGPlanterPatch(const FObjectInitializer& ObjectInitializer) : 
     this->TimeUntilDestruction = 60.00f;
     this->bSpawnedFromGear = false;
     this->PlantedBy = NULL;
+    this->MobileGearPlanterLimit = 10;
     this->PlanterMesh->SetupAttachment(RootComponent);
 }
 

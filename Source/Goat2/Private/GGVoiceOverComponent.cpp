@@ -18,14 +18,14 @@ void UGGVoiceOverComponent::SetVoiceIdentity_BP(FGameplayTag VoiceIdentity) {
 void UGGVoiceOverComponent::RandomizeVoiceIdentity_BP(TArray<FGameplayTag> OverrideVoiceIdentities) {
 }
 
-bool UGGVoiceOverComponent::PlayVoiceOver(FGameplayTag VoiceOverType, bool bReplicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage) {
+bool UGGVoiceOverComponent::PlayVoiceOver(FGameplayTag VoiceOverType, bool bReplicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride) {
     return false;
 }
 
 void UGGVoiceOverComponent::OnAudioFinished() {
 }
 
-void UGGVoiceOverComponent::MulticastPlayVoiceOver_Implementation(FGameplayTag VoiceOverType, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage) {
+void UGGVoiceOverComponent::MulticastPlayVoiceOver_Implementation(FGameplayTag VoiceOverType, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride) {
 }
 
 void UGGVoiceOverComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

@@ -5,6 +5,7 @@ UGGAlternativeGoatDataAsset::UGGAlternativeGoatDataAsset() {
     this->BodyMesh = NULL;
     this->PhysicsAssetOverride = NULL;
     this->RagdollPhysicsAssetOverride = NULL;
+    this->bHideMeshInFirstPersonView = false;
     this->FlyingBroomVerticalOffset = 32.00f;
     this->CapsuleHalfSize = 46.00f;
     this->CapsuleRadius = 30.00f;

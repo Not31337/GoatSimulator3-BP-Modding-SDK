@@ -5,6 +5,7 @@
 #include "GGGoatAbility.h"
 #include "GGGoatAbility_Lick.generated.h"
 
+class AActor;
 class AGGCharacter;
 class AGGGoat;
 class AGGVehicle;
@@ -85,6 +86,11 @@ private:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastSetLickedObject(AGGGoat* Goat, UPrimitiveComponent* ClosestComponent, UObject* ClosestLickable, FName LickedBone);
     
+public:
+    UFUNCTION(BlueprintCallable)
+    static bool LickActor(AGGGoat* LickingGoat, AActor* Target);
+    
+private:
     UFUNCTION(BlueprintCallable)
     void ExecuteLick();
     

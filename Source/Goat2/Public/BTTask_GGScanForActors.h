@@ -7,6 +7,8 @@
 #include "Templates/SubclassOf.h"
 #include "BTTask_GGScanForActors.generated.h"
 
+class AActor;
+class AGGPhysicsActor_Base;
 class UNavigationQueryFilter;
 
 UCLASS(Blueprintable)
@@ -21,6 +23,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETaskActorScanTypes ActorsToScanFor;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<AGGPhysicsActor_Base>> IgnoredPActors;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<AActor> ActorClassToScanFor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bPreferNearestActor;

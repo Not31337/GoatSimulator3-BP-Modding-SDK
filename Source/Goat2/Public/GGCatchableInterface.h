@@ -59,7 +59,7 @@ public:
     void CatchActorWithOptions(AActor* Catcher, const FGGCatchOptions& Options);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    void CatchActor(AActor* Catcher);
+    void CatchActor(AActor* Catcher, bool bHideActor);
     
 };
 

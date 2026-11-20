@@ -48,6 +48,9 @@ protected:
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bFreeCamMode;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bInCursorMode;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -184,10 +187,19 @@ public:
     void SpawnNPC(const FString& NPCName);
     
     UFUNCTION(BlueprintCallable, Exec)
+    void SpawnGameNightFlow();
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void SpawnCurrency(int32 Amount);
+    
+    UFUNCTION(BlueprintCallable, Exec)
     void SpawnCars(int32 Index);
     
     UFUNCTION(BlueprintCallable, Exec)
     void SpawnCar();
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void SpawnBPActor(const FString& BPActorName);
     
     UFUNCTION(BlueprintCallable, Exec)
     void SpawnBike();
@@ -492,6 +504,9 @@ public:
     
     UFUNCTION(BlueprintCallable, Exec)
     void GGOnline_AddDummyFriends(int32 Amount);
+    
+    UFUNCTION(BlueprintCallable, Exec)
+    void FreeCamMode();
     
     UFUNCTION(BlueprintCallable, Exec)
     void ForceStopMinigame(const FString& GameOutcome);

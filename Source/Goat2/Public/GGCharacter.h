@@ -142,6 +142,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MinDestructibleBreakVel;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float InWaterLinearDampening;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float InWaterAngularDampening;
+    
 protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnCharacterRagdollChanged OnCharacterRagdollChanged;
@@ -303,17 +309,17 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     FVector_NetQuantize HeadBoneScale;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector LeftFootBoneScale;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    FVector_NetQuantize LeftFootBoneScale;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector RightFootBoneScale;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    FVector_NetQuantize RightFootBoneScale;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector LeftHandBoneScale;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    FVector_NetQuantize LeftHandBoneScale;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FVector RightHandBoneScale;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    FVector_NetQuantize RightHandBoneScale;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_IsPerceivable, meta=(AllowPrivateAccess=true))
     bool IsPerceivable;
@@ -446,6 +452,9 @@ public:
     void SetMeshScale(FVector NewScale);
     
     UFUNCTION(BlueprintCallable)
+    void SetMeshDampeningValues(float LinearDampening, float AngularDampening);
+    
+    UFUNCTION(BlueprintCallable)
     void SetMeshCollision(FGameplayTag CollisionProfile);
     
     UFUNCTION(BlueprintCallable)
@@ -518,8 +527,17 @@ public:
     void SetAvoidanceActive(bool bNewActive);
     
 protected:
+    UFUNCTION(BlueprintCallable, Server, Unreliable)
+    void ServerStopMontage(UAnimMontage* AnimMontage);
+    
+    UFUNCTION(BlueprintCallable, Server, Unreliable)
+    void ServerPlayMontage(UAnimMontage* AnimMontage, float InPlayRate);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerLaunchGGCharacter(FVector LaunchVelocity, bool XYOverride, bool ZOverride);
+    
+    UFUNCTION(BlueprintCallable, Server, Unreliable)
+    void ServerJumpToMontageSection(UAnimMontage* Montage, FName Section);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerExitVehicle(EExitReason ExitReason);
@@ -539,6 +557,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ResetPhysicalAnimationProfiles(bool StopSimulation);
+    
+    UFUNCTION(BlueprintCallable)
+    void ResetMeshDampeningValues(bool bForceOriginalValues);
     
     UFUNCTION(BlueprintCallable)
     void ResetMeshCollision(bool bResetToDefault);
@@ -579,7 +600,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool PrepareForLick();
     
-    UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
+    UFUNCTION(BlueprintCallable)
     void PlayMontage(UAnimMontage* AnimMontage, float InPlayRate);
     
 protected:
@@ -652,6 +673,10 @@ private:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastOnEffectSourceChanged(FGameplayTag EffectTag, bool IsAdded);
     
+protected:
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
+    void MulticastJumpToMontageSection(UAnimMontage* Montage, FName Section);
+    
 public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastExitVehicle(AGGVehicle* Vehicle, FVector Location, bool bWasDriver, bool bEjectingWithForce, bool bScaleWithVehicle);
@@ -669,6 +694,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void LaunchGGCharacter(FVector LaunchVelocity, bool XYOverride, bool ZOverride);
+    
+    UFUNCTION(BlueprintCallable)
+    void JumpToMontageSection(UAnimMontage* Montage, FName Section);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsSimulatingPhysics() const;

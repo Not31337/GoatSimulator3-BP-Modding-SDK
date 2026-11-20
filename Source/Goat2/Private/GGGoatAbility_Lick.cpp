@@ -28,6 +28,10 @@ void UGGGoatAbility_Lick::MulticastStoppedBeingLicked_Implementation(UObject* Li
 void UGGGoatAbility_Lick::MulticastSetLickedObject_Implementation(AGGGoat* Goat, UPrimitiveComponent* ClosestComponent, UObject* ClosestLickable, FName LickedBone) {
 }
 
+bool UGGGoatAbility_Lick::LickActor(AGGGoat* LickingGoat, AActor* Target) {
+    return false;
+}
+
 void UGGGoatAbility_Lick::ExecuteLick() {
 }
 

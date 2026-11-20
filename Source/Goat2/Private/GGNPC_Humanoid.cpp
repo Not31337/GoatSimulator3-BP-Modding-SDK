@@ -19,6 +19,7 @@ AGGNPC_Humanoid::AGGNPC_Humanoid(const FObjectInitializer& ObjectInitializer) : 
     this->UpperBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Upper Body"));
     this->LowerBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Lower Body"));
     this->bGenerateAppearanceOnSpawn = false;
+    this->bPrioritizeAreaParts = true;
     this->bSetAppearanceToSetOnSpawn = false;
     this->OverrideAnimationBlueprint = NULL;
     this->CurrentMood = EMoods::M_None;
@@ -99,6 +100,31 @@ void AGGNPC_Humanoid::OnAppearanceLoadedAndSet(AGGNPC_Humanoid* NPC) {
 }
 
 void AGGNPC_Humanoid::MoodChange(EMoodChange Direction, int32 ChanceToChange, TArray<EMoods> SkipMoods, AActor* ByActor) {
+}
+
+AGGNPC_Humanoid* AGGNPC_Humanoid::K2_SpawnNpcFromNpcInfo(const UObject* WorldContext, const FGGNPCInfo& NpcInfo, FTransform Transform, bool bRagdolled) {
+    return NULL;
+}
+
+FGGNPCInfo AGGNPC_Humanoid::K2_GetNpcInfoFromNpc(AGGNPC_Humanoid* NPC) {
+    return FGGNPCInfo{};
+}
+
+FGGProxyNpc AGGNPC_Humanoid::K2_CreateProxyNpc(USceneComponent* AttachParent) {
+    return FGGProxyNpc{};
+}
+
+void AGGNPC_Humanoid::K2_ClearProxyNpcAppearance(FGGProxyNpc& Proxy) {
+}
+
+void AGGNPC_Humanoid::K2_AssignNpcToProxy(const AGGNPC_Humanoid* NPC, FGGProxyNpc& Proxy) {
+}
+
+UGGLoadNPCAppearance* AGGNPC_Humanoid::K2_AssignNpcInfoToProxy(FGGNPCInfo NpcInfo, FGGProxyNpc& Proxy) {
+    return NULL;
+}
+
+void AGGNPC_Humanoid::K2_AssignAppearanceToProxyNpc(FGGProxyNpc& Proxy, const TArray<FLoadedAppearancePart>& AppearanceParts, UMaterialInterface* SkinMaterial) {
 }
 
 bool AGGNPC_Humanoid::IsUsingOverrideAnimBP() const {

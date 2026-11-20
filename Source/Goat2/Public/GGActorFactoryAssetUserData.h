@@ -10,6 +10,9 @@ class GOAT2_API UGGActorFactoryAssetUserData : public UAssetUserData {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bShouldForceSpawnSpecifiedBP;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AActor> BlueprintToSpawn;
     
     UGGActorFactoryAssetUserData();

@@ -7,6 +7,11 @@ UGGWaterFloatingComponent::UGGWaterFloatingComponent(const FObjectInitializer& O
     this->SinkDampening = 500.00f;
     this->WaterLineCheckDist = 15.00f;
     this->bUseCenterOfMass = true;
+    this->bStabilizeActor = false;
+    this->StabilizeDirection = EStabilizeDirection::Up;
+    this->StabilizationTorqueForce = 750.00f;
+    this->bMultiplyCurrentForcesWithMass = false;
+    this->CurrentMassScalar = 1.00f;
     this->bPlayedEnterWaterEffect = false;
     this->FloatingACNewSpeed = 0.00f;
     this->FloatingParticleComp = NULL;

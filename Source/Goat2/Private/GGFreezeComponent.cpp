@@ -36,7 +36,7 @@ UGGFreezeComponent* UGGFreezeComponent::TryToFreezeActor_K2(AActor* InActor, TSu
 void UGGFreezeComponent::ServerPlayBrakeFreeAttemptVFX_Implementation() {
 }
 
-void UGGFreezeComponent::ServerOnPlayerHeadbutt_Implementation() {
+void UGGFreezeComponent::ServerOnPlayerBrokeFree_Implementation() {
 }
 
 void UGGFreezeComponent::OnPlayerHeadbutt(AGGPlayerController* PC) {

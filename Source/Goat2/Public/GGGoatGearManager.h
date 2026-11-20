@@ -149,7 +149,7 @@ protected:
     void MulticastGearUnequipped(const TArray<TSubclassOf<USceneComponent>>& GearUnequipped);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
-    void MulticastGearEquipped(const TArray<TSubclassOf<USceneComponent>>& GearEquipped);
+    void MulticastGearEquipped(const TArray<TSubclassOf<USceneComponent>>& GearEquipped, EGearEquipContext EquipContext);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastGearAbilityToggled(USceneComponent* GearToggled, bool bEnabled);

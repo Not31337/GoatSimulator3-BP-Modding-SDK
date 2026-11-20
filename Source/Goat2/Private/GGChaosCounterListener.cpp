@@ -3,7 +3,6 @@
 UGGChaosCounterListener::UGGChaosCounterListener(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ChaosCounterMode = EChaosCounterMode::ECM_RecurringAndCooldown;
     this->BaseCooldown = 5.00f;
-    this->bDebugPrints = false;
     this->SourceDataTable = NULL;
     this->SpendingSourceDataTable = NULL;
     this->RandomSourceDataTable = NULL;

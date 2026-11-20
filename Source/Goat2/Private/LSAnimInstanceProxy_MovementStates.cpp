@@ -13,6 +13,9 @@ FLSAnimInstanceProxy_MovementStates::FLSAnimInstanceProxy_MovementStates() {
     this->bIsMoving = false;
     this->MovementDirection = ELSMovementDirection::Forward;
     this->bPlayWalkAnimationsWhileFlying = false;
+    this->bForceFallingAnimation = false;
+    this->VehicleAnimationType = EGGVehicleAnimationType::ForOccupancy;
+    this->VehicleCustomAnimation = NULL;
     this->bIsDoingTricks = false;
     this->LSAnimInstance = NULL;
 }

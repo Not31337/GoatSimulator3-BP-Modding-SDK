@@ -47,6 +47,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FNotification> CreatedNotificationIDs;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TWeakObjectPtr<AGGGoat> ActivatedGoat;
+    
 public:
     AGGTutorial(const FObjectInitializer& ObjectInitializer);
 
@@ -78,6 +81,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void OnGamepadChanged(bool bInActive);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnControlledGoatReplicated(AGGGoat* NewGoat);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTutorialShown();

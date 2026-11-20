@@ -23,12 +23,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float Tangent;
     
-private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USplineMeshComponent*> SplineMeshComponents;
     
+private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Export, meta=(AllowPrivateAccess=true))
-    TWeakObjectPtr<USceneComponent> EndPoint;
+    TWeakObjectPtr<USceneComponent> endpoint;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TWeakObjectPtr<AActor> EndPointOwner;
@@ -64,7 +64,7 @@ public:
     bool GetAutoInteractPastDuration();
     
     UFUNCTION(BlueprintCallable)
-    static UGGGrindableSplineComponent* CreateGrindableSplineComponent(AActor* Owner, UStaticMesh* SplineMesh, FName SplineCompName, USceneComponent* StartPoint, USceneComponent* NewEndPoint, TEnumAsByte<ESplineMeshAxis::Type> MeshForwardAxis, float VerticalTangent, float MeshScale, float CullDistance, bool bShouldCastShadows, UMaterialInterface* OverrideMeshMaterial, EComponentCreationMethod SplineCreationMethod);
+    static UGGGrindableSplineComponent* CreateGrindableSplineComponent(AActor* Owner, UStaticMesh* SplineMesh, FName SplineCompName, USceneComponent* StartPoint, USceneComponent* NewEndpoint, TEnumAsByte<ESplineMeshAxis::Type> MeshForwardAxis, float VerticalTangent, float MeshScale, float CullDistance, bool bShouldCastShadows, UMaterialInterface* OverrideMeshMaterial, EComponentCreationMethod SplineCreationMethod);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool CanBeInteractedWith(AActor* SourceActor);

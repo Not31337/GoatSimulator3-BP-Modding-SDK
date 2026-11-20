@@ -19,6 +19,7 @@ class APlayerController;
 class UGGLoadingScreenComponent;
 class UGGTeleportSettingsDataAsset;
 class UGGTeleportationComponent;
+class USceneComponent;
 class UUserWidget;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
@@ -58,6 +59,9 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static void TeleportPlayer_WithCallbacks(APlayerController* PlayerController, FVector Location, FRotator Rotation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, FOnTeleportStageUpdate OnTeleportStageUpdate, UGGTeleportSettingsDataAsset* SettingsAsset);
     
+    UFUNCTION(BlueprintCallable)
+    static void TeleportPlayer_ToTargetComponent(AGGPlayerController* PlayerController, USceneComponent* Target, const FTeleportParameters& TeleportParameters, const FLoadingScreenParameters& LoadingScreenParameters);
+    
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     static void TeleportPlayer_LookAt_WithCallbacks(APlayerController* PlayerController, FVector Location, FVector LookAtLocation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, FOnTeleportStageUpdate OnTeleportStageUpdate, UGGTeleportSettingsDataAsset* SettingsAsset);
     
@@ -74,6 +78,9 @@ public:
     static bool ShouldTeleportWithVehicle(APlayerController* PlayerController);
     
 private:
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerTeleportPlayer_ToTarget(USceneComponent* Target, const FTeleportParameters& TeleportParams, const FLoadingScreenParameters& LoadingParams);
+    
     UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerTeleportPlayer(FVector_NetQuantize Location, FRotator Rotation, FTeleportParameters TeleportParameters, FLoadingScreenParameters LoadingScreenParameters, bool bUseLookAt, FVector LookAtLocation);
     

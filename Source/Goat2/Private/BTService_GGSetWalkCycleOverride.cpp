@@ -2,6 +2,7 @@
 
 UBTService_GGSetWalkCycleOverride::UBTService_GGSetWalkCycleOverride() {
     this->NodeName = TEXT("Set Walk Cycle Override");
+    this->bPickOneFromArray = false;
 }
 
 

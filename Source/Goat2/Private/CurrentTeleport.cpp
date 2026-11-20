@@ -7,5 +7,6 @@ FCurrentTeleport::FCurrentTeleport() {
     this->bWaitingForDelayedRemoval = false;
     this->bHasStartedPlayerMove = false;
     this->FramesSincePlayerMovedStart = 0;
+    this->Target = NULL;
 }
 

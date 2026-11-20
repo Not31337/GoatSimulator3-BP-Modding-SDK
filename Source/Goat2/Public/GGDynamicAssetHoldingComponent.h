@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
+#include "Engine/EngineTypes.h"
 #include "OnDynamicLoadingFinishedDelegate.h"
 #include "OnGainedSignificanceDelegate.h"
 #include "OnLostSignificanceDelegate.h"
@@ -52,7 +53,10 @@ private:
     FVector CachedLocation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    bool bIsLoaded;
+    bool bAssetsMapLoaded;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bEffectSpawnersLoaded;
     
 public:
     UGGDynamicAssetHoldingComponent(const FObjectInitializer& ObjectInitializer);
@@ -63,8 +67,11 @@ public:
     UFUNCTION(BlueprintCallable)
     void StartLoadingAssets();
     
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    UGGEffectsSpawnResult* SpawnEffectsHolder(const UObject* WorldContextObject, const FString& EffectsKey, FVector SpawnLocation, FRotator SpawnRotator, USceneComponent* AttachToComponent);
+    UFUNCTION(BlueprintCallable)
+    UGGEffectsSpawnResult* SpawnEffectsHolderAtWorldPosition(const FString& EffectsKey, FVector SpawnLocation, FRotator SpawnRotation);
+    
+    UFUNCTION(BlueprintCallable)
+    UGGEffectsSpawnResult* SpawnEffectsHolderAttachedToComponent(USceneComponent* AttachComponent, const FString& EffectsKey, FVector Location, FRotator Rotation, TEnumAsByte<EAttachLocation::Type> AttachLocation);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void LostSignificance();

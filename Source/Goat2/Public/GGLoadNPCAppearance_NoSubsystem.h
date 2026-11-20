@@ -56,7 +56,7 @@ public:
     UGGLoadNPCAppearance_NoSubsystem();
 
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static UGGLoadNPCAppearance_NoSubsystem* LoadNPCAppearance_NoSubsystem(const UObject* NewWorldContextObject, const TArray<FString>& NPCAppearance);
+    static UGGLoadNPCAppearance_NoSubsystem* LoadNPCAppearance_NoSubsystem(const UObject* NewWorldContextObject, const TArray<FString>& NpcAppearance);
     
     UFUNCTION(BlueprintCallable)
     void AppearanceLoaded();

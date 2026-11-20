@@ -1,11 +1,14 @@
 #include "GGUpdateNotifierSubsystem.h"
 
 UGGUpdateNotifierSubsystem::UGGUpdateNotifierSubsystem() {
-    this->AllCachedUpdates.AddDefaulted(24);
+    this->AllCachedUpdates.AddDefaulted(29);
 }
 
 bool UGGUpdateNotifierSubsystem::ShowUpsellPopupDLC(EGoatDLC InDLC) {
     return false;
+}
+
+void UGGUpdateNotifierSubsystem::ShowDataCollectionConsentPopup() {
 }
 
 void UGGUpdateNotifierSubsystem::PostLoadMapWithWorld(UWorld* World) {
@@ -29,6 +32,9 @@ void UGGUpdateNotifierSubsystem::OnLevelStartLoadingScreenRemoved() {
 void UGGUpdateNotifierSubsystem::OnIntroSplashComplete() {
 }
 
+void UGGUpdateNotifierSubsystem::OnGameNightSessionStart(bool IsWebController) {
+}
+
 void UGGUpdateNotifierSubsystem::OnDLCsUpdated() {
 }
 
@@ -48,6 +54,9 @@ bool UGGUpdateNotifierSubsystem::GetCachedUpdateFromPrefName(FName PrefName, FUp
 
 bool UGGUpdateNotifierSubsystem::ForceNewsRetrigger(FName PrefName, bool bPaginationOrigin) {
     return false;
+}
+
+void UGGUpdateNotifierSubsystem::DataCollectionPopupResponse(const FString& ID, UObject* Object, const FString& ButtonID, EPopupResponse Response) {
 }
 
 bool UGGUpdateNotifierSubsystem::CanShowUpsellPopupDLC(EGoatDLC InDLC) {

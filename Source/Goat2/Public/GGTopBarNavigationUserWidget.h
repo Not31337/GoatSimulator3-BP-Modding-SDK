@@ -10,11 +10,15 @@
 class UGGMenuDataAsset;
 class UGGMenuUserWidget;
 class UGGUserWidget;
+class UImage;
 
 UCLASS(Blueprintable, EditInlineNew)
 class GOAT2_API UGGTopBarNavigationUserWidget : public UGGMenuComponentUserWidget {
     GENERATED_BODY()
 public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UImage* Background;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UGGMenuDataAsset*> MenuData;
     

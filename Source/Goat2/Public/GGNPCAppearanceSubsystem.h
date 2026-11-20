@@ -69,6 +69,9 @@ public:
     UGGNPCAppearanceSubsystem();
 
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
+    static TArray<FString> ShouldUseHatFriendlyHair(UObject* WorldContext, EGender Gender, FGameplayTag AreaTag, TArray<FString> NPCAppearanceArray);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
     static TArray<UDataTable*> GetSetTables(UObject* WorldContext);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
@@ -91,6 +94,9 @@ public:
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContext"))
     static TArray<FText> GetNPCNamesForRow(UObject* WorldContext, const FName& RowName);
+    
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContext"))
+    static TArray<FString> GenerateRandomAppearance(UObject* WorldContext, EGender Gender, FGameplayTag AreaTag, TArray<FString> PredeterminedElements, bool bForceAreaTag, bool bHandleHatFriendlyHair);
     
 };
 

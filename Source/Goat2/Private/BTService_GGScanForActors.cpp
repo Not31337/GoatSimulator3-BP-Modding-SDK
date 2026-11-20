@@ -5,6 +5,7 @@ UBTService_GGScanForActors::UBTService_GGScanForActors() {
     this->ChanceToScan = 100;
     this->bOnlyLookWhenEmpty = true;
     this->ActorsToScanFor = EActorScanTypes::AST_None;
+    this->ActorClassToScanFor = NULL;
     this->bPreferNearestActor = false;
     this->CollisionChannels.AddDefaulted(4);
     this->bRequireValidPath = false;

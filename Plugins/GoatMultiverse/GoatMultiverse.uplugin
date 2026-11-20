@@ -19,7 +19,12 @@
 		"Win64",
 		"Android",
 		"IOS",
-		"PS4"
+		"PS5",
+		"XSX",
+		"WinGDK",
+		"PS4",
+		"XboxOneGDK",
+		"Sage"
 	],
 	"Modules": [
 		{

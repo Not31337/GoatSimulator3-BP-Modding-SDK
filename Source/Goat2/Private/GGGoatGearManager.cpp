@@ -77,7 +77,7 @@ void UGGGoatGearManager::OnGearAbilityToggled(EGearSlot Slot, bool bAbilityEnabl
 void UGGGoatGearManager::MulticastGearUnequipped_Implementation(const TArray<TSubclassOf<USceneComponent>>& GearUnequipped) {
 }
 
-void UGGGoatGearManager::MulticastGearEquipped_Implementation(const TArray<TSubclassOf<USceneComponent>>& GearEquipped) {
+void UGGGoatGearManager::MulticastGearEquipped_Implementation(const TArray<TSubclassOf<USceneComponent>>& GearEquipped, EGearEquipContext EquipContext) {
 }
 
 void UGGGoatGearManager::MulticastGearAbilityToggled_Implementation(USceneComponent* GearToggled, bool bEnabled) {

@@ -63,7 +63,7 @@ private:
     UMaterialInterface* CurrentSkinMaterial;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FString> NPCAppearance;
+    TArray<FString> NpcAppearance;
     
     UPROPERTY(EditAnywhere, ReplicatedUsing=OnRep_ReplicatedNPCAppearance, meta=(AllowPrivateAccess=true))
     TArray<uint32> ReplicatedNPCAppearance;

@@ -4,16 +4,22 @@
 #include "GGConveyorActor.generated.h"
 
 class UGGConveyorComponent;
+class UGGPhysicalConveyorComponent;
+class UGGPhysicalConveyorReverseComponent;
 
 UCLASS(Blueprintable)
 class GOAT2_API AGGConveyorActor : public AActor {
     GENERATED_BODY()
 public:
-private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGGConveyorComponent* ConveyorComponent;
     
-public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UGGPhysicalConveyorComponent* PhysicalConveyorComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UGGPhysicalConveyorReverseComponent* ConveyorReverseComponent;
+    
     AGGConveyorActor(const FObjectInitializer& ObjectInitializer);
 
 };

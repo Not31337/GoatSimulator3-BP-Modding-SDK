@@ -5,6 +5,7 @@
 #include "Engine/EngineTypes.h"
 #include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
+#include "EGearEquipContext.h"
 #include "OnTutorialCompletedDelegate.h"
 #include "OnTutorialRemovedDelegate.h"
 #include "Templates/SubclassOf.h"
@@ -95,7 +96,7 @@ protected:
     void OnGearUnEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearUnequipped);
     
     UFUNCTION(BlueprintCallable)
-    void OnGearEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearEquipped);
+    void OnGearEquipped(AGGGoat* Goat, const TArray<TSubclassOf<USceneComponent>>& GearEquipped, EGearEquipContext EquipContext);
     
     UFUNCTION(BlueprintCallable)
     void OnGamepadChanged(bool bUsingGamepad);

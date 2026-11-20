@@ -33,10 +33,16 @@ void UGGSplitScreenSubsystem::PostLoadMapWithWorld(UWorld* World) {
 void UGGSplitScreenSubsystem::OnUserRegistered(int32 UserIndex) {
 }
 
-void UGGSplitScreenSubsystem::OnSwitchDockedChanged(bool IsDocked) {
+void UGGSplitScreenSubsystem::OnSwitchDockedChanged(bool isDocked) {
+}
+
+void UGGSplitScreenSubsystem::OnSplitScreenEndedGameNightCallback() {
 }
 
 void UGGSplitScreenSubsystem::OnSessionDestroyed(bool bSuccess) {
+}
+
+void UGGSplitScreenSubsystem::OnSageDockedChanged(bool isDocked) {
 }
 
 void UGGSplitScreenSubsystem::OnControllerPairingChange(int32 ControllerIndex, int32 NewUserPlatformId, int32 OldUserPlatformId) {
@@ -127,6 +133,9 @@ TArray<FGamepad> UGGSplitScreenSubsystem::GetGamepads() const {
 
 int32 UGGSplitScreenSubsystem::GetGamepadClaimedByUser(int32 UserIndex) const {
     return 0;
+}
+
+void UGGSplitScreenSubsystem::ColorCompassWidgets() {
 }
 
 ECanStartSplitScreenResult UGGSplitScreenSubsystem::CanStartSplitScreen(bool bCanLogAndPrint) const {

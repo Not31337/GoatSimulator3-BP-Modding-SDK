@@ -1,7 +1,7 @@
 #include "GGUpdateNotifierStatics.h"
 
 UGGUpdateNotifierStatics::UGGUpdateNotifierStatics() {
-    this->DLCPrefNames.AddDefaulted(3);
+    this->DLCPrefNames.AddDefaulted(4);
 }
 
 bool UGGUpdateNotifierStatics::PlatformUsesOldDLCPopup() {

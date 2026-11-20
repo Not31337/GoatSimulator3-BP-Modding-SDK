@@ -593,6 +593,9 @@ public:
     UFUNCTION(BlueprintCallable)
     AGGInstinct* ResolveTrampolineBounceInstinct();
     
+    UFUNCTION(BlueprintCallable)
+    void ResetMovementSpeeds();
+    
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void PlayJumpModEffectsMultiCast(FJumpModifierEffectSettings JumpModifierEffectSettings);
     
@@ -609,9 +612,6 @@ public:
     void PlayContinuousWallrunModEffects(FWallrunModifierEffectSettings WallrunModifierEffectSettings);
     
 private:
-    UFUNCTION(BlueprintCallable)
-    void OnRep_CurrentGrindedSpline();
-    
     UFUNCTION(BlueprintCallable)
     void OnRep_BrakingStruct();
     
@@ -638,7 +638,7 @@ private:
     void MulticastSetIsHyperspeedGrinding(bool bIsHyperspeedGrindingNow);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
-    void MulticastReplicateCurrentGrindedSpline(UGGGrindableSplineComponent* GrindedSpline);
+    void MulticastSetCurrentGrindSpline(UGGGrindableSplineComponent* GrindedSpline);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
     void MulticastReactivateSprintingTrail();

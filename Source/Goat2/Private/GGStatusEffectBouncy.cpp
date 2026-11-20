@@ -27,7 +27,7 @@ AGGStatusEffectBouncy::AGGStatusEffectBouncy(const FObjectInitializer& ObjectIni
     this->ImpulseMinForRelevant = 50.00f;
     this->BounceMinDelay = 0.40f;
     this->VehicleBounceMinDelay = 0.40f;
-    this->DecalLifespan = 3.00f;
+    this->DecalLifeSpan = 3.00f;
     this->EffectDelay = 0.50f;
     this->ImpactSound = NULL;
 }

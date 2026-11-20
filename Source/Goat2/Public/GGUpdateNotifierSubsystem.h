@@ -37,6 +37,9 @@ public:
     
 private:
     UFUNCTION(BlueprintCallable)
+    void ShowDataCollectionConsentPopup();
+    
+    UFUNCTION(BlueprintCallable)
     void PostLoadMapWithWorld(UWorld* World);
     
     UFUNCTION(BlueprintCallable)
@@ -58,6 +61,9 @@ private:
     
     UFUNCTION(BlueprintCallable)
     void OnIntroSplashComplete();
+    
+    UFUNCTION(BlueprintCallable)
+    void OnGameNightSessionStart(bool IsWebController);
     
     UFUNCTION(BlueprintCallable)
     void OnDLCsUpdated();
@@ -82,6 +88,11 @@ public:
     UFUNCTION(BlueprintCallable)
     bool ForceNewsRetrigger(FName PrefName, bool bPaginationOrigin);
     
+private:
+    UFUNCTION(BlueprintCallable)
+    void DataCollectionPopupResponse(const FString& ID, UObject* Object, const FString& ButtonID, EPopupResponse Response);
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanShowUpsellPopupDLC(EGoatDLC InDLC);
     

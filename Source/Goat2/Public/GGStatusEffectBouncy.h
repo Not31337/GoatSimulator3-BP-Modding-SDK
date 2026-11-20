@@ -98,7 +98,7 @@ protected:
     FVector DecalSize;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float DecalLifespan;
+    float DecalLifeSpan;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float EffectDelay;

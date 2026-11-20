@@ -9,6 +9,9 @@ UGGGameUserSettings::UGGGameUserSettings() {
 void UGGGameUserSettings::SetNetworkSetting(bool bWantsToBeOnline, bool bSaveWithoutApplying) {
 }
 
+void UGGGameUserSettings::SetFrameRateLimit_IfEnabled(float NewLimitFPS) {
+}
+
 void UGGGameUserSettings::SetFrameRateLimit_Always(float NewLimitFPS) {
 }
 
@@ -18,7 +21,7 @@ void UGGGameUserSettings::RequestUIUpdateBlueprint() {
 void UGGGameUserSettings::RemoveDelegateFromOnSettingApplied(FGGDelegateHandleWrapper InHandle, FGameplayTag InSetting) {
 }
 
-void UGGGameUserSettings::OnScalabilitySettingApplied(FGGGameSetting& InSetting) {
+void UGGGameUserSettings::OnScalabilitySettingApplied_Callback(FGGGameSetting& InSetting) {
 }
 
 void UGGGameUserSettings::OnCharacterModelQualityChanged(FGGGameSetting& InSetting) {
@@ -28,6 +31,10 @@ void UGGGameUserSettings::OnAudioSettingChanged(FGGGameSetting& InSetting) {
 }
 
 void UGGGameUserSettings::LogInputBindings(int32 PlayerIndex) const {
+}
+
+float UGGGameUserSettings::GetResolutionScalePercentage() const {
+    return 0.0f;
 }
 
 TArray<FGGGameSettingHandle> UGGGameUserSettings::GetRelevantSettingHandlesInCategoryForPlayer(FName CategoryName, UGGLocalPlayer* LocalPlayer) {
@@ -40,6 +47,10 @@ TArray<FName> UGGGameUserSettings::GetRelevantCategoriesForPlayer(UGGLocalPlayer
 
 bool UGGGameUserSettings::GetIsAboveRecomendedGPUSettingMobile() const {
     return false;
+}
+
+float UGGGameUserSettings::GetFrameRateLimit_OrDefault() const {
+    return 0.0f;
 }
 
 FVector2D UGGGameUserSettings::GetCameraInputSensitivity(const AGGPlayerController* PlayerController) {

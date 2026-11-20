@@ -8,5 +8,6 @@ enum class EWorldSaveFileName : uint8 {
     Map_Island_01,
     MV,
     AP,
+    TP,
 };
 

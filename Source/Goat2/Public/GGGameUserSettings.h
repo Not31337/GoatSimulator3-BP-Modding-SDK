@@ -8,6 +8,7 @@
 #include "GGDelegateHandleWrapper.h"
 #include "GGGameSetting.h"
 #include "GGGameSettingHandle.h"
+#include "GGGameUserSettings_DelegateDelegate.h"
 #include "GGGeneralSettings.h"
 #include "GGGraphicsSettings.h"
 #include "GGGraphicsSettingsMobile.h"
@@ -54,6 +55,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FGGOnSettingsSaved OnSettingsSaved;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FGGGameUserSettings_Delegate OnScalabilitySettingApplied;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGInputBindingsSaveGame* InputMappingSaveGame;
@@ -68,6 +72,9 @@ public:
     void SetNetworkSetting(bool bWantsToBeOnline, bool bSaveWithoutApplying);
     
     UFUNCTION(BlueprintCallable)
+    void SetFrameRateLimit_IfEnabled(float NewLimitFPS);
+    
+    UFUNCTION(BlueprintCallable)
     void SetFrameRateLimit_Always(float NewLimitFPS);
     
     UFUNCTION(BlueprintCallable)
@@ -79,7 +86,7 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void OnScalabilitySettingApplied(FGGGameSetting& InSetting);
+    void OnScalabilitySettingApplied_Callback(FGGGameSetting& InSetting);
     
     UFUNCTION(BlueprintCallable)
     void OnCharacterModelQualityChanged(FGGGameSetting& InSetting);
@@ -89,6 +96,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void LogInputBindings(int32 PlayerIndex) const;
+    
+    UFUNCTION(BlueprintCallable)
+    float GetResolutionScalePercentage() const;
     
 protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -100,6 +110,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetIsAboveRecomendedGPUSettingMobile() const;
+    
+    UFUNCTION(BlueprintCallable)
+    float GetFrameRateLimit_OrDefault() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D GetCameraInputSensitivity(const AGGPlayerController* PlayerController);

@@ -8,5 +8,6 @@ enum class ETaskActorScanTypes : uint8 {
     TAST_PaperboyPoint,
     TAST_BurningActor,
     TAST_PhysicsActors,
+    TAST_SpecifiedClass,
 };
 

@@ -94,7 +94,7 @@ public:
     void SetScoreForPlayer(const AGGPlayerState* PlayerState, float NewScore, bool Force);
     
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
-    void SetPlayerState(AGGPlayerState* PlayerState, TEnumAsByte<EPlayerGamePlayerState::Type> State);
+    void SetPlayerState(AGGPlayerState* PlayerState, EPlayerGamePlayerState::Type State);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSetScoreForPlayerBlueprint(APawn* Player, float NewScore);

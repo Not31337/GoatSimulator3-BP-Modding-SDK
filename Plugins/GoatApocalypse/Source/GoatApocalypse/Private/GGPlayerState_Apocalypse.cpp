@@ -1,9 +1,8 @@
 #include "GGPlayerState_Apocalypse.h"
+#include "GGCurrencyPlayerStateComponent.h"
 
 AGGPlayerState_Apocalypse::AGGPlayerState_Apocalypse(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-}
-
-void AGGPlayerState_Apocalypse::ServerSpawnCurrency_Implementation(int32 Amount, FVector SpawnLocation, bool bIsImportant) {
+    this->CurrencyComponent = CreateDefaultSubobject<UGGCurrencyPlayerStateComponent>(TEXT("CurrencyComponent"));
 }
 
 void AGGPlayerState_Apocalypse::OnCactusStreakStarted(AGGPlayerState_Apocalypse* Player) {

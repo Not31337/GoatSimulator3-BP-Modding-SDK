@@ -6,6 +6,7 @@ UGGReplicationGraph::UGGReplicationGraph() {
     this->SpatialFrequencyNode = NULL;
     this->FrequencyBucketsNode = NULL;
     this->ConditionalIgnoreDistanceCullNode = NULL;
+    this->ConditionalAlwaysRelevantNode = NULL;
     this->GridCellSize = 10000.00f;
     this->SpatialBiasX = -100000.00f;
     this->SpatialBiasY = -100000.00f;

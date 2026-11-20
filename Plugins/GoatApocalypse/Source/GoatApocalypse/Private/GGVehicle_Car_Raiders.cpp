@@ -3,7 +3,7 @@
 #include "Components/SceneComponent.h"
 
 AGGVehicle_Car_Raiders::AGGVehicle_Car_Raiders(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->Tags.AddDefaulted(1);
+    this->Tags.AddDefaulted(2);
     this->ValidDriverTypes.AddDefaulted(3);
     this->ValidDamageTypes.AddDefaulted(6);
     this->RaiderSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Raider Scene Component"));

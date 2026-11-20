@@ -1,10 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintAsyncActionBase.h"
+#include "EBodyParts.h"
 #include "GGLoadNPCAppearanceOutputPinDelegate.h"
+#include "LoadedAppearancePart.h"
 #include "GGLoadNPCAppearance.generated.h"
 
 class UGGLoadNPCAppearance;
+class UMaterialInterface;
+class UMeshComponent;
 class UObject;
 
 UCLASS(Blueprintable)
@@ -25,7 +29,10 @@ public:
     UGGLoadNPCAppearance();
 
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static UGGLoadNPCAppearance* LoadNPCAppearance(const UObject* NewWorldContextObject, const TArray<FString>& NPCAppearance);
+    static UGGLoadNPCAppearance* LoadNPCAppearance(const UObject* NewWorldContextObject, const TArray<FString>& NpcAppearance);
+    
+    UFUNCTION(BlueprintCallable)
+    static void ApplyLoadedAppearanceMaterials(UMeshComponent* PartComponent, EBodyParts Part, const FLoadedAppearancePart& LoadedPart, UMaterialInterface* SkinMat);
     
     UFUNCTION(BlueprintCallable)
     void AppearanceLoaded();

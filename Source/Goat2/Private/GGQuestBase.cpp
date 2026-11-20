@@ -16,6 +16,7 @@ AGGQuestBase::AGGQuestBase(const FObjectInitializer& ObjectInitializer) : Super(
     this->bSecretProgression = false;
     this->bStepsAsTierInHUD = false;
     this->QuestProgressTiers.AddDefaulted(1);
+    this->bShowOnly0To1Progress = false;
     this->bSavePartialCompletion = true;
     this->bSaveProgressionEveryUpdate = false;
     this->ShowQuestIDAsUnread = false;
@@ -93,16 +94,16 @@ void AGGQuestBase::MulticastCompleteQuest_Implementation(AGGPlayerState* EventIn
 void AGGQuestBase::MulticastActivateQuest_Implementation() {
 }
 
-void AGGQuestBase::LogQuestWarning(const FString& InFunction, const FString& InMessage) {
+void AGGQuestBase::LogQuestWarning(const FString& InFunction, const FString& InMessage) const {
 }
 
-void AGGQuestBase::LogQuestEvent(const FString& InFunction, const FString& InMessage, EQuestDebugType Verbosity) {
+void AGGQuestBase::LogQuestEvent(const FString& InFunction, const FString& InMessage, EQuestDebugType Verbosity) const {
 }
 
-void AGGQuestBase::LogQuestError(const FString& InFunction, const FString& InMessage) {
+void AGGQuestBase::LogQuestError(const FString& InFunction, const FString& InMessage) const {
 }
 
-bool AGGQuestBase::IsTierCompleted(FQuestTier Tier) {
+bool AGGQuestBase::IsTierCompleted(FQuestTier Tier) const {
     return false;
 }
 
@@ -114,11 +115,11 @@ bool AGGQuestBase::IsQuestStepVisible(const FString& StepID) {
     return false;
 }
 
-bool AGGQuestBase::IsQuestSecret(bool bSecretIfCompleted) {
+bool AGGQuestBase::IsQuestSecret(bool bSecretIfCompleted) const {
     return false;
 }
 
-bool AGGQuestBase::IsInitializedFully() {
+bool AGGQuestBase::IsInitializedFully() const {
     return false;
 }
 
@@ -126,7 +127,7 @@ bool AGGQuestBase::IsInitialized() {
     return false;
 }
 
-bool AGGQuestBase::IsCompleted() {
+bool AGGQuestBase::IsCompleted() const {
     return false;
 }
 
@@ -136,6 +137,10 @@ bool AGGQuestBase::IsActive() {
 
 bool AGGQuestBase::HasLoadedStateFromServer() {
     return false;
+}
+
+int32 AGGQuestBase::GetTargetProgressForUI() const {
+    return 0;
 }
 
 FText AGGQuestBase::GetQuestTitle() {
@@ -170,7 +175,11 @@ FText AGGQuestBase::GetQuestCompletionSplashBody() {
     return FText::GetEmpty();
 }
 
-int32 AGGQuestBase::GetProgress(bool& ReachedMaximum) {
+int32 AGGQuestBase::GetProgressForUI() const {
+    return 0;
+}
+
+int32 AGGQuestBase::GetProgress(bool& ReachedMaximum) const {
     return 0;
 }
 
@@ -178,7 +187,7 @@ FQuestTier AGGQuestBase::GetPreviousQuestTier() {
     return FQuestTier{};
 }
 
-int32 AGGQuestBase::GetNumberOfSteps() {
+int32 AGGQuestBase::GetNumberOfSteps() const {
     return 0;
 }
 
@@ -194,11 +203,11 @@ FQuestStep AGGQuestBase::GetNextUncompletedStep() {
     return FQuestStep{};
 }
 
-int32 AGGQuestBase::GetMaximumTargetProgress() {
+int32 AGGQuestBase::GetMaximumTargetProgress() const {
     return 0;
 }
 
-FQuestTier AGGQuestBase::GetLastQuestTier() {
+FQuestTier AGGQuestBase::GetLastQuestTier() const {
     return FQuestTier{};
 }
 
@@ -206,7 +215,7 @@ int32 AGGQuestBase::GetCurrentQuestTierIndex() {
     return 0;
 }
 
-FQuestTier AGGQuestBase::GetCurrentQuestTier() {
+FQuestTier AGGQuestBase::GetCurrentQuestTier() const {
     return FQuestTier{};
 }
 

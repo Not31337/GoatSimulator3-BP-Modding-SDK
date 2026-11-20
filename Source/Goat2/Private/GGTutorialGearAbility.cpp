@@ -8,6 +8,9 @@ AGGTutorialGearAbility::AGGTutorialGearAbility(const FObjectInitializer& ObjectI
 void AGGTutorialGearAbility::OnGoatAbilityActivated(AGGGoat* Goat, FGameplayTagContainer AbilityTags, UGGGearAbility* AbilityInstance) {
 }
 
+void AGGTutorialGearAbility::OnGearAbilityTutorialCompleted(FGameplayTagContainer AbilityTags) {
+}
+
 void AGGTutorialGearAbility::OnAbilityDown() {
 }
 

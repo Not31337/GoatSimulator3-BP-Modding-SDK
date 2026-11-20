@@ -26,9 +26,6 @@ public:
     static void ToggleFormerGearsLocked(bool bUnlocked);
     
     UFUNCTION(BlueprintCallable, Exec)
-    void SpawnCurrency(int32 Amount);
-    
-    UFUNCTION(BlueprintCallable, Exec)
     void ShowCactusCounterNotification();
     
     UFUNCTION(BlueprintCallable, Exec)

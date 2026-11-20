@@ -14,6 +14,8 @@ UGGNewsSettingsDataAsset::UGGNewsSettingsDataAsset() {
     this->bShowTotalUnreadInContinueButton = true;
     this->bAnchorContinueButtonToBottom = true;
     this->bAppendOwnershipNoticeForOwnedDLC = true;
+    this->bScrollNewsOnOverflow = true;
+    this->MaxHeightBeforeScrollingBodyTextOnOverflow = 450.00f;
 }
 
 

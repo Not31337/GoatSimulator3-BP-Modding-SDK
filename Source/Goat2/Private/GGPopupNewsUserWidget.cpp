@@ -11,6 +11,8 @@ UGGPopupNewsUserWidget::UGGPopupNewsUserWidget() {
     this->PopupHeaderOverlay = NULL;
     this->PopupHeaderLabel = NULL;
     this->PopupFooterLabel = NULL;
+    this->PopupNewsTextScrollBox = NULL;
+    this->PopupNewsTextSizeBox = NULL;
     this->Divider = NULL;
     this->bPaginationSupported = false;
     this->PaginationPanel = NULL;

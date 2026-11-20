@@ -9,6 +9,7 @@
 class UButton;
 class UGGPopupNewsTabButtonUserWidget;
 class UGGRichTextBlock;
+class UGGScrollBox;
 class UGGUserWidget;
 class UHorizontalBox;
 class UImage;
@@ -45,6 +46,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGGRichTextBlock* PopupFooterLabel;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UGGScrollBox* PopupNewsTextScrollBox;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    USizeBox* PopupNewsTextSizeBox;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USizeBox* Divider;

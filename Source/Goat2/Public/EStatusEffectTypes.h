@@ -13,6 +13,7 @@ enum class EStatusEffectTypes : uint8 {
     SET_Rifted,
     SET_Flattened,
     SET_Frozen,
+    SET_Sticky,
     SET_All,
 };
 

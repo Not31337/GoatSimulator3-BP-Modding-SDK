@@ -1,8 +1,8 @@
 #include "GGVoiceOverSubSystem.h"
 
 UGGVoiceOverSubSystem::UGGVoiceOverSubSystem() {
-    this->VoiceLineTableAssets.AddDefaulted(3);
-    this->VoiceIdentityTableAssets.AddDefaulted(3);
+    this->VoiceLineTableAssets.AddDefaulted(4);
+    this->VoiceIdentityTableAssets.AddDefaulted(4);
     this->bDidCacheTable = false;
 }
 
@@ -10,11 +10,7 @@ FVoiceLine UGGVoiceOverSubSystem::PickRandomWeightedCandidate(TArray<FDataTableR
     return FVoiceLine{};
 }
 
-FVoiceLine UGGVoiceOverSubSystem::GetVoiceLineBlueprint(bool& bOutSuccess, FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, const bool bIgnoreWeights) {
-    return FVoiceLine{};
-}
-
-FVoiceLine UGGVoiceOverSubSystem::GetVoiceLine(FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, const bool bIgnoreWeights) {
+FVoiceLine UGGVoiceOverSubSystem::GetVoiceLineBlueprint(bool& bOutSuccess, FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, FGameplayTagContainer NpcIdentifiers, const bool bIgnoreWeights) {
     return FVoiceLine{};
 }
 

@@ -88,8 +88,14 @@ void UGGGearItemPresetButtonUserWidget::OnDeleteButtonReleased() {
 void UGGGearItemPresetButtonUserWidget::OnDeleteButtonPressed() {
 }
 
+void UGGGearItemPresetButtonUserWidget::LoadGearIconForImage(UImage* ImageSlot, const TSoftObjectPtr<UTexture2D> InGearIcon) {
+}
+
 bool UGGGearItemPresetButtonUserWidget::IsPresetEquipped() {
     return false;
+}
+
+void UGGGearItemPresetButtonUserWidget::CancelLoadGearIconForImage(UImage* ImageSlot) {
 }
 
 

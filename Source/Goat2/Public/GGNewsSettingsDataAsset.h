@@ -50,6 +50,12 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAppendOwnershipNoticeForOwnedDLC;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bScrollNewsOnOverflow;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float MaxHeightBeforeScrollingBodyTextOnOverflow;
+    
     UGGNewsSettingsDataAsset();
 
 };

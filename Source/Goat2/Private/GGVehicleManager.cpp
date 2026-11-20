@@ -3,7 +3,7 @@
 
 UGGVehicleManager::UGGVehicleManager() {
     this->VanillaVehicleMetadataLookupTable = NULL;
-    this->DLCVehicleMetadataLookupTables.AddDefaulted(2);
+    this->DLCVehicleMetadataLookupTables.AddDefaulted(3);
     this->ManageInterval = 1.50f;
     this->ForceRelevantFor = 4.00f;
     this->LocationCooldownDelay = 10.00f;

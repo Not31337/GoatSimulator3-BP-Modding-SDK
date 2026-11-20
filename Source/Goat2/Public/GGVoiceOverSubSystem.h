@@ -3,6 +3,7 @@
 #include "Engine/DataTable.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "GameplayTagContainer.h"
+#include "GameplayTagContainer.h"
 #include "AreasToConsider.h"
 #include "EGender.h"
 #include "VoiceLine.h"
@@ -37,10 +38,7 @@ public:
     FVoiceLine PickRandomWeightedCandidate(TArray<FDataTableRowHandle> Candidates);
     
     UFUNCTION(BlueprintCallable)
-    FVoiceLine GetVoiceLineBlueprint(bool& bOutSuccess, FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, const bool bIgnoreWeights);
-    
-    UFUNCTION(BlueprintCallable)
-    FVoiceLine GetVoiceLine(FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, const bool bIgnoreWeights);
+    FVoiceLine GetVoiceLineBlueprint(bool& bOutSuccess, FGameplayTag LineTag, FGameplayTag Identity, const TSet<FGameplayTag> MoodsToConsider, FAreasToConsider AreasToConsider, FGameplayTagContainer NpcIdentifiers, const bool bIgnoreWeights);
     
     UFUNCTION(BlueprintCallable)
     EGender GetVoiceGender(FGameplayTag IdentityTag);

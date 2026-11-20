@@ -14,6 +14,7 @@ ULSCharacterMovementComponent::ULSCharacterMovementComponent(const FObjectInitia
     this->InputBlockDurationDuringStandUp = 0.50f;
     this->RagdollSyncBone = TEXT("Spine_01");
     this->RagdollSyncParameters = CreateDefaultSubobject<ULSRagdollSyncParameters>(TEXT("Ragdoll Sync Parameters"));
+    this->bCanSetNewRagdollAuthController = true;
     this->MaxRagdollImpulseStrength = 2000.00f;
     this->DefaultGait = ELSGait::Running;
     this->ProneMovementSpeed = 100.00f;
@@ -143,6 +144,9 @@ void ULSCharacterMovementComponent::SetRotationMode_Server_Implementation(ELSRot
 void ULSCharacterMovementComponent::SetRotationMode(ELSRotationMode newRotationMode) {
 }
 
+void ULSCharacterMovementComponent::SetMovementSpeeds(const FLSGaitsFloat& NewMovementSpeeds) {
+}
+
 void ULSCharacterMovementComponent::SetInAirRotationMode(ELSInAirRotationMode NewInAirRotationMode) {
 }
 
@@ -153,6 +157,9 @@ void ULSCharacterMovementComponent::SetGait(ELSGait NewGait) {
 }
 
 void ULSCharacterMovementComponent::SetFixedRotationMode_Server_Implementation(FRotator FixedRotation, bool bIsLocked) {
+}
+
+void ULSCharacterMovementComponent::SetCrouchMovementSpeeds(const FLSGaitsFloat& NewMovementSpeeds) {
 }
 
 void ULSCharacterMovementComponent::SetCharacterRotation_Server_Implementation(FRotator NewCharacterRotation, bool bInterpolate) {

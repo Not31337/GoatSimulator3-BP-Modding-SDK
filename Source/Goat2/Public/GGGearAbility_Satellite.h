@@ -11,7 +11,6 @@
 class AActor;
 class AGGCharacter;
 class AGGGoat;
-class AGGVehicle;
 class UGGDamageType_Base;
 class USceneComponent;
 
@@ -88,12 +87,6 @@ private:
     
     UFUNCTION(BlueprintCallable)
     void OnOwnerPreScaled(bool bIsBeingCatched);
-    
-    UFUNCTION(BlueprintCallable)
-    void OnOwnerEnteredVehicle(AGGCharacter* Character, AGGVehicle* Vehicle);
-    
-    UFUNCTION(BlueprintCallable)
-    void OnOwnerCatched(AActor* CatchedActor, AActor* Catcher);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastReleaseGrabbedActor(AActor* GrabbedActor, FVector ReleaseLocation, FGGReleaseOptions Options);

@@ -30,7 +30,7 @@ void AGGPlayerGame_Base::ToggleCanGetScoreForPlayer(AGGPlayerState* PlayerState,
 void AGGPlayerGame_Base::SetScoreForPlayer(const AGGPlayerState* PlayerState, float NewScore, bool Force) {
 }
 
-void AGGPlayerGame_Base::SetPlayerState(AGGPlayerState* PlayerState, TEnumAsByte<EPlayerGamePlayerState::Type> State) {
+void AGGPlayerGame_Base::SetPlayerState(AGGPlayerState* PlayerState, EPlayerGamePlayerState::Type State) {
 }
 
 

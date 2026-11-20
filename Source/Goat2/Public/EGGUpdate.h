@@ -16,5 +16,6 @@ enum class EGGUpdate : uint8 {
     April2025,
     Apocalypse,
     GearPack_Future,
+    ThemePark,
 };
 

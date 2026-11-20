@@ -11,6 +11,7 @@ UGGNPCMovementComponent::UGGNPCMovementComponent(const FObjectInitializer& Objec
     this->DefaultLandMovementMode = MOVE_NavWalking;
     this->bUseRVOAvoidance = true;
     this->bProjectNavMeshWalking = true;
+    this->bProjectNavMeshOnBothWorldChannels = true;
     this->NeckBoneName = TEXT("Neck");
     this->RagdollSyncBone = TEXT("Hips");
     this->DefaultGait = ELSGait::Walking;

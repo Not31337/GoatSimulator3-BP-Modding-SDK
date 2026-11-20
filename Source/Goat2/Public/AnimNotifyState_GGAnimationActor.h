@@ -45,7 +45,7 @@ public:
     bool bRemoveOnRagdoll;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    float DroppedLifespan;
+    float DroppedLifeSpan;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bHideRightHandActor;

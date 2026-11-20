@@ -3,6 +3,7 @@
 #include "UObject/Object.h"
 #include "DLCLevelData.h"
 #include "DLCOffer.h"
+#include "EGGCheckoutOrigin.h"
 #include "EGoatDLC.h"
 #include "ELoginState.h"
 #include "EPopupResponse.h"
@@ -71,10 +72,13 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void StartCheckout(EGoatDLC DLC);
+    void StartCheckout(EGoatDLC DLC, EGGCheckoutOrigin Origin);
     
     UFUNCTION(BlueprintCallable)
     void SetCurrentDLCLevelData(FDLCLevelData DLCLevelData);
+    
+    UFUNCTION(BlueprintCallable)
+    void QueryGameNightDLCs();
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -106,19 +110,28 @@ public:
     FDLCOffer GetDLCOffer(EGoatDLC DLC);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    FDLCLevelData GetDLCLevelDataFromWorld(const UWorld* World);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FDLCLevelData GetDLCLevelDataFromID(const FString& LevelDataID);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FDLCLevelData GetDLCLevelDataFromDLCID(EGoatDLC InDLC);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    TArray<FDLCLevelData> GetDLCLevelData();
+    TArray<FDLCLevelData> GetDLCLevelData(bool bOnlyIncludeEnabledDLC);
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
     static UGGDLCHandler* GetDLCHandler(const UObject* WorldContext);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    UGGDLCDataAsset* GetDLCAsset(EGoatDLC GoatDLC);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FDLCLevelData GetCurrentDLCLevelData() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UGGDLCDataAsset* GetCurrentDLCAsset();
     
 private:
     UFUNCTION(BlueprintCallable)

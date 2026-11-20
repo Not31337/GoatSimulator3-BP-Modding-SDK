@@ -9,6 +9,7 @@
 #include "GGTraceParams.generated.h"
 
 class AActor;
+class UPrimitiveComponent;
 
 USTRUCT(BlueprintType)
 struct GOAT2_API FGGTraceParams {
@@ -52,6 +53,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<AActor*> IgnoredActors;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    TArray<UPrimitiveComponent*> IgnoredComponents;
     
     FGGTraceParams();
 };

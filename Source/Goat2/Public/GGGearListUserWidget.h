@@ -42,7 +42,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool FilterGear(UGGGoatGearInfoDataAsset* DataAsset, FGameplayTagContainer Filters);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable)
     bool FilterAltGoatRestriction(UGGGoatGearInfoDataAsset* DataAsset);
     
 };

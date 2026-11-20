@@ -82,6 +82,8 @@ AGGNPC::AGGNPC(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitia
     this->DebugDrawAttack = false;
     this->PhysConstraint = NULL;
     this->PhysConstraintClass = NULL;
+    this->GrabbedCharacterLinearDamping = 1.00f;
+    this->GrabbedCharacterAngularDamping = 3.00f;
     this->CurrentAnimState = ENPCAnimationStates::NAS_None;
     this->GGController = NULL;
     this->IsPooled = false;
@@ -224,7 +226,7 @@ bool AGGNPC::RecentlyGrabbedCharacter(AGGCharacter* Character, float TimeToCheck
 void AGGNPC::PoolNPC() {
 }
 
-bool AGGNPC::PlayVoiceOver(FGameplayTag VoiceOverType, bool Replicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage) {
+bool AGGNPC::PlayVoiceOver(FGameplayTag VoiceOverType, bool Replicate, bool bCanInterruptCurrentLine, bool bCanBeStoppedByDamage, EMoods MoodOverride) {
     return false;
 }
 
@@ -265,7 +267,7 @@ void AGGNPC::OnRep_CurrentAnimState() {
 void AGGNPC::OnGrabbedCharacterUnRagdoll(bool bRagdollOnGround, ULSCharacterMovementComponent* MovementComp, ACharacter* UnRagdolledCharacter, const FRagdollStateChangeSettings& StateChangeSettings) {
 }
 
-void AGGNPC::MulticastSpawnParticle_Implementation(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent,EAttachLocation::Type AttachLocation) {
+void AGGNPC::MulticastSpawnParticle_Implementation(UParticleSystem* Particle, FVector_NetQuantize Location, FRotator Rotation, UPrimitiveComponent* AttachToComponent, EAttachLocation::Type AttachLocation) {
 }
 
 void AGGNPC::MulticastPlaySound_Implementation(USoundBase* SoundEffect, bool AttachedToNPC) {
@@ -441,6 +443,9 @@ void AGGNPC::EmptyCustomStateAnimSequences() {
 }
 
 void AGGNPC::DropCharacter(bool bSetMeshProfile) {
+}
+
+void AGGNPC::ClearReactionCooldown(FGameplayTag ReactionTag) {
 }
 
 void AGGNPC::ClearNPCIdentifierTags(bool bResetBackToDefaults) {

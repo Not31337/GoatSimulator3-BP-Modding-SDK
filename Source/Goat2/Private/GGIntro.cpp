@@ -14,8 +14,12 @@ AGGIntro::AGGIntro(const FObjectInitializer& ObjectInitializer) : Super(ObjectIn
 void AGGIntro::SkipIntro() {
 }
 
+void AGGIntro::ReleaseIntroResources() {
+}
+
 void AGGIntro::PlayIntro() {
 }
+
 
 
 

@@ -35,10 +35,10 @@ public:
     static AGGNPC_Animal* SpawnDummyAnimal(const UObject* WorldContextObject, TSubclassOf<AGGNPC_Animal> NPCClass, FNPCSpawnParameters SpawnParameters, TArray<FAnimalMaterialCollection> MaterialOverrides);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static AGGNPC* SpawnDummy(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FNPCSpawnParameters SpawnParameters, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements);
+    static AGGNPC* SpawnDummy(const UObject* WorldContextObject, TSubclassOf<AGGNPC> DummyClass, FNPCSpawnParameters SpawnParameters, bool bGenerateAppearance, EGender GenerateWithGender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements, bool bPrioritizeAreaParts);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static AGGNPC* SpawnCivilian(const UObject* WorldContextObject, FNPCSpawnParameters SpawnParameters, EGender Gender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements);
+    static AGGNPC* SpawnCivilian(const UObject* WorldContextObject, FNPCSpawnParameters SpawnParameters, EGender Gender, FGameplayTag AppearanceArea, const FString& AppearanceSet, TArray<FString> NPCAppearanceOverride, TArray<FString> PredeterminedElements, bool bPrioritizeAreaParts);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AGGNPC_Animal* SpawnAnimal(const UObject* WorldContextObject, TSubclassOf<AGGNPC_Animal> NPCClass, FNPCSpawnParameters SpawnParameters, TArray<FAnimalMaterialCollection> MaterialOverrides);

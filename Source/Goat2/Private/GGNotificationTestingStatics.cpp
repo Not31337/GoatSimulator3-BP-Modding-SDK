@@ -36,6 +36,10 @@ void UGGNotificationTestingStatics::InstinctUnlockedWidget() {
 void UGGNotificationTestingStatics::GoatTowerSynchronizedWidget() {
 }
 
+UGGNotificationTestingStatics* UGGNotificationTestingStatics::Get() {
+    return NULL;
+}
+
 void UGGNotificationTestingStatics::GatherGoats_CreateInviteNotification() {
 }
 

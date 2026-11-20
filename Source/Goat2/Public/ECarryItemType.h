@@ -10,5 +10,6 @@ enum class ECarryItemType : uint8 {
     CIT_Phone,
     CIT_Sign,
     CIT_FoodOrDrink,
+    CIT_Hug,
 };
 

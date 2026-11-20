@@ -4,6 +4,7 @@ UBTTask_GGScanForActors::UBTTask_GGScanForActors() {
     this->NodeName = TEXT("Scan For Actors");
     this->ChanceToScan = 100;
     this->ActorsToScanFor = ETaskActorScanTypes::TAST_None;
+    this->ActorClassToScanFor = NULL;
     this->bPreferNearestActor = false;
     this->CollisionChannels.AddDefaulted(4);
     this->bRequireValidPath = false;

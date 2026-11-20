@@ -184,10 +184,6 @@
 			]
 		},
 		{
-			"Name": "DSTelemetry",
-			"Enabled": true
-		},
-		{
 			"Name": "MfMedia",
 			"Enabled": true,
 			"BlacklistPlatforms": [
@@ -281,6 +277,18 @@
 			]
 		},
 		{
+			"Name": "GoatThemePark",
+			"Enabled": true,
+			"WhitelistPlatforms": [
+				"Win64",
+				"PS4"
+			],
+			"SupportedTargetPlatforms": [
+				"Win64",
+				"PS4"
+			]
+		},
+		{
 			"Name": "OpenXRHandTracking",
 			"Enabled": false,
 			"SupportedTargetPlatforms": [
@@ -317,17 +325,51 @@
 			]
 		},
 		{
+			"Name": "GoatGameNight",
+			"Enabled": true,
+			"WhitelistPlatforms": [
+				"Win64",
+				"Linux"
+			],
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "DLSS",
+			"Enabled": true,
+			"MarketplaceURL": "https://www.unrealengine.com/marketplace/en-US/product/nvidia-dlss",
+			"WhitelistPlatforms": [
+				"Win64"
+			],
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
 			"Name": "GearPack_Future",
 			"Enabled": true,
 			"WhitelistPlatforms": [
 				"Win64",
 				"PS4"
 			]
+		},
+		{
+			"Name": "Duckfeed",
+			"Enabled": true,
+			"BlacklistPlatforms": [
+			]
+		},
+		{
+			"Name": "GoatReferenceValidator",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
 		"Android",
 		"IOS",
-		"PS4"
+		"PS4",
+		"GDK",
+		"Windows"
 	]
 }

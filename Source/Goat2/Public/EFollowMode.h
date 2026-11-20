@@ -6,6 +6,6 @@ UENUM(BlueprintType)
 enum class EFollowMode : uint8 {
     None,
     Kinematic,
-    MovementInput,
+    Simulated,
 };
 

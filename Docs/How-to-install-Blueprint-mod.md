@@ -7,10 +7,8 @@ If someone else has created a Blueprint mod and finds it tedious to write their 
 
 ## Install UE4SS
 
-1. Download the experimental version of [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental)  
-    - Since the experimental-latest build may be unstable, it might be preferable to download [UE4SS_v3.0.1-942-gc0335505.zip](https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_v3.0.1-942-gc0335505.zip) or [zDEV-UE4SS_v3.0.1-942-gc0335505](https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/zDEV-UE4SS_v3.0.1-942-gc0335505.zip), which have been confirmed to work properly.  
-    The zDev version is intended for mod developers, so if you only want to install mods, the standard UE4SS version is sufficient.  
-    - The release version v3.0.1 does not work properly—when installing a C++ Mod, it throws a 0x7f error and fails to run.  
+1. Download [UE4SS v4.0.0](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/v4.0.0)  
+    - The zDev version is intended for mod developers, so if you only want to install mods, the standard UE4SS version is sufficient.  
 
 2. Extract UE4SS and place it in GoatSimulator3/Goat2/Binaries/Win64.  
     - Epic Games:  

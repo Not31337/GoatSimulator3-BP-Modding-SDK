@@ -6,5 +6,6 @@ FGGSmoothNetInterpolate::FGGSmoothNetInterpolate() {
     this->NoSmoothNetUpdateDist = 0.00f;
     this->bIsSupportingClientAuthority = false;
     this->bUseVelocityForInterpolationSpeed = false;
+    this->PingExtrapolationTime = 0.00f;
 }
 

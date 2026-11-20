@@ -39,7 +39,13 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UGGGoatGearInfoDataAsset*> GearsToUnlock;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UTexture2D> ChaosCurrencyImage;
+    
     UGGDLCDataAsset();
 
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    TSoftObjectPtr<UTexture2D> GetChaosCurrencyImage() const;
+    
 };
 

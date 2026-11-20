@@ -3,7 +3,10 @@
 #include "ReplicationGraph.h"
 #include "GGReplicationGraph.generated.h"
 
+class UGGReplicationGraphNode_AlwaysRelevant_ForConnection;
+class UGGReplicationGraphNode_ConditionalAlwaysRelevant;
 class UGGReplicationGraphNode_ConditionalIgnoreDistanceCull;
+class UNetReplicationGraphConnection;
 class UReplicationGraphNode_ActorList;
 class UReplicationGraphNode_ActorListFrequencyBuckets;
 class UReplicationGraphNode_DynamicSpatialFrequency;
@@ -29,6 +32,14 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UGGReplicationGraphNode_ConditionalIgnoreDistanceCull* ConditionalIgnoreDistanceCullNode;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UGGReplicationGraphNode_ConditionalAlwaysRelevant* ConditionalAlwaysRelevantNode;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TMap<UNetReplicationGraphConnection*, UGGReplicationGraphNode_AlwaysRelevant_ForConnection*> AlwaysRelevantForConnectionNodes;
+    
+private:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     float GridCellSize;
     

@@ -9,6 +9,7 @@ AGGNPCSpawner_Civilian::AGGNPCSpawner_Civilian(const FObjectInitializer& ObjectI
     this->StartEvent = NULL;
     this->StartEventSpawner = NULL;
     this->bRequireEnabledStartEvent = false;
+    this->bPrioritizeAreaParts = true;
     this->StartMoods.AddDefaulted(4);
     this->bCanEditAreaTags = false;
 }

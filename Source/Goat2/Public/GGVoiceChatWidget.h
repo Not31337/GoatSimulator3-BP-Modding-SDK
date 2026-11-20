@@ -16,10 +16,10 @@ public:
     UGGVoiceChatWidget();
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void Setup(int32 PlayerId, const FString& PlayerName, FLinearColor PlayerColor, const FString& GamerPicURL);
+    void Setup(int32 playerId, const FString& PlayerName, FLinearColor PlayerColor, const FString& GamerPicURL);
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void SetTalking(int32 PlayerId, bool bIsTalking);
+    void SetTalking(int32 playerId, bool bIsTalking);
     
 };
 

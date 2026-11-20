@@ -33,6 +33,9 @@ protected:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsPreReleaseCertBuild_Apocalypse;
     
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bIsPreReleaseCertBuild_ThemePark;
+    
 public:
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString DebugLanguageName;
@@ -42,6 +45,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<UGGPopupUserWidget> ResetSavePopupClass;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftClassPtr<UGGPopupUserWidget> ImportSavePopupClass;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UGGCloningSettingsDataAsset> CloningSettings;
@@ -132,6 +138,9 @@ protected:
     TSoftObjectPtr<UDataTable> InputButtonIcons_Switch;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UDataTable> InputButtonIcons_GameNight;
+    
+    UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UDataTable> GenericIcons;
     
     UPROPERTY(BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -154,6 +163,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsTagRestricted(FGameplayTag InTag);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsPreReleaseCertBuild_ThemePark();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsPreReleaseCertBuild_DLC(EGoatDLC InDLC);
@@ -193,6 +205,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static TSoftObjectPtr<UDataTable> GetDefaultNotificationWidgetClassesDataTable();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static UDataTable* GetDefaultInputButtonIcons();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FText GetCommonSettingsText(const FString& InKey);

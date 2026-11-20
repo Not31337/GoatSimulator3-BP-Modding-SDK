@@ -112,7 +112,7 @@ protected:
     void ServerPlayBrakeFreeAttemptVFX();
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void ServerOnPlayerHeadbutt();
+    void ServerOnPlayerBrokeFree();
     
     UFUNCTION(BlueprintCallable)
     void OnPlayerHeadbutt(AGGPlayerController* PC);

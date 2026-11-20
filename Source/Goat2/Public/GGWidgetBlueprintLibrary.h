@@ -62,7 +62,7 @@ public:
     static FText TimecodeToPlaytimeText(const FTimecode& Timecode);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void TestNotificationWidget(UObject* WorldContextObject, TSoftClassPtr<UUserWidget> InWidget, FGameplayTag InPosition, FNotification InNotification, float InDuration);
+    static void TestNotificationWidget(UObject* WorldContextObject, TSoftClassPtr<UUserWidget> InWidget, FGameplayTag InPosition, FNotification InNotification, float InDuration, bool bCoverEntireScreen, bool bDebug);
     
     UFUNCTION(BlueprintCallable)
     static bool SplitNewline(FText InText, FString& OutLeftString, FString& OutRightString);

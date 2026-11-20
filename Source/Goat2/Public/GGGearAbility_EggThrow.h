@@ -6,9 +6,7 @@
 #include "GGGearAbility_EggThrow.generated.h"
 
 class AActor;
-class AGGCharacter;
 class AGGGoat;
-class AGGVehicle;
 class UGGGoatAbility;
 class UGGGoatGear_Static_EggSaddle;
 
@@ -26,12 +24,6 @@ public:
 protected:
     UFUNCTION(BlueprintCallable)
     void OnOwnerPreScaled(bool bIsBeingCatched);
-    
-    UFUNCTION(BlueprintCallable)
-    void OnOwnerEnteredVehicle(AGGCharacter* Character, AGGVehicle* Vehicle);
-    
-    UFUNCTION(BlueprintCallable)
-    void OnOwnerCatched(AActor* CatchedActor, AActor* Catcher);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastEatActor(AActor* EatenActor, AGGGoat* Goat, FGGCatchOptions Options);

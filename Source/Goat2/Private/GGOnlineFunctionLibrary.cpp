@@ -280,7 +280,7 @@ FString UGGOnlineFunctionLibrary::GetJoinCode(const UObject* WorldContextObject)
     return TEXT("");
 }
 
-FString UGGOnlineFunctionLibrary::GetGamerPicUri(const UObject* WorldContextObject) {
+FString UGGOnlineFunctionLibrary::GetGamerPicUri(const UObject* WorldContextObject, bool bIsSplitscreenUser) {
     return TEXT("");
 }
 

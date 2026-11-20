@@ -93,10 +93,16 @@ protected:
     void OnUserRegistered(int32 UserIndex);
     
     UFUNCTION(BlueprintCallable)
-    void OnSwitchDockedChanged(bool IsDocked);
+    void OnSwitchDockedChanged(bool isDocked);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnSplitScreenEndedGameNightCallback();
     
     UFUNCTION(BlueprintCallable)
     void OnSessionDestroyed(bool bSuccess);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnSageDockedChanged(bool isDocked);
     
     UFUNCTION(BlueprintCallable)
     void OnControllerPairingChange(int32 ControllerIndex, int32 NewUserPlatformId, int32 OldUserPlatformId);
@@ -167,6 +173,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetGamepadClaimedByUser(int32 UserIndex) const;
+    
+    UFUNCTION(BlueprintCallable)
+    void ColorCompassWidgets();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ECanStartSplitScreenResult CanStartSplitScreen(bool bCanLogAndPrint) const;

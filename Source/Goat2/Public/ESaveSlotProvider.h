@@ -7,5 +7,6 @@ enum class ESaveSlotProvider : uint8 {
     Default,
     GoatMultiverse,
     GoatApocalypse,
+    GoatThemePark,
 };
 
