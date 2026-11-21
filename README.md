@@ -16,7 +16,7 @@ Creating the logic to bind to events one by one took a lot of work, so I hope yo
 
 To run the mods you create, you will need the following:
 
-- [UE4SS experimental-latest](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest)
+- [UE4SS v4.0.0](https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/v4.0.0)
 
 - [UE4SS GOAT Patch](https://www.nexusmods.com/goatsimulator3/mods/42)
 
